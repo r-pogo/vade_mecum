@@ -1,6 +1,6 @@
 # import re
 ___
-##MetaCharacters
+## MetaCharacters
 ````
 .  --> Any Character Except New Line
 \d --> Digit (0-9)
@@ -31,7 +31,7 @@ expression, simply use its number instead of writing out the whole expression ag
 1 up to 99 such groups and their corresponding numbers.
 ````
 ___
-##Assertions
+## Assertions
 ````
 A(?=B) -->  Lookahead assertion. This matches the expression A only if it is followed by B
 A(?!B)  --> Negative lookahead assertion. This matches the expression A only if it is not followed by B.
@@ -46,7 +46,7 @@ This can only matched fixed length expressions.
 ?()! --> Condition [if then else] - Not sure if it works in python
 ````
 ___
-##Quantifiers
+## Quantifiers
 ````
 * - 0 or More
 + - 1 or More
@@ -78,7 +78,7 @@ ___
 |re.findall | It will return all non-overlapping matches of pattern in the string, as a list of strings.
 |re.subn    | It will return the new string along with the no. of replacements.
 
-###re.compile
+### re.compile
 Compile a regular expression pattern into a regular expression object, which can be used for matching using its 
 match(), search() and other methods. 
 ````
@@ -88,7 +88,7 @@ print(match)
 Output <re.Match object; span=(0, 3), match='abc'>
 ````
 ___
-###re.findall()
+### re.findall()
 The re.findall() method returns a list of strings containing all matches.
 If the pattern is not found, re.findall() returns an empty list.
 ````
@@ -100,7 +100,7 @@ print(result)
 Output: ['12', '89', '34']
 ````
 ___
-###raw strings
+### raw strings
 When r prefix is used before a regular expression, it means raw string. For example, 
 '\n' is a new line whereas r'\n' means two characters: a backslash \ followed by n. 
 
@@ -113,7 +113,7 @@ print(result)
 Output: ['\n', '\t']
 ````
 ___
-###re.split()
+### re.split()
 The re.split method splits the string where there is a match and returns a list of strings where the splits 
 have occurred. If the pattern is not found, re.split() returns a list containing the original string.
 ````
@@ -136,7 +136,7 @@ print(result)
 Output: ['Twelve:', ' Eighty nine:89 Nine:9.']
 ````
 ___
-###re.sub()
+### re.sub()
 The syntax of re.sub() is: re.sub(pattern, replace, string)
 The method returns a string where matched occurrences are replaced with the content of replace variable.
 If the pattern is not found, re.sub() returns the original string.
@@ -182,7 +182,7 @@ Output:
 A**** told K*** that E**** knew about the double role of B****
 ````
 ___
-###re.subn()
+### re.subn()
 The re.subn() is similar to re.sub() except it returns a tuple of 2 items containing the new string and the number 
 of substitutions made.
 ````
@@ -204,7 +204,7 @@ print(new_string)
 Output: ('abc12de23f456', 4)
 ````
 ___
-###re.search()
+### re.search()
 The re.search() method takes two arguments: a pattern and a string. The method looks for the first location where 
 the RegEx pattern produces a match with the string. 
 If the search is successful, re.search() returns a match object; if not, it returns None. 
@@ -225,11 +225,11 @@ Output: pattern found inside the string
 Here, match contains a match object
 ````
 ___
-##Match object
+## Match object
 You can get methods and attributes of a match object using dir() function.
 Some of the commonly used methods and attributes of match objects are:
 
-###Group method - match.group()
+### Group method - match.group()
 The group() method returns the part of the string where there is a match.
 ````
 string = '39801 356, 2102 1111'
@@ -263,7 +263,7 @@ parenthesized subgroups. Here's how:
 ('801', '35')
 ````
 ___
-###match.start(), match.end() and match.span()
+### match.start(), match.end() and match.span()
 The start() function returns the index of the start of the matched substring. Similarly, end() returns the end 
 index of the matched substring. 
 ````
@@ -276,7 +276,7 @@ The span() function returns a tuple containing start and end index of the matche
 (2, 8)
 ````
 ___
-###match.re and match.string
+### match.re and match.string
 The re attribute of a matched object returns a regular expression object. Similarly, string attribute returns the 
 passed string.
 ````
@@ -287,9 +287,9 @@ re.compile('(\\d{3}) (\\d{2})')
 '39801 356, 2102 1111'
 ````
 ___
-##FLAGS
+## FLAGS
 ___
-###VERBOSE
+### VERBOSE
 ````
 phoneRegex = re.compiler(r'''(
 (\d{3}|(\d{3}\))?           # Area code
@@ -301,7 +301,7 @@ phoneRegex = re.compiler(r'''(
 )''', re.VERBOSE
 ````
 ___
-###Other flags
+### Other flags
 How to "pipe" flags:
 ````
 regex = re.compile(foo, re.IGNORCASE | re.DOTALL | re.VERBOSE)
@@ -311,7 +311,7 @@ DOTALL falg: all characters including a new line character
 re.DOTALL
 ````
 ___
-##Sources used for the creation of this cheat sheet
+## Sources used for the creation of this cheat sheet
 - B. Forta, Learning Regular Expressions, Addison-Wesley 2018
 - A. Sweigart, Automate the Boring Stuff with Python, 2st Edition:
     Practical Programming for Total Beginners, No Starch Press 2020
