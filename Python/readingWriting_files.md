@@ -127,3 +127,4 @@ print()
 ## Sources used for the creation of this cheat sheet
 - Programiz, Python File I/O, https://www.programiz.com/python-programming/file-operation
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
+- E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
