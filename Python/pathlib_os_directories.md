@@ -111,3 +111,6 @@ p = pathlib.Path('cookies/butter/milk')
 p.mkdir(parents=True)
 ````
 Passing parents=True to Path.mkdir() makes it create the directory milk and any parent directories necessary to make the path valid.
+
+## Sources used for the creation of this cheat sheet
+The cheat sheet is not ready yet! I'll finish this section at the end.
