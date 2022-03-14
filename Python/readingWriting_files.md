@@ -124,6 +124,30 @@ for line in files:
     print(' -> ' + line, end='')
 print()
 ````
+___
+## Reading and writing files with pathlib
+We can call .open() on a Path object:
+````
+with path.open(mode='r') as f:
+    # do something
+````
+Path.open() is calling the built-in open() behind the scenes.
+
+For simple reading and writing of files, there are a couple of convenience methods in the pathlib library:
+
+|Method | Desc. |
+|-------|-------|
+|.read_text(): | open the path in text mode and return the contents as a string.
+|.read_bytes(): | open the path in binary/bytes mode and return the contents as a bytestring.
+|.write_text(): | open the path and write string data to it.
+|.write_bytes(): | open the path in binary/bytes mode and write data to it.
+
+Each of these methods handles the opening and closing of the file.
+````
+recipe = "C:/Users/raf88/Desktop/cookieRecipie.txt"
+Path(recipe).read_text()
+'Combine brown sugar, butter, white sugar, and salt in a large bowl; beat with an electric mixer until a creamy...
+````
 ## Sources used for the creation of this cheat sheet
 - Programiz, Python File I/O, https://www.programiz.com/python-programming/file-operation
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/

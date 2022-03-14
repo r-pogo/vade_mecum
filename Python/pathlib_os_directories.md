@@ -2,7 +2,7 @@
 # import os
 ___
 ## Slashes and path creation
-Windows uses (\)  
+Windows uses ('\')  
 macOS and Linux uses (/)  
 Path() uses its own separators to generate the path, guarantees that the code will run properly on all operating systems
 ````
@@ -52,6 +52,102 @@ Home directory
 >>> WindowsPath('C:/Users/cookieMonster')
 ````
 ___
+## Absolute and relative path
+````
+from pathlib import Path
+Path.cwd()
+WindowsPath('C:/Users/raf88/Desktop/cheat_sheets')
+Path.cwd().is_absolute()
+True
+Path('cookies/bacon/honey').is_absolute()
+False
+````
+Example on how to obtain an absolute path
+````
+Path('cookies/bacon/honey')
+WindowsPath('cookies/bacon/honey')
+Path.cwd() / Path('cookies/bacon/honey')
+WindowsPath('C:/Users/cookieMonster/Desktop/cheat_sheets/cookies/bacon/honey')
+
+# OR
+Path.home() / Path('cookies/bacon/honey')
+WindowsPath('C:/Users/raf88/cookieMonster/bacon/honey')
+````
+Also, os.path contains some useful functions to work with absolute/relative paths:
+````
+os.path.abspath('cookies/bacon/honey')
+'C:\\Users\\raf88\\Desktop\\cheat_sheets\\cookies\\bacon\\honey'
+os.path.isabs('cookies/bacon/honey')
+False
+os.path.relpath('C:/Windows')
+'..\\..\\..\\..\\Windows'
+os.path.relpath('C:/Windows', 'C:/')
+'Windows
+````
+___
+## Checking the correctness of the paths
+````
+ok_dir = Path("C:/Users/raf88/Desktop/cheat_sheets")
+not_ok_dir = Path("C:/Users/cookieMonster/Desktop/cheat_sheets")
+not_ok_dir.exists()
+False
+ok_dir.exists()
+True
+ok_dir.is_dir()
+True
+ok_dir.is_file()
+````
+___
+## Fetching fragments of a path
+The different parts of a path are conveniently available as properties. Basic examples include:
+.name: the file name without any directory
+.parent: the directory containing the file, or the parent directory if path is a directory
+.stem: the file name without the suffix
+.suffix: the file extension
+.anchor: the part of the path before the directories
+.parents: An immutable sequence providing access to the logical ancestors of the path
+
+from pathlib import path
+````
+c = Path("C:/Users/cookieMonster/Desktop/cookieRecipie.txt")
+c.anchor
+'C:\\'
+c.parent ---> this is the only one that gives another Path object
+WindowsPath('C:/Users/cookieMonster/Desktop')
+c.name
+'cookieRecipie.txt'
+c.suffix
+'.txt'
+c.drive ---> only for Windows
+'C:'
+````
+"parents" attribute is something completely different from "parent":
+````
+c = Path("C:/Users/cookieMonster/Desktop/cookieRecipie.txt")
+c.parents[0]
+WindowsPath('C:/Users/cookieMonster/Desktop')
+c.parents[1]
+WindowsPath('C:/Users/cookieMonster')
+c.parents[2]
+WindowsPath('C:/Users')
+````
+import os
+````
+c = "C:/Users/cookieMonster/Desktop/cookieRecipie.txt"
+os.path.basename(c)
+'cookieRecipie.txt'
+os.path.dirname(c)
+'C:/Users/cookieMonster/Desktop'
+os.path.split(c)
+('C:/Users/cookieMonster/Desktop', 'cookieRecipie.txt')
+(os.path.dirname(c), os.path.basename(c))
+('C:/Users/cookieMonster/Desktop', 'cookieRecipie.txt')
+
+# also useful
+c.split('/')
+['C:', 'Users', 'cookieMonster', 'Desktop', 'cookieRecipie.txt']
+````
+____
 ## Making Directories
 
 | Function | Description |
@@ -111,6 +207,37 @@ p = pathlib.Path('cookies/butter/milk')
 p.mkdir(parents=True)
 ````
 Passing parents=True to Path.mkdir() makes it create the directory milk and any parent directories necessary to make the path valid.
+___
+## Directory Listing 
+import os
+````
+dirs = os.scandir('../cheat_sheets')
+for dir in dirs:
+    print(dir)
+Output:
+<DirEntry '.git'>
+<DirEntry '.gitignore'>
+<DirEntry '.idea'>
+<DirEntry 'Python'>
+<DirEntry 'README.md'>
 
+with os.scandir('../cheat_sheets') as dirs:
+    for dir in dirs:
+        print(dir.name)
+Output:
+.git
+.gitignore
+.idea
+Python
+README.md
+````
+os.scandir() is used in conjunction with the with statement because it supports the context manager protocol.
+
+from pathlib import Path
+````
+#TODO finish
+````
 ## Sources used for the creation of this cheat sheet
-The cheat sheet is not ready yet! I'll finish this section at the end.
+- E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
+- V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
+- Python documentation, https://docs.python.org/3/library/pathlib.html
