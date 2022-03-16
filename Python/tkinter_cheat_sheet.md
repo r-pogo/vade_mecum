@@ -75,10 +75,18 @@ weight is set to 0 by default, which means that the column or row doesn't expand
 
 You can change the location of each label inside the grid cell using the sticky parameter. sticky accepts a string containing one or more of the following letters:
 
-- "n" or "N" to align to the top-center part of the cell
-- "e" or "E" to align to the right-center side of the cell
-- "s" or "S" to align to the bottom-center part of the cell
-- "w" or "W" to align to the left-center side of the cell
+| Sticky | Description |
+|--------|-------------|
+|N | North or Top Center
+|S | South or Bottom Center
+|E | East or Right Center
+|W | West or Left Center
+|NW | North West or Top Left
+|NE | North East or Top Right
+|SE | South East or Bottom Right
+|SW | South West or Bottom Left
+|NS | NS stretches the widget vertically. However, it leaves the widget centered horizontally.
+|EW | EW stretches the widget horizontally. However, it leaves the widget centered vertically.
 ````
 label2.grid(row=1, column=0, sticky="n")
 ````
