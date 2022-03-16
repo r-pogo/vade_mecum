@@ -20,7 +20,7 @@ window.mainloop() # allows to visualize the object
 ___
 ## Geometry managers
 ### .pack() geometry manager
-.pack() one under another the previous can't use with grid
+.pack() one under another the previous can't use with grid()!  
 The ```side``` keyword argument of .pack() specifies on which side of the window the widget should be placed.  
 tk.TOP  
 tk.BOTTOM  
