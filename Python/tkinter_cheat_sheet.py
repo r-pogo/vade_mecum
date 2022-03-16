@@ -41,7 +41,7 @@ ___
 
 You can use .place() to control the precise location that a widget should occupy in a window or Frame. You must provide two keyword arguments, x and y, which specify the x- and y-coordinates for the top-left corner of the widget. Both x and y are measured in pixels, not text units.
 
-Keep in mind that the origin (where x and y are both 0) is the top-left corner of the Frame or window. So, you can think of the y argument of .place() as the number of pixels from the top of the window, and the x argument as the number of pixels from the left of the window.
+The origin (where x and y are both 0) is the top-left corner of the Frame or window. So, you can think of the y argument of .place() as the number of pixels from the top of the window, and the x argument as the number of pixels from the left of the window.
 
 Layouts created with .place() are not responsive. They don’t change as the window is resized !
 ````
@@ -50,7 +50,7 @@ label1.place(x=0, y=0)
 ````
 ___
 ### .grid() geometry manager
-.grid() works by splitting a window or Frame into rows and columns. You specify the location of a widget by calling .grid() and passing the row and column indices to the row and column keyword arguments, respectively. Both row and column indices start at 0, so a row index of 1 and a column index of 2 tells .grid() to place a widget in the third column of the second row.
+.grid() works by splitting a window or Frame into rows and columns. You specify the location of a widget by calling .grid() and passing the row and column indices to the row and column keyword arguments. Both row and column indices start at 0, so a row index of 1 and a column index of 2 tells .grid() to place a widget in the third column of the second row.
 
 ````
 label.grid(column = 0, row = 0)
@@ -82,7 +82,7 @@ label2.grid(row=1, column=0, sticky="n")
 ````
 ___
 ## Widgets
-Example of widgets
+Some example of widgets
 
 | Widget Class | Description |
 |--------------|-------------|
