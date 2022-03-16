@@ -15,6 +15,8 @@ window.title("Window") # assign name to window object
 window.minsize(width=500, height=50) # set size
 window.geometry("500x400") # also for size
 window.wm_iconbitmap("") # setting the icon for the window
+window.config(padx=10, pady=10) # adding some space around thw window, the same can be done for widgets
+.config() is used to access an object's attributes after its initialisation
 window.mainloop() # allows to visualize the object
 ````
 ___
