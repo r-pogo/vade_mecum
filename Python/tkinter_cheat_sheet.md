@@ -20,7 +20,7 @@ window.mainloop() # allows to visualize the object
 ___
 ## Geometry managers
 ### .pack() geometry manager
-.pack() # one under another the previous 
+.pack() one under another the previous can't use with grid
 The ```side``` keyword argument of .pack() specifies on which side of the window the widget should be placed.  
 tk.TOP  
 tk.BOTTOM  
@@ -50,7 +50,7 @@ label1.place(x=0, y=0)
 ````
 ___
 ### .grid() geometry manager
-.grid() works by splitting a window or Frame into rows and columns. You specify the location of a widget by calling .grid() and passing the row and column indices to the row and column keyword arguments. Both row and column indices start at 0, so a row index of 1 and a column index of 2 tells .grid() to place a widget in the third column of the second row.
+.grid() works by splitting a window or Frame into rows and columns. You specify the location of a widget by calling .grid() and passing the row and column indices to the row and column keyword arguments. Both row and column indices start at 0, so a row index of 1 and a column index of 2 tells .grid() to place a widget in the third column of the second row. Can't use with pack()!
 
 ````
 label.grid(column = 0, row = 0)
