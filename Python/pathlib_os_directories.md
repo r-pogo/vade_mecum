@@ -209,8 +209,15 @@ p.mkdir(parents=True)
 Passing parents=True to Path.mkdir() makes it create the directory milk and any parent directories necessary to make the path valid.
 ___
 ## Directory Listing 
-import os
+| Function | Description |
+|----------|-------------|
+|os.listdir() | Returns a list of all files and folders in a directory
+|os.scandir() | Returns an iterator of all the objects in a directory including file attribute information
+|pathlib.Path.iterdir() | Returns an iterator of all the objects in a directory including file attribute information
+
+With os
 ````
+import os
 dirs = os.scandir('../cheat_sheets')
 for dir in dirs:
     print(dir)
@@ -233,10 +240,84 @@ README.md
 ````
 os.scandir() is used in conjunction with the with statement because it supports the context manager protocol.
 
+With pathlib
+````
 from pathlib import Path
+entries = Path('my_directory/')
+for entry in entries.iterdir():
+    print(entry.name)
+ ````
+pathlib.Path() objects have an .iterdir() method for creating an iterator of all files and folders in a directory.
+Each entry yielded by .iterdir() contains information about the file or directory such as its name and file attributes.
+___
+## Listing Subdirectiories
+List all subdirectories using scandir()
 ````
-#TODO finish
+import os
+basepath = 'my_directory/'
+with os.scandir(basepath) as entries:
+    for entry in entries:
+        if entry.is_dir():
+            print(entry.name)
 ````
+Listing Subdirectories with pathlib.Path()
+````
+from pathlib import Path
+
+basepath = Path('my_directory/')
+for entry in basepath.iterdir():
+    if entry.is_dir():
+        print(entry.name)
+````
+___
+## Listing All Files in a Directory 
+List all files in a directory using scandir()
+````
+import os
+
+basepath = 'my_directory/'
+with os.scandir(basepath) as entries:
+    for entry in entries:
+        if entry.is_file():
+            print(entry.name)
+````
+Listing All Files in a Directory with pathlib.Path()
+````
+from pathlib import Path
+
+basepath = Path('my_directory/')
+files_in_basepath = basepath.iterdir()
+for item in files_in_basepath:
+    if item.is_file():
+        print(item.name)
+OR
+
+from pathlib import Path
+
+basepath = Path('my_directory/')
+files_in_basepath = (entry for entry in basepath.iterdir() if entry.is_file())
+for item in files_in_basepath:
+    print(item.name)
+````
+___
+## Getting file attributes
+with os.scandir()
+````
+import os
+with os.scandir('my_directory/') as dir_contents:
+    for entry in dir_contents:
+        info = entry.stat()
+        print(info.st_mtime
+````
+with pathlib.Path()
+````
+from pathlib import Path
+current_dir = Path('my_directory')
+for path in current_dir.iterdir():
+    info = path.stat()
+    print(info.st_mtime)
+````
+___
 ## Sources used for the creation of this cheat sheet
 - E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
