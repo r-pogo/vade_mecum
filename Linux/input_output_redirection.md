@@ -13,9 +13,9 @@ In Linux, almost all the streams are treated as if they were files. Just like yo
 An easy way to access any file is by using the unique file descriptor number associated with it. 
 In the case of these streams, there are unique values assigned to each one of them.
 
-0: stdin
-1: stdout
-2: stderr `ls -l /bin/usr 2> ls-error.txt`
+0: stdin  
+1: stdout  
+2: stderr `ls -l /bin/usr 2> ls-error.txt`  
 
 The `>` symbol is used for output (stdout) redirection. when using > the target file is always completely overwritten.
 `ls -l  /usr/bin > ls-output.txt`
