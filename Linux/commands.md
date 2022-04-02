@@ -148,3 +148,14 @@ ____
 | grep | allows to search patterns in files
 | head(tail) | beginnig and ending of a file
 | tee | tee command reads the standard input and writes it to both the standard output and one or more files. The command is named after the T-splitter used in plumbing. It basically breaks the output of a program so that it can be both displayed and saved in a file. It does both the tasks simultaneously, copies the result into the specified files or variables and also display the result
+| sort | used to sort a file
+
+### cat
+`cat ls-outpu.txt` reading files
+`cat movie.mpeg.0* > movie.mpeg` concatenating files
+If no arguments are given `cat` will read input from stdin, this allows to create short files
+````
+cat > lazyDog.txt
+somethign soething
+````
+

@@ -36,4 +36,10 @@ ___
 The Pipe is a command in Linux that lets you use two or more commands such that output of one command serves as input to the next.  
 In short, the output of each process directly as input to the next one like a pipeline. The symbol ‘|’ denotes a pipe.
 `ls -l | less`
+
+Linux has a lot of filter commands like awk, grep, sed, spell, and wc. A filter takes input from one command, 
+does some processing, and gives output.
+
+When you pipe two commands, the “filtered” output of the first command is given to the next.
+`ls file | sort | less`
 ___
