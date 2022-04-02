@@ -208,6 +208,7 @@ print(files_descending)
 ````
 ___
 ## Sources used for the creation of this cheat sheet
-- E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
+- A. Sweigart, Automate the Boring Stuff with Python, 2st Edition:
+    Practical Programming for Total Beginners, No Starch Press 2020
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
 - Vishal, PYnative Python Programming, Python Glob: Filename Pattern Matching, https://pynative.com/python-glob/

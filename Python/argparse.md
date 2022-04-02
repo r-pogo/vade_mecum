@@ -40,9 +40,10 @@ def main():
 
 if __name__ == '__main__':
     main()
-#--------------------------------------- 
-""" Nested Coomands\Groups
 
+````
+## Nested Coomands\Groups
+````
 commands/Parent
     list/Child
     create
@@ -79,10 +80,9 @@ def main():
 
 if __name__ == '__main__':
     main()
-#------------------------------------------------------------
-
-Mutually Exclusive group
-
+````
+## Mutually Exclusive group
+````
 import argparse
 
 def main():
@@ -108,10 +108,9 @@ def main():
 
 if __name__ == '__main__':
     main()
-#----------------------------------------------------------------------
-
-Colors with termcolor there is also Colorama for adding colors
-
+````
+## Colors with termcolor there is also Colorama for adding colors
+````
 import argparse
 from termcolor import colored, cprint
 import colorama  # need to import it for windows

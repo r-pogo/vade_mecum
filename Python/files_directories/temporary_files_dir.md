@@ -55,5 +55,4 @@ False
 ````
 ___
 ## Sources used for the creation of this cheat sheet
-- E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
