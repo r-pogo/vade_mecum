@@ -5,9 +5,10 @@ Similar to water streams, data streams also have two endpoints. There are a sour
 Whatever command you’re running in the terminal will be at either point of the stream. Using the stream, 
 you can connect two terminal windows, two different commands, and even files!
 
-stdin: Stands for standard input. It takes text as input.
-stdout: Stands for standard output. The text output of a command is stored in the stdout stream.
-stderr: Stands for standard error. Whenever a command faces an error, the error message is stored in this stream.
+`stdin`: Stands for standard input. It takes text as input.  
+`stdout`: Stands for standard output. The text output of a command is stored in the stdout stream.  
+`stderr`: Stands for standard error. Whenever a command faces an error, the error message is stored in this stream.  
+
 In Linux, almost all the streams are treated as if they were files. Just like you can read/write a file, you can read/write data from these streams.
 
 An easy way to access any file is by using the unique file descriptor number associated with it. 
