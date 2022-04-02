@@ -129,6 +129,15 @@ for pdf in (glob.glob("2020/*.pdf")):
     os.remove(pdf)
 ````
 ___
+## Safe deletion of data
+````
+import send2trash
+baconFile = open("bacon.txt", 'a')
+baconFile.write("Bacon is good for your soul")
+baconFile.close()
+send2trash.send2trash('bacon.txt')
+````
+___
 ## Sources used for the creation of this cheat sheet
 - E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
 - V. Ndlovu, Real Python, Working With Files in Python, https://realpython.com/working-with-files-in-python/
