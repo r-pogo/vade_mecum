@@ -40,9 +40,10 @@ file $(ls /usrt/bin/* | grep zip)
 ___
 ## Shutting down the interpretation mechanism
 `" "` Double quotation mark will turn off the interpretation of all special characters apart from 
-$, \, apostrophes,  
+$, \, apostrophes,
 `' '` Single quotation mark turn off everything
-\ backslash to tun off interpretation of the following sign like \\ o \$ is also used for some special characters like \t for tab
+`\` backslash to tun off interpretation of the following sign like \\ o \$ is also used for some special characters like \t for tab
 ___
 ## Sources used for the creation of this cheat sheet
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
+

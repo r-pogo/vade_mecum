@@ -5,17 +5,18 @@ Similar to water streams, data streams also have two endpoints. There are a sour
 Whatever command you’re running in the terminal will be at either point of the stream. Using the stream, 
 you can connect two terminal windows, two different commands, and even files!
 
-stdin: Stands for standard input. It takes text as input.
-stdout: Stands for standard output. The text output of a command is stored in the stdout stream.
-stderr: Stands for standard error. Whenever a command faces an error, the error message is stored in this stream.
+`stdin`: Stands for standard input. It takes text as input.  
+`stdout`: Stands for standard output. The text output of a command is stored in the stdout stream.  
+`stderr`: Stands for standard error. Whenever a command faces an error, the error message is stored in this stream.  
+
 In Linux, almost all the streams are treated as if they were files. Just like you can read/write a file, you can read/write data from these streams.
 
 An easy way to access any file is by using the unique file descriptor number associated with it. 
 In the case of these streams, there are unique values assigned to each one of them.
 
-0: stdin
-1: stdout
-2: stderr `ls -l /bin/usr 2> ls-error.txt`
+0: stdin  
+1: stdout  
+2: stderr `ls -l /bin/usr 2> ls-error.txt`  
 
 The `>` symbol is used for output (stdout) redirection. when using > the target file is always completely overwritten.
 `ls -l  /usr/bin > ls-output.txt`
