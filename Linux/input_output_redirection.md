@@ -43,3 +43,6 @@ does some processing, and gives output.
 When you pipe two commands, the “filtered” output of the first command is given to the next.
 `ls file | sort | less`
 ___
+## Sources used for the creation of this cheat sheet
+- W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
+- M. Brent, Guru99, Input Output Redirection in Linux/Unix Examples, https://www.guru99.com/linux-redirection.html
