@@ -16,7 +16,7 @@ with open('employee_birthday.txt') as csv_file:
             line_count += 1
     print(f'Processed {line_count} lines.')
 ````
-Reading CSV Files Into a Dictionary With csv module
+Reading CSV Files Into a Dictionary with DictReader, the first row is used as header
 ````
 import csv
 
@@ -51,7 +51,7 @@ with open('employee_file.csv', mode='w') as employee_file:
     employee_writer.writerow(['John Smith', 'Accounting', 'November'])
     employee_writer.writerow(['Erica Meyers', 'IT', 'March'])
 ````
-Writing CSV File From a Dictionary With csv
+Writing CSV File From a Dictionary DictWriter, the first row is used as header
 ````
 import csv
 
@@ -118,3 +118,4 @@ ___
 - A. Sweigart, Automate the Boring Stuff with Python, 2st Edition:
     Practical Programming for Total Beginners, No Starch Press 2020
 - J. Fincher, Real Python, Reading and Writing CSV Files in Python, https://realpython.com/python-csv/
+- Edlitera, Python Pandas Cheat Sheet, https://www.edlitera.com/en/blog/posts/python-pandas-cheat-sheet
