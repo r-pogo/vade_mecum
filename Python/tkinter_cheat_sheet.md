@@ -17,6 +17,7 @@ window.geometry("500x400") # also for size
 window.wm_iconbitmap("") # setting the icon for the window
 window.config(padx=10, pady=10) # adding some space around thw window, the same can be done for widgets
 .config() is used to access an object's attributes after its initialisation
+window.configure(bg="#B1DDC6")
 window.mainloop() # allows to visualize the object
 ````
 ___
