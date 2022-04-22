@@ -17,6 +17,7 @@ window.geometry("500x400") # also for size
 window.wm_iconbitmap("") # setting the icon for the window
 window.config(padx=10, pady=10) # adding some space around thw window, the same can be done for widgets
 .config() is used to access an object's attributes after its initialisation
+window.configure(bg="#B1DDC6")
 window.mainloop() # allows to visualize the object
 ````
 ___
@@ -142,7 +143,7 @@ ___
 ````python
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
-canvas.create_image(100, 112, image=tomato_img)
+canvas.create_image(100 half Canvas width, 112 half Canvas height, image=tomato_img)
 timer_text = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
 ````
