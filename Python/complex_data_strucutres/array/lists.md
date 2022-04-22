@@ -1,12 +1,11 @@
 # Lists
-Lists are a part of the core Python language. Despite their name, Python’s lists are 
-implemented as dynamic arrays behind the scenes.
+Python’s lists are implemented as dynamic arrays behind the scenes.
 
-This means a list allows elements to be added or removed, and the list will 
+Lists allow elements to be added or removed, and the list will 
 automatically adjust the backing store that holds these elements by allocating or 
 releasing memory.
 
-Python lists can hold arbitrary elements—everything is an object in Python, 
+Python lists can hold arbitrary elements, everything is an object in Python, 
 including functions. Therefore, you can mix and match different kinds of 
 data types and store them all in a single list.
 
@@ -14,157 +13,34 @@ A list stores series of items in a particular order. You access items using an i
 ___
 | Functions | Explanation |
 |-----------|-------------|
-| append() | adds an element to the end of the list
-| extend() | adds all elements of a list to another list
-| insert() | inserts an item at the defined index
-| remove() | removes an item from the list
-| pop() | returns and removes an element at the given index
-| clear() | removes all items from the list
-| index() | returns the index of the first matched item
-| count() | returns the count of the number of items passed as an argument
-| sort() | sort items in a list in ascending order
-| reverse() | reverse the order of items in the list
-| copy() | returns a shallow copy of the list
+| append() | adds an element to the end of the list `list.append(element)`  
+| extend() | adds all elements of a list to another list `list.extend(collection)`
+| insert() | inserts an item at the defined index `list.insert(int, element)`
+| remove() | removes first occurrence of the item or raises ValueError `list.remove(element)`
+| pop() | returns and removes an element at the given index or from thh end `element  = list.pop([int])`
+| clear() | removes all items from the list also works on dictionary and set `list.clear()`
+| index() | returns the index of the first matched item or raises ValueError `index_nr = list.index(element)`
+| count() | returns the count of the number of items passed as an argument `int = list.count(element)`
+| sort() | sort items in a list in ascending order `list.sort()`
+| sorted()| returns a new sorted list `list = sorted(collection)`
+| reverse() | reverse the order of items in the list `list.reversed()`
+| copy() | returns a shallow copy of the list `new_list = old_list.copy()`
 ___
-## Working with lists
-````
-bikes = ['trek', 'redline', 'giant']
-Get the first item in a list
-first_bike = bikes[0]
-
-Get the last item in a list
-last_bike = bikes[-1]
-
-Adding items to a list
-bikes = []
-bikes.append('trek')
-bikes.append('redline')
-bikes.append('giant')
-
-Inserting elements at a particular position
-users.insert(0, 'joe')
-users.insert(3, 'bea')
-
-Making numerical lists
-squares = []
-for x in range(1, 11):
- squares.append(x**2)
- 
-Changing an element
-users[0] = 'valerie'
-users[-2] = 'ronald'
-
-Deleting an element by its position
-del users[-1]
-Removing an item by its value
-users.remove('mia')
-````
-You can work with any set of elements from a list. A portion 
-of a list is called a slice. To slice a list start with the index of 
-the first item you want, then add a colon and the index after 
-the last item you want. Leave off the first index to start at 
-the beginning of the list, and leave off the last index to slice 
-through the end of the list.
-````
 Python sequence slice addresses can be written as a[start:end:step] and any of start, stop or end can be dropped. 
-a[::3] is every third element of the sequence.
-
-Getting the first three items
-finishers = ['kai', 'abe', 'ada', 'gus', 'zoe']
-first_three = finishers[:3]
-
-Getting the middle three items
-middle_three = finishers[1:4]
-
-Getting the last three items
-last_three = finishers[-3:]
-
-Making a copy of a list
-finishers = ['kai', 'abe', 'ada', 'gus', 'zoe']
-copy_of_finishers = finishers[:]
-
-Find the length of a list
-num_users = len(users)
-print("We have " + str(num_users) + " users.")
+`list[::3]` is every third element of the sequence.
 ````
-___
-## pop()
-If you want to work with an element that you're removing 
-from the list, you can "pop" the element. If you think of the 
-list as a stack of items, pop() takes an item off the top of the 
-stack. By default pop() returns the last element in the list, 
-but you can also pop elements from any position in the list.
+list = list[slice]    # Or: list[from_inclusive : to_exclusive : ±step]
+new_list = old_list[:]   # Another way to copy a list
 ````
-Pop the last item from a list
-most_recent_user = users.pop()
-print(most_recent_user)
-Pop the first item in a list
-first_user = users.pop(0)
-print(first_user)
 ````
-___
-## sort()
-The sort() method changes the order of a list permanently. 
-The sorted() function returns a copy of the list, leaving the 
-original list unchanged. You can sort the items in a list in 
-alphabetical order, or reverse alphabetical order. You can 
-also reverse the original order of the list. Keep in mind that 
-lowercase and uppercase letters may affect the sort order.
+sum_of_elements = sum(collection)
+minimum_value_in_list = min(list)
+maximum_value_in_list = max(list)
+list_from_range = list(range(1, 100))
+elementwise_sum = [sum(pair) for pair in zip(list_a, list_b)]
+list_of_chars = list(str)
 ````
-Sorting a list permanently
-users.sort()
 
-Sorting a list permanently in reverse alphabetical 
-order
-users.sort(reverse=True)
 
-Sorting a list temporarily
-print(sorted(users))
-print(sorted(users, reverse=True))
-
-Reversing the order of a list
-users.reverse()
-````
-___
-## List and range()
-You can use the range() function to work with a set of 
-numbers efficiently. The range() function starts at 0 by 
-default, and stops one number below the number passed to 
-it. You can use the list() function to efficiently generate a 
-large list of numbers.
-````
-Printing the numbers 0 to 1000
-for number in range(1001):
- print(number)
- 
-Printing the numbers 1 to 1000
-for number in range(1, 1001):
- print(number)
- 
-Making a list of numbers from 1 to a million
-numbers = list(range(1, 1000001))
-````
-___
-## Simple statistics on list
-There are a number of simple statistics you can run on a list 
-containing numerical data.
-````
-Finding the minimum value in a list
-ages = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
-youngest = min(ages)
-
-Finding the maximum value
-ages = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
-oldest = max(ages)
-
-Finding the sum of all values
-ages = [93, 99, 66, 17, 85, 1, 35, 82, 2, 77]
-total_years = sum(ages)
-````
-___
-## Sources used for the creation of this cheat sheet
-- E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
-- D. Bader, Real Python, Common Python Data Structures (Guide), https://realpython.com/python-data-structures/#list-mutable-dynamic-arrays
-- Python documentation, https://docs.python.org/3.6/library/stdtypes.html#lists
 
 
