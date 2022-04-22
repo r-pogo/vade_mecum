@@ -26,7 +26,7 @@ ___
 | reverse() | reverse the order of items in the list `list.reversed()`
 | copy() | returns a shallow copy of the list `new_list = old_list.copy()`
 ___
-Python sequence slice addresses can be written as a[start:end:step] and any of start, stop or end can be dropped. 
+Python sequence slice addresses can be written as `list[start:end:step]` and any of start, stop or end can be dropped. 
 `list[::3]` is every third element of the sequence.
 ````python
 list = list[slice]    # Or: list[from_inclusive : to_exclusive : ±step]
