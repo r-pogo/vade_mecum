@@ -1,7 +1,7 @@
 # Shelve
 full doc:https://docs.python.org/3/library/shelve.html
 It allows you to write variables to database-like binary files
-````
+````python
 import shelve
 shelFile = shelve.open('mydata')
 cats = ['Zopkie', 'Pooka', 'Simon']

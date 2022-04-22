@@ -1,5 +1,5 @@
 # Basic Tkinter
-````
+````python
 import tkinter as tk
 from tkinter import *
 from tkinter import scrolledtext
@@ -9,7 +9,7 @@ from tkinter import filedialog
 ````
 ___
 ## Creating a new window and configurations
-````
+````python
 window = tk.Tk() # create tk object
 window.title("Window") # assign name to window object
 window.minsize(width=500, height=50) # set size
@@ -30,7 +30,7 @@ tk.LEFT
 tk.RIGHT  
 
 ```fill``` keyword argument to specify in which direction the frames should fill
-````
+````python
 import tkinter as tk
 
 frame = tk.Frame(master=window)
@@ -46,7 +46,7 @@ You can use .place() to control the precise location that a widget should occupy
 The origin (where x and y are both 0) is the top-left corner of the Frame or window. So, you can think of the y argument of .place() as the number of pixels from the top of the window, and the x argument as the number of pixels from the left of the window.
 
 Layouts created with .place() are not responsive. They don’t change as the window is resized !
-````
+````python
 label1 = tk.Label(master=frame, text="Hello)", bg="red")
 label1.place(x=0, y=0)
 ````
@@ -54,7 +54,7 @@ ___
 ### .grid() geometry manager
 .grid() works by splitting a window or Frame into rows and columns. You specify the location of a widget by calling .grid() and passing the row and column indices to the row and column keyword arguments. Both row and column indices start at 0, so a row index of 1 and a column index of 2 tells .grid() to place a widget in the third column of the second row. Can't use with pack()!
 
-````
+````python
 label.grid(column = 0, row = 0)
 ````
 
@@ -62,7 +62,7 @@ For adding space around the outside of a grid cell we can use:
 - padx adds padding in the horizontal direction.  
 - pady adds padding in the vertical direction.
 
-````
+````python
 frame.grid(row=i, column=j, padx=5, pady=5)
 ````
 You can adjust how the rows and columns of the grid grow as the window is resized using .columnconfigure() and .rowconfigure() on the window object. Remember, the grid is attached to window, even though you’re calling .grid() on each Frame widget. Both .columnconfigure() and .rowconfigure() take three essential arguments:
@@ -87,7 +87,7 @@ You can change the location of each label inside the grid cell using the sticky 
 |SW | South West or Bottom Left
 |NS | NS stretches the widget vertically. However, it leaves the widget centered horizontally.
 |EW | EW stretches the widget horizontally. However, it leaves the widget centered vertically.
-````
+````python
 label2.grid(row=1, column=0, sticky="n")
 ````
 ___
@@ -103,7 +103,7 @@ Some example of widgets
 |Frame | A rectangular region used to group related widgets or provide padding between widgets
 
 ### Labels
-````
+````python
 label = Label(window, text = "Hello", font = ("Arial Bold",20), fg='white', bg='black', width=10, height=10)
 label.config(text="This is new text")
 label.pack()
@@ -114,7 +114,7 @@ label.place(x=0, y=0)
 ````
 ___
 ### Frames
-````
+````python
 import tkinter as tk
 
 window = tk.Tk()
@@ -124,7 +124,7 @@ frame.pack()
 window.mainloop()
 ````
 Frames are best thought of as containers for other widgets. Assign a widget to a frame by setting the widget’s master attribute:
-````
+````python
 frame = tk.Frame()
 label = tk.Label(master=frame)
 ````
@@ -139,7 +139,7 @@ tk.RIDGE: Creates a ridged effect
 ````
 ___
 ### Canvas
-````
+````python
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
@@ -149,7 +149,7 @@ canvas.grid(column=1, row=1)
 ___
 
 ### Buttons
-````
+````python
 # has to be placed before the button
 def action():
     print("Do something")
@@ -160,7 +160,7 @@ button.grid(column = 0, row = 2) # # puts it in the second column of the window
 ````
 ___
 ### Entries
-````
+````python
 entry = Entry(width=30)
 #Add some text to begin with
 entry.insert(END, string="Some text to begin with.")
@@ -181,7 +181,7 @@ entry = Entry(window, width=10, state='disabled')
 ````
 ___
 ### Text
-````
+````python
 text = Text(height=5, width=30)
 #Puts cursor in textbox.
 text.focus()
@@ -198,7 +198,7 @@ Insert text with .insert()
 ````
 ___
 ### Spinbox
-````
+````python
 def spinbox_used():
     #gets the current value in spinbox.
     print(spinbox.get())
@@ -216,7 +216,7 @@ spin.pack()
 ````
 ___
 ### Scale
-````
+````python
 #Called with current scale value.
 def scale_used(value):
     print(value)
@@ -225,7 +225,7 @@ scale.pack()
 ````
 ___
 ### Checkbutton
-````
+````python
 def checkbutton_used():
     #Prints 1 if On button checked, otherwise 0.
     print(checked_state.get())
@@ -235,7 +235,7 @@ checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbu
 checked_state.get()
 checkbutton.pack()
 
-OR
+# OR
 
 chk_state = BooleanVar()
 chk_state.set(True)
@@ -245,7 +245,7 @@ chk.grid(column = 0, row = 4)
 ````
 ___
 ### Radiobutton
-````
+````python
 def radio_used():
     print(radio_state.get())
 #Variable to hold on to which radio button value is checked.
@@ -256,7 +256,7 @@ radiobutton1.pack()
 radiobutton2.pack()
 ````
 ### Listbox
-````
+````python
 def listbox_used(event):
     # Gets current selection from listbox
     print(listbox.get(listbox.curselection()))
@@ -271,7 +271,7 @@ window.mainloop()
 ````
 ___
 ### ScrolledText widget
-````
+````python
 txt = scrolledtext.ScrolledText(window, width = 40, height = 10)
 txt.grid(column = 0, row = 6)
 # set scrolledtext content
@@ -301,7 +301,7 @@ messagebox.askyesnocancel('Message title', 'Message content')
 ````
 ___
 ### Add a progressbar widget, and change the color
-````
+````python
 # -- style = ttk.Style()
 # -- style.theme_use('default')
 # -- style.configure("black.Horizontal.TProgressbar", background = 'black')
@@ -312,7 +312,7 @@ bar.grid(column = 0, row = 8)
 ````
 ___
 ### Add a file dialog (file and directory chooser)
-````
+````python
 def openfile():
     filedialog.askopenfilenames()
 # -- file = filedialog.askopenfilename()
@@ -322,7 +322,7 @@ openfiles.grid(column = 0, row = 9)
 ````
 ___
 ### Specify file types (filter file extensions)
-````
+````python
 def openfile2():
     filedialog.askopenfilename(filetypes = (("Text files","*.txt"),("all files","*.*")))
 openfiles2 = Button(window, text = "OpenFiles2", bg = "black", fg = "black", command = openfile2, font = ("Arial",20))
@@ -330,7 +330,7 @@ openfiles2.grid(column = 0, row = 10)
 ````
 ___
 ### ask for a directory
-````
+````python
 def openfile3():
     filedialog.askdirectory()
 openfiles3 = Button(window, text = "Ask Directory", bg = "black", fg = "black", command = openfile3, font = ("Arial",20))
@@ -338,13 +338,13 @@ openfiles3.grid(column = 0, row = 11)
 ````
 ___
 ### specify initial directory for the file dialog by specifying initaldir
-````
+````python
 from os import path
 -- file = filedialog.askopenfilename(initialdir= path.dirname(__file__))
 ````
 ___
 ## Example of class
-````
+````python
 import tkinter as tk
 from tkinter import scrolledtext
 
@@ -385,7 +385,7 @@ if __name__ == '__main__':
 ````
 ___
 ## Example project nr1 Pomodoro
-````
+````python
 from tkinter import *
 import math
 # ---------------------------- CONSTANTS ------------------------------- #

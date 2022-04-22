@@ -4,12 +4,12 @@ The zipfile module has functions that make it easy to open and extract ZIP files
 To read the contents of a ZIP file, the first thing to do is to create a ZipFile object. 
 ZipFile objects are similar to file objects created using open(). ZipFile is also a context manager and
 therefore supports the with statement:
-````
+````python
 import zipfile
 
 with zipfile.ZipFile('data.zip', 'r') as zipobj:
     zipobj.namelist()
-This produces a list:
+# This produces a list:
 
 ['file1.py', 'file2.py', 'file3.py', 'sub_dir/', 'sub_dir/bar.py', 'sub_dir/foo.py']
 ````

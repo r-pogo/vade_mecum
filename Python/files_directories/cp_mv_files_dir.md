@@ -2,7 +2,7 @@
 
 ## Copying Files in Python
 shutil.copy() and shutil.copy2().
-````
+````python
 import shutil
 
 src = 'path/to/file.txt'
@@ -15,7 +15,7 @@ contents of src. If dst is a directory, then src will be copied into that direct
 file’s contents and the file’s permissions. Other metadata like the file’s creation and modification times are not preserved.
 
 To preserve all file metadata when copying, use shutil.copy2():
-````
+````python
 import shutil
 
 src = 'path/to/file.txt'
@@ -28,7 +28,7 @@ ___
 ## Copying Directories
 shutil.copytree() will copy an entire directory and everything contained in it.
 shutil.copytree(src, dest) takes two arguments: a source directory and the destination directory where files and folders will be copied to.
-````
+````python
 >>> import shutil
 >>> shutil.copytree('data_1', 'data1_backup')
 'data1_backup'
@@ -39,7 +39,7 @@ ___
 ## Moving Files and Directories
 shutil.move(src, dst).
 src is the file or directory to be moved and dst is the destination:
-````
+````python
 >>> import shutil
 >>> shutil.move('dir_1/', 'backup/')
 'backup'
@@ -48,18 +48,18 @@ shutil.move('dir_1/', 'backup/') moves dir_1/ into backup/ if backup/ exists. If
 ___
 ## Renaming Files and Directories
 Python includes os.rename(src, dst) for renaming files and directories:
-````
+````python
 >>> os.rename('first.zip', 'first_01.zip')
-The line above will rename first.zip to first_01.zip. If the destination path points to a directory, it will raise an OSError.
+# The line above will rename first.zip to first_01.zip. If the destination path points to a directory, it will raise an OSError.
 
-OR use rename() from the pathlib module:
+# OR use rename() from the pathlib module:
 
 >>> from pathlib import Path
 >>> data_file = Path('data_01.txt')
 >>> data_file.rename('data.txt')
 
-To rename files using pathlib, you first create a pathlib.Path() object that contains a path to the file you want to
-replace. The next step is to call rename() on the path object and pass a new filename for the file or directory you’re renaming.
+# To rename files using pathlib, you first create a pathlib.Path() object that contains a path to the file you want to
+# replace. The next step is to call rename() on the path object and pass a new filename for the file or directory you’re renaming.
 ````
 ___
 ## Moving and Deleting Files with pathlib
@@ -84,13 +84,13 @@ When you are renaming files, useful methods might be .with_name() and .with_suff
 but with the name or the suffix replaced, respectively.
 
 For instance:
-````
+````python
 >>> path
 PosixPath('/home/gahjelle/realpython/test001.txt')
 >>> path.with_suffix('.py')
 PosixPath('/home/gahjelle/realpython/test001.py')
 >>> path.replace(path.with_suffix('.py'))
-Directories and files can be deleted using .rmdir() and .unlink() respectively. (Again, be careful!)
+# Directories and files can be deleted using .rmdir() and .unlink() respectively. (Again, be careful!)
 ````
 ___
 ## Sources used for the creation of this cheat sheet

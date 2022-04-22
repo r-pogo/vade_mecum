@@ -28,11 +28,11 @@ ___
 ___
 Python sequence slice addresses can be written as a[start:end:step] and any of start, stop or end can be dropped. 
 `list[::3]` is every third element of the sequence.
-````
+````python
 list = list[slice]    # Or: list[from_inclusive : to_exclusive : ±step]
 new_list = old_list[:]   # Another way to copy a list
 ````
-````
+````python
 sum_of_elements = sum(collection)
 minimum_value_in_list = min(list)
 maximum_value_in_list = max(list)

@@ -9,7 +9,7 @@
 | False | false
 | None | null
 ## Loading/reading JSON file
-````
+````python
 import json 
 import pprint
 
@@ -18,11 +18,11 @@ with open(path_to_file) as file:
     data = json.load(file)
     
 pprint.pprint(data)
-OR
+# OR
 print(json.dumps(data, indent=4, sort_keys=True))
 ````
 Loading JSON from a string
-````
+````python
 import json
 import pprint
 stringJSON = '''
@@ -42,7 +42,7 @@ pprint.pprint(data)
 ````
 ___
 ## Converting objects to JSON
-````
+````python
 import json
 data = {
     "key1" : "value1",
@@ -53,7 +53,7 @@ jsonData = json.dumps(data, indent=4)
 ````
 ___
 ## Saving JSON data into a file
-````
+````python
 import json
 data = [
     {
@@ -72,7 +72,7 @@ with open(nameOfFile,"w") as file:
 ````
 ___
 ## Parsing JSON
-````
+````python
 import json
 '''
 DATA FORMAT
@@ -87,7 +87,7 @@ for key,value in jsonData.items():
     print(key,value)
 ````
 Parsing JSON stored as a list of dictionaries
-````
+````python
 import json
 '''
 DATA FORMAT
@@ -104,7 +104,7 @@ for item in jsonData:
         print(key,value)
 ````
 Parsing JSON stored as a dictionary of dictionaries
-````
+````python
 import json
 '''
 DATA FORMAT
@@ -122,7 +122,7 @@ for jsonName,jsonObject in jsonData.items():
         print(key,value)
 ````
 Parsing JSON stored as a list of lists
-````
+````python
 import json
 '''
 DATA FORMAT
@@ -140,7 +140,7 @@ for listItem in jsonData:
 ___
 ## JSON Data Transformation
 List of Dictionaries to a Dictionary
-````
+````python
 import json
 with open("data.json") as file:
     jsonData = json.load(file)
@@ -152,7 +152,7 @@ with open("jsonOutput.json","w") as file:
     print("Saved File")
 ````
 Dictionary of Dictionaries to a List of Dictionaries
-````
+````python
 import json
 with open("data.json") as file:
     jsonData = json.load(file)
@@ -164,7 +164,7 @@ with open("jsonOutput.json","w") as file:
     print("Saved File")
 ````
 List of Dictionaries to a List of Lists
-````
+````python
 import json
 with open("data.json") as file:
     jsonData = json.load(file)

@@ -1,5 +1,5 @@
 # import argparse
-````
+````python
 def main():
 
     # Constructor/Init for the parser
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
 ````
 ## Nested Coomands\Groups
-````
+````python
 commands/Parent
     list/Child
     create
@@ -54,10 +54,8 @@ commands
         -upper
     -capitalize
         -upper
-"""
 
 import argparse
-
 
 def main():
     # init/Main Parser
@@ -82,7 +80,7 @@ if __name__ == '__main__':
     main()
 ````
 ## Mutually Exclusive group
-````
+````python
 import argparse
 
 def main():
@@ -110,7 +108,7 @@ if __name__ == '__main__':
     main()
 ````
 ## Colors with termcolor there is also Colorama for adding colors
-````
+````python
 import argparse
 from termcolor import colored, cprint
 import colorama  # need to import it for windows
@@ -137,7 +135,6 @@ def main():
 if __name__ == '__main__':
     main()
 ````
-
 ## The add_argument() methods
 | Name | Description |
 |------|-------------|
@@ -154,8 +151,8 @@ if __name__ == '__main__':
 | dest | The name of the attribute to be added to the object returned by parse_args().
 ___
 ## Action
-
 Arguments can trigger different actions, specified by the action argument to add_argument().
+
 | Name | Description |
 |------|-------------|
 | store | Save the value, after optionally converting it to a different type. This is the default action taken if none is specified explicitly.

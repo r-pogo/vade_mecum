@@ -1,7 +1,7 @@
 # CSV
 
 ## Reading with csv module
-````
+````python
 import csv
 
 with open('employee_birthday.txt') as csv_file:
@@ -17,7 +17,7 @@ with open('employee_birthday.txt') as csv_file:
     print(f'Processed {line_count} lines.')
 ````
 Reading CSV Files Into a Dictionary with DictReader, the first row is used as header
-````
+````python
 import csv
 
 with open('employee_birthday.txt', mode='r') as csv_file:
@@ -42,7 +42,7 @@ quotechar specifies the character used to surround fields that contain the delim
 escapechar specifies the character used to escape the delimiter character, in case quotes aren’t used. The default is no escape character.
 ___
 ## Writing CSV Files With csv module
-````
+````python
 import csv
 
 with open('employee_file.csv', mode='w') as employee_file:
@@ -52,7 +52,7 @@ with open('employee_file.csv', mode='w') as employee_file:
     employee_writer.writerow(['Erica Meyers', 'IT', 'March'])
 ````
 Writing CSV File From a Dictionary DictWriter, the first row is used as header
-````
+````python
 import csv
 
 with open('employee_file2.csv', mode='w') as csv_file:
@@ -65,7 +65,7 @@ with open('employee_file2.csv', mode='w') as csv_file:
 ````
 ___
 ## Reading CSV Files With pandas
-````
+````python
 import pandas
 df = pandas.read_csv('hrdata.csv', 
             index_col='Employee', 
@@ -75,24 +75,24 @@ df = pandas.read_csv('hrdata.csv',
 print(df)
 ````
 Reading CSV:
-````
+````python
 csv_data = pd.read_csv("input.csv")
 ````
 From a CSV file, specifying which columns you want to import:
-````
+````python
 csv_data = pd.read_csv("input.csv", usecols=['col1', 'col4', 'col5'])
 ````
 From a CSV file with no header:
-````
+````python
 csv_data = pd.read_csv("input.csv", header=None, names=['colA', 'colB'])
 ````
 From a pipe-delimited file:
-````
+````python
 pipe_delimited_data = pd.read_csv("input.csv", sep='|')
 ````
 ___
 ## Writing CSV Files With pandas
-````
+````python
 import pandas
 df = pandas.read_csv('hrdata.csv', 
             index_col='Employee', 
@@ -102,15 +102,15 @@ df = pandas.read_csv('hrdata.csv',
 df.to_csv('hrdata_modified.csv')
 ````
 Saving to CSV:
-````
+````python
 data.to_csv('output.csv')
 ````
 To CSV files, without the index:
-````
+````python
 data.to_csv('output.csv', index=False)
 ````
 To pipe-delimited files:
-````
+````python
 data.to_csv('output.csv', sep='|')
 ````
 ___
