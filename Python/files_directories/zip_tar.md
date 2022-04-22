@@ -15,7 +15,7 @@ with zipfile.ZipFile('data.zip', 'r') as zipobj:
 ````
 .namelist() returns a list of names of the files and directories in the archive. To retrieve information about the
 files in the archive, use .getinfo():
-````
+````python
 import zipfile
 
 with zipfile.ZipFile('data.zip', 'r') as zipobj:
@@ -25,7 +25,7 @@ with zipfile.ZipFile('data.zip', 'r') as zipobj:
 ___
 ## Extracting ZIP Archives
 The zipfile module allows you to extract one or more files from ZIP archives through .extract() and .extractall().
-````
+````python
 >>> import zipfile
 >>> import os
 
@@ -62,7 +62,7 @@ ___
 ## Extracting Data From Password-Protected Archives
 zipfile supports extracting password-protected ZIPs. To extract password-protected ZIP files, pass in the password to
 the .extract() or .extractall() method as an argument:
-````
+````python
 >>> import zipfile
 
 >>> with zipfile.ZipFile('secret.zip', 'r') as pwd_zip:
@@ -71,7 +71,7 @@ the .extract() or .extractall() method as an argument:
 ````
 ___
 ## Creating New ZIP Archives
-````
+````python
 >>> import zipfile
 
 >>> file_list = ['file1.py', 'sub_dir/', 'sub_dir/bar.py', 'sub_dir/foo.py']
@@ -81,7 +81,7 @@ ___
 ````
 In the example, new_zip is opened in write mode and each file in file_list is added to the archive.
 Opening a ZIP file in write mode erases the contents of  the archive and creates a new archive.
-````
+````python
 >>> # Open a ZipFile object in append mode
 >>> with zipfile.ZipFile('new.zip', 'a') as new_zip:
 ...     new_zip.write('data.txt')
@@ -91,7 +91,7 @@ ___
 ## Opening TAR Archives
 TAR files are uncompressed file archives like ZIP. They can be compressed using gzip, bzip2, and lzma compression methods.
 The TarFile class allows reading and writing of TAR archives.
-````
+````python
 import tarfile
 
 with tarfile.open('example.tar', 'r') as tar_file:
@@ -111,16 +111,16 @@ tarfile objects open like most file-like objects. They have an open() function t
 | a    |   Opens archive for appending with no compression
 
 .open() defaults to 'r' mode. To read an uncompressed TAR file and retrieve the names of the files in it, use .getnames():
-````
+````python
 >>> import tarfile
 
 >>> tar = tarfile.open('example.tar', mode='r')
 >>> tar.getnames()
 ['CONTRIBUTING.rst', 'README.md', 'app.py']
-This returns a list with the names of the archive contents.
+# This returns a list with the names of the archive contents.
 ````
 The metadata of each entry in the archive can be accessed using special attributes:
-````
+````python
 >>> for entry in tar.getmembers():
 ...     print(entry.name)
 ...     print(' Modified:', time.ctime(entry.mtime))
@@ -142,7 +142,7 @@ ___
 ## Extracting Files From a TAR Archive
 To extract files from TAR archives:.extract(), .extractfile(), .extractall()
 To extract a single file from a TAR archive, use extract(), passing in the filename:
-````
+````python
 >>> tar.extract('README.md')
 >>> os.listdir('.')
 ['README.md', 'example.tar']
@@ -150,7 +150,7 @@ To extract a single file from a TAR archive, use extract(), passing in the filen
 The README.md file is extracted from the archive to the file system. Calling os.listdir() confirms that README.md 
 file was successfully extracted into the current directory. To unpack or extract everything from the archive, use 
 .extractall():
-````
+````python
 >>> tar.extractall(path="extracted/")
 ````
 .extractall() has an optional path argument to specify where extracted files should go. Here, 
@@ -176,14 +176,14 @@ app.py  CONTRIBUTING.rst  README.md
 ````
 To extract a file object for reading or writing, use .extractfile(), which takes a filename or TarInfo object to extract
 as an argument. .extractfile() returns a file-like object that can be read and used:
-````
+````python
 >>> f = tar.extractfile('app.py')
 >>> f.read()
 >>> tar.close()
 ````
 ___
 ## Creating New TAR Archives
-````
+````python
 >>> import tarfile
 
 >>> file_list = ['app.py', 'config.py', 'CONTRIBUTORS.md', 'tests.py']
@@ -201,7 +201,7 @@ CONTRIBUTORS.md
 tests.py
 ````
 To add new files to an existing archive, open the archive in append mode ('a'):
-````
+````python
 >>> with tarfile.open('package.tar', mode='a') as tar:
 ...     tar.add('foo.bar')
 
@@ -220,7 +220,7 @@ tarfile can also read and write TAR archives compressed using gzip, bzip2, and l
 compressed archive, use tarfile.open(), passing in the appropriate mode for the compression type.
 
 For example, to read or write data to a TAR archive compressed using gzip, use the 'r:gz' or 'w:gz' modes respectively:
-````
+````python
 >>> files = ['app.py', 'config.py', 'tests.py']
 >>> with tarfile.open('packages.tar.gz', mode='w:gz') as tar:
 ...     tar.add('app.py')
@@ -248,13 +248,13 @@ shutil.make_archive() takes at least two arguments: the name of the archive and 
 By default, it compresses all the files in the current directory into the archive format specified in the format argument.
 You can pass in an optional root_dir argument to compress files in a different directory. .make_archive()
 supports the zip, tar, bztar, and gztar archive formats.
-````
+````python
 import shutil
 
 # shutil.make_archive(base_name, format, root_dir)
 shutil.make_archive('data/backup', 'tar', 'data/')
-This copies everything in data/ and creates an archive called backup.tar in the filesystem and returns its name.
-To extract the archive, call .unpack_archive():
+# This copies everything in data/ and creates an archive called backup.tar in the filesystem and returns its name.
+# To extract the archive, call .unpack_archive():
 
 shutil.unpack_archive('backup.tar', 'extract_dir/')
 ````

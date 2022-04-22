@@ -5,7 +5,7 @@ ___
 Windows uses ('\')  
 macOS and Linux uses (/)  
 Path() uses its own separators to generate the path, guarantees that the code will run properly on all operating systems
-````
+````python
 >>> from pathlib import Path
 >>> Path('cookies','milk', 'breakfast')
 >>> WindowsPath('cookies/milk/breakfast')
@@ -18,7 +18,7 @@ while in macOS/Linux refer o one directory called cookies\milk.
 NB: this is the reason why is better to avoid '\' in python scripts  
 
 '/' also to join the parts of the path when constructing it:
-````
+````python
 >>> from pathlib import Path
 >>> Path('cookies') / 'milk' / 'butter'
 >>> WindowsPath('cookies/milk/butter')
@@ -27,16 +27,15 @@ NB: this is the reason why is better to avoid '\' in python scripts
 >>> Path('cookies')/Path('more', 'cookies')
 >>> WindowsPath('cookies/more/cookies')
 ````
-
 You can also create a path from it string representation:
-````
+````python
 >>> pathlib.Path(r'C:\Users\cookieMonster\cookiesJar\file.txt')
 >>>WindowsPath('C:/Users/cookieMonster/cookiesJar/file.txt')
 ````
 ___
 ## Current and home directory
 Current directory
-````
+````python
 >>> from pathlib import Path
 >>> import os
 >>> Path.cwd()
@@ -47,13 +46,13 @@ Current directory
 >>> WindowsPath('C:/Windows/System32')
 ````
 Home directory
-````
+````python
 >>> Path.home()
 >>> WindowsPath('C:/Users/cookieMonster')
 ````
 ___
 ## Absolute and relative path
-````
+````python
 from pathlib import Path
 Path.cwd()
 WindowsPath('C:/Users/raf88/Desktop/cheat_sheets')
@@ -63,7 +62,7 @@ Path('cookies/bacon/honey').is_absolute()
 False
 ````
 Example on how to obtain an absolute path
-````
+````python
 Path('cookies/bacon/honey')
 WindowsPath('cookies/bacon/honey')
 Path.cwd() / Path('cookies/bacon/honey')
@@ -74,7 +73,7 @@ Path.home() / Path('cookies/bacon/honey')
 WindowsPath('C:/Users/raf88/cookieMonster/bacon/honey')
 ````
 Also, os.path contains some useful functions to work with absolute/relative paths:
-````
+````python
 os.path.abspath('cookies/bacon/honey')
 'C:\\Users\\raf88\\Desktop\\cheat_sheets\\cookies\\bacon\\honey'
 os.path.isabs('cookies/bacon/honey')
@@ -82,11 +81,11 @@ False
 os.path.relpath('C:/Windows')
 '..\\..\\..\\..\\Windows'
 os.path.relpath('C:/Windows', 'C:/')
-'Windows
+'Windows'
 ````
 ___
 ## Checking the correctness of the paths
-````
+````python
 ok_dir = Path("C:/Users/raf88/Desktop/cheat_sheets")
 not_ok_dir = Path("C:/Users/cookieMonster/Desktop/cheat_sheets")
 not_ok_dir.exists()
@@ -106,9 +105,8 @@ The different parts of a path are conveniently available as properties. Basic ex
 .suffix: the file extension
 .anchor: the part of the path before the directories
 .parents: An immutable sequence providing access to the logical ancestors of the path
-
+````python
 from pathlib import path
-````
 c = Path("C:/Users/cookieMonster/Desktop/cookieRecipie.txt")
 c.anchor
 'C:\\'
@@ -122,7 +120,7 @@ c.drive ---> only for Windows
 'C:'
 ````
 "parents" attribute is something completely different from "parent":
-````
+````python
 c = Path("C:/Users/cookieMonster/Desktop/cookieRecipie.txt")
 c.parents[0]
 WindowsPath('C:/Users/cookieMonster/Desktop')
@@ -132,7 +130,8 @@ c.parents[2]
 WindowsPath('C:/Users')
 ````
 import os
-````
+````python
+import os
 c = "C:/Users/cookieMonster/Desktop/cookieRecipie.txt"
 os.path.basename(c)
 'cookieRecipie.txt'
@@ -157,7 +156,7 @@ ____
 |os.makedirs()| Creates multiple directories, including intermediate directories
 ___
 ### Creating single directories
-````
+````python
 import os
 os.mkdir('C:/delicious/chocolate/cookies')
 
@@ -183,7 +182,7 @@ ___
 os.makedirs() is similar to os.mkdir(). The difference between the two is that not only can os.makedirs() create
 individual directories, it can also be used to create directory trees. In other words, it can create any necessary
 intermediate folders in order to ensure a full path exists.
-````
+````python
 import os
 os.makedirs('cookies/butter/milk')
 ````
@@ -196,11 +195,11 @@ This will create a nested directory structure that contains the folders 2018, 10
         └── milk/  
 ````
 makedirs() uses default permissions, if you want to have directories with different permissions pass the right mode when calling makedirs().
-````
+````python
 import os
 os.makedirs('cookies/butter/milk', mode=0o770)
 ````
-````
+````python
 patlib.Path()
 import pathlib
 p = pathlib.Path('cookies/butter/milk')
@@ -216,7 +215,7 @@ ___
 |pathlib.Path.iterdir() | Returns an iterator of all the objects in a directory including file attribute information
 
 With os
-````
+````python
 import os
 dirs = os.scandir('../cheat_sheets')
 for dir in dirs:
@@ -231,7 +230,7 @@ Output:
 with os.scandir('../cheat_sheets') as dirs:
     for dir in dirs:
         print(dir.name)
-Output:
+# Output:
 .git
 .gitignore
 .idea
@@ -241,7 +240,7 @@ README.md
 os.scandir() is used in conjunction with the with statement because it supports the context manager protocol.
 
 With pathlib
-````
+````python
 from pathlib import Path
 entries = Path('my_directory/')
 for entry in entries.iterdir():
@@ -252,7 +251,7 @@ Each entry yielded by .iterdir() contains information about the file or director
 ___
 ## Listing Subdirectiories
 List all subdirectories using scandir()
-````
+````python
 import os
 basepath = 'my_directory/'
 with os.scandir(basepath) as entries:
@@ -261,7 +260,7 @@ with os.scandir(basepath) as entries:
             print(entry.name)
 ````
 Listing Subdirectories with pathlib.Path()
-````
+````python
 from pathlib import Path
 
 basepath = Path('my_directory/')
@@ -272,7 +271,7 @@ for entry in basepath.iterdir():
 ___
 ## Listing All Files in a Directory 
 List all files in a directory using scandir()
-````
+````python
 import os
 
 basepath = 'my_directory/'
@@ -282,7 +281,7 @@ with os.scandir(basepath) as entries:
             print(entry.name)
 ````
 Listing All Files in a Directory with pathlib.Path()
-````
+````python
 from pathlib import Path
 
 basepath = Path('my_directory/')
@@ -290,7 +289,7 @@ files_in_basepath = basepath.iterdir()
 for item in files_in_basepath:
     if item.is_file():
         print(item.name)
-OR
+# OR
 
 from pathlib import Path
 
@@ -302,7 +301,7 @@ for item in files_in_basepath:
 ___
 ## Getting file attributes
 with os.scandir()
-````
+````python
 import os
 with os.scandir('my_directory/') as dir_contents:
     for entry in dir_contents:
@@ -310,7 +309,7 @@ with os.scandir('my_directory/') as dir_contents:
         print(info.st_mtime
 ````
 with pathlib.Path()
-````
+````python
 from pathlib import Path
 current_dir = Path('my_directory')
 for path in current_dir.iterdir():

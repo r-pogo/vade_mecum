@@ -22,7 +22,7 @@ ___
 ## Opening Files in Python
 Python has a built-in open() function to open a file. This function returns a file object, also called a handle,
 as it is used to read or modify the file accordingly.
-````
+````python
 f = open("test.txt")    # open file in current directory
 f = open("C:/Python38/README.txt")  # specifying full path
 ````
@@ -44,28 +44,28 @@ the file. We can also specify if we want to open the file in text mode or binary
 |"a+" | Open for reading and writing.  The file is created if it does not exist.
 
 when working with files in text mode, it is highly recommended to specify the encoding type.
-````
+````python
 f = open("test.txt", mode='r', encoding='utf-8')
 ````
 ## Closing file
 Closing a file will free up the resources that were tied with the file. It is done using the close() method.
 Python has a garbage collector to clean up unreferenced objects but is better to not rely on it to close the file.
-````
+````python
 f = open("test.txt", encoding = 'utf-8')
 # perform file operations
 f.close()
 ````
 The best solution is to use contex manager:
-````
+````python
 with open("test.txt", encoding = 'utf-8') as f:
    # perform file operations
-   No need to use close() the contex manager will do it for you!
+   # No need to use close() the contex manager will do it for you!
 ````
 ___
 ## Writing to a file
 In order to write into a file in Python, open it in write w, append a or exclusive creation x mode.
 !!! w mode overwrites the file if it already exists.
-````
+````python
 with open("test.txt",'w',encoding = 'utf-8') as f:
    f.write("my first file\n")
    f.write("This file\n\n")
@@ -76,21 +76,21 @@ This program will create a new file named test.txt in the current directory if i
 ___
 ## Reading a file
 To read a file in Python use r mode.
-````
+````python
 test.txt = "This morning I ate 4 cookies.
 God i love cookies!
 I need more cookies!
-"
+
 f = open("test.txt",'r',encoding = 'utf-8')
 f.read(4)    # read the first 4 data
-Output:
+# Output:
 'This'
 f.read(4)    # read the next 4 data
 ' mor'
 ````
 If 'n' in read(n) is not specified the method returns up to the end of the file. 
 Use a for loop to read the file:
-````
+````python
 with open("test.txt", "r") as f:
     file = f.read()
     for line in file:
@@ -98,21 +98,21 @@ with open("test.txt", "r") as f:
 ````
 
 Alternatively, the readline() method creates a list of items == individual lines of the file including the newline character.
-````
+````python
 ['This morning I ate 4 cookies.\n', 'God i love cookies!\n', 'I need more cookies!\n']
 ````
 ___
 ## Reading Multiple Files
 Python supports reading data from multiple input streams or from a list of files through the fileinput module.
 This module allows to loop over the contents of one or more text files quickly and easily.
-````
+````python
 import fileinput
 for line in fileinput.input()
     process(line)
-fileinput gets its input from command line arguments passed to sys.argv by default.
+# fileinput gets its input from command line arguments passed to sys.argv by default.
 ````
 Crude version of UNIX "cat" with fileinput
-````
+````python
 # File: fileinput-example.py
 import fileinput
 import sys
@@ -127,7 +127,7 @@ print()
 ___
 ## Reading and writing files with pathlib
 We can call .open() on a Path object:
-````
+````python
 with path.open(mode='r') as f:
     # do something
 ````
@@ -143,7 +143,7 @@ For simple reading and writing of files, there are a couple of convenience metho
 |.write_bytes(): | open the path in binary/bytes mode and write data to it.
 
 Each of these methods handles the opening and closing of the file.
-````
+````python
 recipe = "C:/Users/raf88/Desktop/cookieRecipie.txt"
 Path(recipe).read_text()
 'Combine brown sugar, butter, white sugar, and salt in a large bowl; beat with an electric mixer until a creamy...

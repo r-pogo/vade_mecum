@@ -14,7 +14,7 @@ files that match a particular pattern.
 ## String method .startswith() and .endswith()
 
 To do this, first get a directory listing and then iterate over it:
-````
+````python
 >>> import os
 
 >>> # Get .txt files
@@ -22,7 +22,7 @@ To do this, first get a directory listing and then iterate over it:
 ...     if f_name.endswith('.txt'):
 ...         print(f_name)
 
-Output:
+# Output:
 data_01.txt
 data_03.txt
 data_03_backup.txt
@@ -32,7 +32,7 @@ data_01_backup.txt
 ````
 ___
 ## Filename Pattern Matching Using fnmatch
-````
+````python
 >>> import os
 >>> import fnmatch
 
@@ -40,8 +40,8 @@ ___
 ...     if fnmatch.fnmatch(file_name, '*.txt'):
 ...         print(file_name)
 
-This iterates over the list of files in some_directory and uses .fnmatch() to perform a wildcard search for files that
-have the .txt extension.
+# This iterates over the list of files in some_directory and uses .fnmatch() to perform a wildcard search for files that
+# have the .txt extension.
 
 >>> for filename in os.listdir('.'):
 ...     if fnmatch.fnmatch(filename, 'data_*_backup.txt'):
@@ -68,11 +68,11 @@ The glob module adds this capability in Python, which enables Windows programs t
 | glob.escape(pathname) | Useful especially in the case of the filenames with special characters
 
 Syntax of glob() function
-````
+````python
 glob.glob(pathname, *, recursive=False)
 ````
 Here’s an example of how to use glob to search for all Python (.py) source files in the current directory:
-````
+````python
 >>> import glob
 # relative path
 >>> glob.glob('*.py')
@@ -84,20 +84,20 @@ print(glob.glob(path))
 ````
 glob.glob('*.py') searches for all files that have the .py extension in the current directory and returns them as a
 list. glob also supports shell-style wildcards to match patterns:
-````
+````python
 >>> import glob
 >>> for name in glob.glob('*[0-9]*.txt'):
 ...     print(name)
 ````
 glob makes it easy to search for files recursively in subdirectories too:
-````
+````python
 import glob
 
 # path to search file
 path = '**/*.txt'
 for file in glob.glob(path, recursive=True):
     print(file)
-OR
+# OR
 
 >>> import glob
 >>> for file in glob.iglob('**/*.py', recursive=True):
@@ -107,13 +107,13 @@ OR
 This example makes use of glob.iglob() to search for .py files in the current directory and subdirectories.
 Passing recursive=True as an argument to .iglob() makes it search for .py files in the current directory and any subdirectories.
 The difference between glob.iglob() and glob.glob() is that .iglob() returns an iterator instead of a list.
-````
+````python
 from pathlib import Path
 >>> p = Path('.')
 >>> for name in p.glob('*.p*'):
 ...     print(name)
 
-Output:
+# Output:
 admin.py
 scraper.py
 docs.pdf
@@ -123,8 +123,7 @@ letter p in their file extension. Path.glob() is similar to os.glob() discussed 
 
 In addition to the character and numeric ranges, we have the escape() method to enable the pattern inside the glob() 
 with special characters
-
-````
+````python
 import glob
 
 print("All JPEG's files")
@@ -139,7 +138,7 @@ for char in char_seq:
         print(file)
 ````
 We can search files having different extensions using the glob module
-````
+````python
 import glob
 
 print("All pdf and txt files")
@@ -150,7 +149,7 @@ for ext in extensions:
 print(files_list)
 ````
 Using glob() with regex
-````
+````python
 import glob
 import re
 
@@ -166,7 +165,7 @@ for file in glob.glob("2020/*"):
 ````
 glob for finding text in files  
 Example: Search word profit in files
-````
+````python
 import glob
 
 # Look all txt files of current directory and its sub-directories
@@ -186,13 +185,13 @@ for file in glob.glob(path, recursive=True):
 print(final_files)
 ````
 Sorting the glob() output  
-````
+````python
 import glob
 path = "*.txt"
 print(sorted(glob.glob(path)))
 ````
 We can sort the files based on the date and time of modification by combining the glob() method with the getmtime() method in the os module.
-````
+````python
 import glob
 import os
 

@@ -3,7 +3,7 @@ Module tempfile.
 
 tempfile can be used to open and store data temporarily in a file or directory while your program is running.
 tempfile handles the deletion of the temporary files when your program is done with them.
-````
+````python
 from tempfile import TemporaryFile
 
 # Create a temporary file and write some data to it
@@ -29,15 +29,14 @@ On Windows, the directories are C:\TEMP, C:\TMP, \TEMP, and \TMP, in that order.
 directories are /tmp, /var/tmp, and /usr/tmp, in that order. As a last resort, tempfile will save temporary files and
 directories in the current directory.
 .TemporaryFile() is also a context manager so it can be used in conjunction with the with statement. 
-````
+````python
 with TemporaryFile('w+t') as fp:
     fp.write('Hello universe!')
     fp.seek(0)
     fp.read()
 ````
 tempfile can also be used to create temporary directories. 
-````
-
+````python
 >>> import tempfile
 >>> with tempfile.TemporaryDirectory() as tmpdir:
 ...     print('Created temporary directory ', tmpdir)
