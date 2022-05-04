@@ -12,17 +12,18 @@ Python:
 8. Testing 
 9. Decorators
 10. Context Managers
-12. Debugging skills
-13. Code organization/structure (python application layouts: a reference)
-14. Dictionaries
-15. Sets
-16. Python standard libraries
-17. pip
-18. imports
-19. python interpreters
-20. OOP
-21. Functional programming FP
-22. Virtual Environments
+11. Debugging skills
+12. Code organization/structure (python application layouts: a reference)
+13. Sets
+14. Python standard libraries
+15. pip
+16. imports
+17. python interpreters
+18. OOP
+19. Functional programming FP
+20. Virtual Environments
+21. API
+
 
 IDE
 Pycharm

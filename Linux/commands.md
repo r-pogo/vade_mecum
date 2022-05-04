@@ -51,7 +51,7 @@ Hard links cannot be created for directories and files on a different filesystem
 `Soft or symbolic links`: A soft link is something like a shortcut in Windows. It is an indirect pointer to a file or directory. 
 Unlike a hard link, a symbolic link can point to a file or a directory on a different filesystem or partition.
 
-`ln -s [OPTIONS] FILE LINK`  
+`ln -s [OPTIONS] FILE LINK`
 
 If both the FILE and LINK are given, ln will create a link from the file specified as the first argument (FILE) to the file specified as the second argument (LINK).  
 

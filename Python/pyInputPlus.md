@@ -16,7 +16,3 @@
 | inputFilepath() | Check correct path, optionally checks if file exists
 | inputPassword() | Similar to input() but shows `*` instead of what the user actually wrote
 ___
-## Sources used for the creation of this cheat sheet
-- A. Sweigart, Automate the Boring Stuff with Python, 2st Edition:
-    Practical Programming for Total Beginners, No Starch Press 2020
-- PyInputPlus module in Python, GeeksforGeeks, https://www.geeksforgeeks.org/pyinputplus-module-in-python/
