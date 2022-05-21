@@ -95,7 +95,8 @@ Use the json parameter if you want to send JSON data.
 ```python
 import requests
 
-response = requests.post('https://httpbin.org/post', json={'key':'value'})
+response = requests.post('https://httpbin.org/post', json={'key':'value'}, headers=headers)
+response.raise_for_status())
 json_response = response.json()
 json_response['data']
 '{"key": "value"}'
