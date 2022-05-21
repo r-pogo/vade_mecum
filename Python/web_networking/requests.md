@@ -81,13 +81,13 @@ headers = {
 response = requests.get("https://opentdb.com/api.php", headers=headers)
 ```
 ___
-## POST, PUT, PATCH
+## POST, PUT, PATCH, DELETE
 This HTTP methods pass their data through the message body rather than through parameters in the query string.
 In request use the data parameter to pass the payload to the corresponding function.
 ```python
 import requests
 
-requests.post('https://httpbin.org/post', data={'key':'value'})
+requests.post(url='https://httpbin.org/post', data={'key':'value'})
 # or as a list of tuples
 requests.post('https://httpbin.org/post', data=[('key', 'value')])
 ```
@@ -101,6 +101,7 @@ json_response['data']
 '{"key": "value"}'
 json_response['headers']['Content-Type']
 'application/json'
+print(response.text)
 
 # httpbin.org is a great resource created by the author of requests, Kenneth Reitz. It’s a service that accepts  
 # test requests and responds with data about the requests.
