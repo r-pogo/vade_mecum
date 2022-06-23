@@ -37,4 +37,23 @@ kodi.bark() # using the method bark() on kodi
 # 7) the print statement is executed which prints self.name of the the object on which the barking method was performed, so it is an object named Kodi, so the display is Kodi, HAU HAU
 # the method evaluation is now complete. In this case, this method does not return any value, but you can do so using return as you would with a normal function
 
+## Inheritance
+# When dealing with an inheritance relationship between two classes, it is a IS-A relationship  
+# CompanionDog is a Dog
+class CompanionDog(Dog):
+    def __init__(self, name, age, weight, owner):
+        super().__init__(self, name, age, weight)
+        self.owner = owner
+        
+    def walk(self):
+        print(f"{self.name} and his guardian are going for a walk")
+        
+rufus = CompanionDog('Rufus', 8, 20, 'Jan')
+print(f"The owner of {rufus.name} is {rufus.owner}")
+rufus.bark()
+# built in function `isinstance` is useful to check the IS-A relationship
+if isinstance(rufus, Dog):
+    print("yes is an instance of the class Dog")
+else:
+    print("no is not an instance of the class Dog=")
 ````
