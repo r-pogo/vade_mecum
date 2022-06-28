@@ -58,13 +58,28 @@ ___
 ## Inheritance
 # When dealing with an inheritance relationship between two classes, it is a IS-A relationship  
 # CompanionDog is a Dog
-class CompanionDog(Dog):
+class CompanionDog(Dog): # you can also do multiple inheritance and create a "diamond structure"
     def __init__(self, name, age, weight, owner):
-        super().__init__(self, name, age, weight)
+        super().__init__(name, age, weight) # this way is best for diamond structure
+        # or to call the super class you can call them explicitly 
+        # Dog.__init__(self, name, age, weight)
+        # or
+        # super(Dog, self).__init__()
         self.owner = owner
+        self.on_guard = False
         
     def walk(self):
         print(f"{self.name} and his guardian are going for a walk")
+        
+    def bark(self):  # overwriting the bark() method from Dog class
+        if self.on_guard:
+            print(f"{self.name}: I can't bark I'm on duty")
+        else:
+            Dog.bark(self)
+            # or
+             # Calling the parent's class method this way self is passed automatically
+            super().bark()
+       
         
 rufus = CompanionDog('Rufus', 8, 20, 'Jan')
 print(f"The owner of {rufus.name} is {rufus.owner}")
@@ -75,3 +90,15 @@ if isinstance(rufus, Dog):
 else:
     print("no is not an instance of the class Dog=")
 ````
+
+## TODO
+class method and static mewthod
+dunder methods
+decorators - getter, setter, property
+HAS-A relationship
+Czyanko:
+https://realpython.com/python3-object-oriented-programming/
+https://realpython.com/python-super/
+https://realpython.com/operator-function-overloading/
+https://realpython.com/inheritance-composition-python/
+https://www.youtube.com/watch?v=upmOAPk2cK8&ab_channel=SebastiaanMath%C3%B4t
