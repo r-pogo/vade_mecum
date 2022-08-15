@@ -186,7 +186,6 @@ All you need to do is represent your data in terms of the built-in types json al
 you translate the more complex object into a simpler representation, which the json module then translates into JSON. 
 It’s like the transitive property in mathematics: if A = B and B = C, then A = C  
 read rest on https://realpython.com/python-json/#encoding-and-decoding-custom-python-objects
-
 ___
 ## Sources used for the creation of this cheat sheet
 - E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016

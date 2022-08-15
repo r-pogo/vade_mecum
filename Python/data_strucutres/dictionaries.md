@@ -22,3 +22,4 @@ dict = dict(zip(keys, values))  # Creates a dict from two collections.
 {k for k, v in dict.items() if v == value}    # Returns set of keys that point to the value.
 {k: v for k, v in dict.items() if k in keys}  # Returns a dictionary, filtered by keys.
 ````
+https://realpython.com/python-dicts/

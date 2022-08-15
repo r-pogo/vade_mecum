@@ -3,8 +3,8 @@ Tuples are immutable and hashable lists.
 Can hold elements of arbitrary data types.
 ```python
 tuple = ()
-tuple = (element,)              # Or: <el>, Need to add a comma if it is just one element
-tuple = (el_1, el_2 [...])          # Or: <el_1>, <el_2> [...]
+tuple = (element,)  # Or: <el>, Need to add a comma if it is just one element
+tuple = (el_1, el_2 [...])  # Or: <el_1>, <el_2> [...]
 ```
 Only reassignment works. But, if the element is itself a mutable data type like a list, its nested items can be changed.
 ```python
