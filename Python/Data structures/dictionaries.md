@@ -44,16 +44,16 @@ dict = dict.fromkeys(keys, value)  # creates a dict from collection of keys
 ___
 ## Basic operation
 ```python
-# Coll. of keys
+# coll. of keys
 user ={'name': 'Rafal', 'age': 33, 'fav_animal': 'otter'}
 user.keys()
 dict_keys(['name', 'age', 'fav_animal'])
 
-# Coll. of values
+# coll. of values
 user.values()
 dict_values(['Rafal', 33, 'otter'])
 
-# Coll. of key-value tuples
+# coll. of key-value tuples
 user.items()
 dict_items([('name', 'Rafal'), ('age', 33), ('fav_animal', 'otter')])
 
