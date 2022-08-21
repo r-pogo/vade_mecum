@@ -2,7 +2,7 @@
 Sets:  
 - Unordered.
 - Contain unique elements. Duplicates are removed.
-- It can be modified, but the elements contained in the set must be of an immutabe type
+- It can be modified, but the elements contained in the set must be of an immutable type
 - The elements of a set can be of different types
 - Can use `len()` for number of elements in set and `in`, `not in` operators for membership
 

@@ -47,3 +47,5 @@ Coordinate(x=1, y=2)
 >>> c._fields  # Or: Coordinate._fields
 ('x', 'y')
 ```
+
+https://realpython.com/python-lists-tuples/#defining-and-using-tuples

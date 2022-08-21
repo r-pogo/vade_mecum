@@ -42,5 +42,8 @@ list_of_chars = list(str)
 ````
 
 
+https://realpython.com/python-lists-tuples/
+
+
 
 
