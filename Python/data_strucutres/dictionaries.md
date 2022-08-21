@@ -81,8 +81,7 @@ len(user)
 ```
 ___
 ## Sorting
-Usually you go from dictionary to list, you sort the list and then cast the   
-sorted list back into dictionary.
+Usually you go from dictionary to list, you sort the list and then cast the sorted list back into dictionary.
 ```python
 # with sorted() = default behavior of sorted() with tuples is to sort lexicographically
 # default behaviour is to take the keys of dictionary  
