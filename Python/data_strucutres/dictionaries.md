@@ -178,9 +178,8 @@ sorted(fruit_inventory, key=itemgetter(1))
 [('kiwi', 0), ('apple', 3), ('banana', 5), ('orange', 15)]
 ```
 ___
-## Sorted dictionary yes or not
-If you’re going to be adding data to a dictionary, and you want it to stay sorted,   
-is better to use list of tuples or a list of dictionaries:
+## Sorted dictionary yes or not?
+If you’re going to be adding data to a dictionary, and you want it to stay sorted, is better to use list of tuples or a list of dictionaries:
 ```python
 # Dictionary
 people = {3: "Jim", 2: "Jack", 4: "Jane", 1: "Jill"}
