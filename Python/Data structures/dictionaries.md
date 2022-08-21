@@ -37,28 +37,46 @@ d = dict(<key> = <value>,
 )
 dict = dict([(<key>, <value>), (<key>, <value>)], <key>=<value>)
 dict = dict({<key>: <value>, <key>: "<value>}, <key>=<value>)
-dict = dict(collection)   # Creates a dict from coll. of key-value pairs.
-dict = dict(zip(keys, values))  # Creates a dict from two collections.
+dict = dict(zip(keys, values))  # creates a dict from two collections.
+dict = collections.defaultdict(<type>)  # creates an empty dict with default value of type
+dict = dict.fromkeys(keys, value)  # creates a dict from collection of keys
 ```
 ___
 ## Basic operation
 ```python
+# Coll. of keys
+user ={'name': 'Rafal', 'age': 33, 'fav_animal': 'otter'}
+user.keys()
+dict_keys(['name', 'age', 'fav_animal'])
+
+# Coll. of values
+user.values()
+dict_values(['Rafal', 33, 'otter'])
+
+# Coll. of key-value tuples
+user.items()
+dict_items([('name', 'Rafal'), ('age', 33), ('fav_animal', 'otter')])
+
 # retrieving value
 user ={'name': 'Rafal', 'age': 33, 'fav_animal': 'otter'}  # values don't need to be of the same type
 user['fav_animal']
 'otter'
+
 # adding new entry
 user['sport'] = 'muay thai'
 user
 {'name': 'Rafal', 'age': 33, 'fav_animal': 'otter', 'sport': 'muay thai'}
+
 # updating old entry
 user['age'] = 60
 user
 {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter', 'sport': 'muay thai'}
+
 # delete entry
 del user['sport']
 user
 {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter'}
+
 # if using list or dictionaries as value need to specify index or key
 user['pets'] = {'dog':'max', 'cat': 'łatka'}
 user['pets']['dog']
