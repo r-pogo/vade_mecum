@@ -3,6 +3,7 @@ A class is a blueprint for creating concrete instances of real or non-real thing
 A class encapsulates data and functionality related to the modelled object, data as attributes, and functionalities as methods.  
 
 ## Blueprint of a dog
+# TODO https://inventwithpython.com/beyond/chapter17.html + real python
 ````python
 class Dog:
     # class attribute shared by all instances
