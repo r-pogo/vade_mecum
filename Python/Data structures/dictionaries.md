@@ -238,7 +238,7 @@ ___
 # If you decide to go for an ordered collection, check out the Sorted Containers package,   
 # which includes a SortedDict.
 ````
-## Sources used for the creation of this cheat sheet
+## Sources
 - E. Matthes, Python Crash Course: A Hands-On, Project-Based Introduction to Programming, No Starch Press 2016
 - J. Sturtz, Real Python, Dictionaries in Python, https://realpython.com/python-dicts/
 - I. Currie, Real Python, Sorting a Python Dictionary: Values, Keys, and More, https://realpython.com/sort-python-dictionary/
@@ -246,3 +246,4 @@ ___
 
 # DO ZROBIENIA
 https://realpython.com/iterate-through-dictionary-python/#using-comprehensions
+Książka "python tricks the book" rozdział 7 + sprawdzić cheatsheety
