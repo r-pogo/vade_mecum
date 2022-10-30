@@ -3,8 +3,8 @@ Pytest allows to run selectively the tests by:
 - run all tests in the current directory
 - filtering functionality (use -k command line option to specify an 
 expression which implements a substring match on the test names) e.h: `pytest -v -k string`
-For running all tests except the ones that match the keyword: `pytest -k "not this" -v`
-Or select "test1" or "test2": `pytest -k "test1 or test2" -v`
+For running all tests except the ones that match the keyword: `pytest -k "not this" -v`  
+Or select "test1" or "test2": `pytest -k "test1 or test2" -v`  
 You can use and, or, not and parentheses.
 - use markers
 
