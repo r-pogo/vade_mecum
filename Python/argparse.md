@@ -165,5 +165,5 @@ Arguments can trigger different actions, specified by the action argument to add
 | help | shows a help text and exits.
 ___
 ## Sources used for the creation of this cheat sheet
-- Python documentation, https://docs.python.org/3.9/library/argparse.html#dest
-- J. E. Agbe, Building Command Line Tools with Python,JavaScript and Julia, https://www.udemy.com/course/building-command-line-tools-with-pythonjavascript-and-julia
+- [Python documentation](https://docs.python.org/3.9/library/argparse.html#dest)
+- J. E. Agbe, [Building Command Line Tools with Python,JavaScript and Julia](https://www.udemy.com/course/building-command-line-tools-with-pythonjavascript-and-julia)
