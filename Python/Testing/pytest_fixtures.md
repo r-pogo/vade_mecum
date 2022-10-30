@@ -1,9 +1,7 @@
 # Fixtures
-Fixtures are a way of providing data, test doubles, or state setup to your tests.  
-Fixtures are functions that can return a wide range of values.
-Eg.: connecting to DB before starting testcase and disconnecting one,  
-launching URL, maximize window before start and closing window when done, 
-Opening data file for reading/writing and closing when done
+Fixtures are a way of providing data, test doubles, or state setup to your tests.    
+Fixtures are functions that can return a wide range of values.  
+Eg.: connecting to DB before starting testcase and disconnecting one, launching URL, maximize window before start and closing window when done, Opening data file for reading/writing and closing when done  
 
 ```python
 from pytest import fixture
