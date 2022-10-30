@@ -311,7 +311,7 @@ DOTALL falg: all characters including a new line character
 re.DOTALL
 ````
 ___
-## Sources used for the creation of this cheat sheet
+## Sources
 - B. Forta, Learning Regular Expressions, Addison-Wesley 2018
 - A. Sweigart, Automate the Boring Stuff with Python, 2st Edition:
     Practical Programming for Total Beginners, No Starch Press 2020
