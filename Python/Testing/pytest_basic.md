@@ -86,7 +86,15 @@ def test_add_weird_stuff():
     calculator = Calculator()
 
     with pytest.raises(CalculatorError):
-        result = calculator.add("two", 3)
+        result = calculator.add("two", 3)  # testing if this code raises the error specified above
+        
+# another example not related to this code:
+# def test_only _positive_number():
+#   with pytest.raises(ValueError) as exc_info:
+#       validate_number(-1) # validate_number is a fictional function
+# Basically test if the input is -1 if python raises ValueError
+#       assert (str(exc_info.value)) == "Yor error message from function"
+#      you can also do  with pytest.raises(ValueError, match = "Yor error message from function")
 
 
 def test_add_weirder_stuff():

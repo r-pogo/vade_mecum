@@ -1,7 +1,6 @@
 # Parametrization
-When you have several tests with slightly different inputs and expected outputs.  
-In these cases, you can parametrize a single test definition, and pytest will 
-create variants of the test for you with the parameters you specify.  
+The purpose of parameterizing a test is to run a test against multiple sets of arguments. 
+We can do this by `@pytest.mark.parametrize`.
 
 Parametrize works at different levels: `@mark.parametrize` and `fixture`.  
 ## Mark level
@@ -19,12 +18,19 @@ def test_add(a, b):
     calculator = Calculator()
     result = calculator.add(a, b)
     assert result >= 0
+
+# A different example non related to Calculator class
+@mark.parametrize("a,b,c", [(1, 2, 3), ("a", "b", "ab"),
+                                   ([1, 2], [3], [1, 2, 3])],
+                         ids=["num", "str", "list"])  # ids are the names for each case you are passing for the test
+def test_add(a, b, c):
+    assert add(a, b) == c
 ```
 ___
 ## Fixture level
 The fixture function gets access to each parameter through the special request object:
 ```python
-from pytest import fixture, mark
+from pytest import fixture
 
 @fixture(params=["apple", "banana", "orange"])
 def fruit(request):
@@ -44,8 +50,10 @@ def data_set(request):
 def test_data(data_set):
     pass
 ```
+#TODO Dynamiczna parametryzacja funkcji pytest_generate_tests
 ___
 ## Sources used for the creation of this cheat sheet
 - official pytest documentation website, [Parametrizing tests](https://doc.pytest.org/en/latest/example/parametrize.html)
 - official pytest documentation website, [How to parametrize fixtures and test functions](https://doc.pytest.org/en/latest/how-to/parametrize.html#parametrize-basics)
 - official pytest documentation website, [How to use fixtures/Parametrizing fixtures](https://doc.pytest.org/en/latest/how-to/fixtures.html#fixture-parametrize)
+- [nikhilkumarsingh/pytest-tut](https://github.com/nikhilkumarsingh/pytest-tut)

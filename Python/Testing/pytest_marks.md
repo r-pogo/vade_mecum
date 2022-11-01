@@ -1,5 +1,5 @@
 # Marks
-Pytest allows to run selectively the tests by:
+Pytest allows running selectively the tests by:
 - run all tests in the current directory
 - filtering functionality (use -k command line option to specify an 
 expression which implements a substring match on the test names) e.h: `pytest -v -k string`
@@ -7,6 +7,7 @@ For running all tests except the ones that match the keyword: `pytest -k "not th
 Or select "test1" or "test2": `pytest -k "test1 or test2" -v`  
 You can use and, or, not and parentheses.
 - use markers
+- test class `pytest -k TestIntegration` The name of the class needs to start with `Test` or modify `pytest.ini`
 
 ## Markers
 You can define categories for your test and provides options for including or excluding
@@ -45,7 +46,24 @@ markers =
     calculator: mark a test as a calculator.
 ````
 Multiple custom markers can be registered, by defining each one in its own line, as shown in above example.
+___
+## Built in markers
+Example of `@mark.skip`:
+```python
+import pytest
+from calculator import Calculator, CalculatorError
 
+@pytest.mark.skip(reason="Because I'm lazy")
+def test_add():
+    calculator = Calculator()
+    result = calculator.add(2, 3)
+    assert result == 5
+
+def test_subtract():
+    calculator = Calculator()
+    result = calculator.subtract(9, 3)
+    assert result == 6
+```
 Example of default marker `skipif`:
 ````python
 import pytest
@@ -67,7 +85,25 @@ def test_add_weird_stuff():
 
     with pytest.raises(CalculatorError):
         result = calculator.add("two", 3)
+
+# Another example of @mark.skipif:
+import sys
+from pytest import mark
+
+@mark.skipif(sys.version_info > (3, 7), reason="use python 3.7 or less")
+def test_add():
+    assert add(1, 1) == 2
 ````
+Example of `@mark.xfail`:
+```python
+import sys
+from pytest import mark
+# When you want to ignore the exception
+@mark.xfail(sys.platform == "linux", reason="don't run on linux")
+def test_add_list():
+    assert add([1], [2]) == [1, 2]
+    raise Exception()
+```
 ___
 ## Marking at a class level
 ```python
@@ -75,7 +111,7 @@ from pytest import mark
 from calculator import Calculator, CalculatorError
 
 @mark.calculator
-class CalculatorTest:
+class TestCalculator:
     
     def test_add():
     calculator = Calculator()
@@ -101,3 +137,4 @@ pytestmark = [pytest.mark.calculator, pytest.mark.weirdStuff]
 ___
 ## Sources used for the creation of this cheat sheet
 - official pytest documentation website, [Working with custom markers](https://docs.pytest.org/en/7.1.x/example/markers.html#using-k-expr-to-select-tests-based-on-their-name)
+- [nikhilkumarsingh/pytest-tut](https://github.com/nikhilkumarsingh/pytest-tut)
