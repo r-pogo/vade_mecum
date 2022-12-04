@@ -145,7 +145,7 @@ ___
 | info | Reads documentation in the info format. It will give detailed information for a command when compared with the man page.
 | alias | displays a list of all aliases.
 ____
-## I/O commands
+## I/O redirections
 | Abbreviation | Effect |
 |--------------|--------|
 | cat | The cat (short for “concatenate“). cat command allows us to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
