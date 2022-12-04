@@ -15,9 +15,9 @@ ____
 | Abbreviation | Effect |
 |--------------|--------|
 | ls | List information about the files. cool aliases: `ll='ls -alF'`; `la='ls -A'`; `l='ls -CF'`
-| file | Determine type of FILEs. In linux the filenames do not necessarily reflect the contents!
+| file | Determine type of files. In linux the filenames do not necessarily reflect the contents! `file file_name`
 | fzf | It's an interactive Unix filter for command-line that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc. https://github.com/junegunn/fzf
-| less | displays the contents of a file or a command output, one page at a time
+| less | displays the contents of a file or a command output, one page at a time. `less file_name`
 
 #### Less commands
 | Command | Action |
@@ -37,12 +37,70 @@ ___
 | Abbreviation | Effect |
 |--------------|--------|
 | cp | Copies files and directories to another location.
-| mv | Move and rename files and directories. mv item1 item2, if item2 doesn't exists item1 will be renamed as item2, if item2 exist item1 will be moved to item2   
-| mkdir | Make new directories. mkdir dir1 dir2 dir3 makes 3 directories
-| rm | Remove files and directories. No going back, if using wildcards good idea is first to test it with `ls` instead of `rm`
+| mv | Move and rename files and directories. `mv item1 item2`, if item2 doesn't exists item1 will be renamed as item2, if item2 exist item1 will be moved to item2. 
+| mkdir | Make new directories. `mkdir folder_name`, `mkdir dir1 dir2 dir3` makes 3 directories.
+| rm | Remove files and directories. `rm item` No going back, if using wildcards good idea is first to test it with `ls` instead of `rm`.
 | ln | Creating links between files. By default, the ln command creates hard links. To create a symbolic link, use the -s (--symbolic) option
 
-#### Links
+#### Wildcards
+| Wildcard | Meaning |
+|--------------|--------|
+| * | any character
+| ? | any single character
+| [characters] | groups
+| [!characters] | negation of group
+| [[:alnum:]] | alphanumeric char
+| [[:alpha:]] | letters
+| [[:digit:]] | numbers
+| [[:lower:]] | lower case letters
+| [[:upper:]] | upper case letters
+
+Examples
+
+| Template | Matches |
+|----------|--------|
+| * | all files
+| g* | any file starting with g
+| b*.txt | files that starts with b then any char and end with.txt
+| Data???| files with Data and 3 characters
+| [abc]* | any file that stars with either a or b or c
+|backup.[0-9][0-9][0-9] | backup. and the numbers from 0 to 9
+| [[:upper]] | any file starting with upper case 
+| [![:digit]] | files that don't start with numbers
+| *[[:lower]123] | any file that ends with a lower case letter or 1,2,3
+___
+#### Example of usage of cp
+| Command | Action |
+|---------|--------|
+| cp file1 file2 | Copies file one to file2, if file2 doesn't exists it will be created.
+| cp -i file1 file2 | If file2 exists the user will be asked if he is sure about overwriting it.
+| cp file1 file2 dir1 | Copies file1 and fil2 to dir1. dir1 must already exists.
+| cp dir1/* dir2 | All files from dir1 copied to dir2. dir2 must exists.
+| cp -r dir 1 dir2 | dir1 copied to dir2. If dir2 doesn't exists it will be created same as dir1.
+
+Useful flags: `-a,--archive; -i,--interactive; -r,--recursive; -u,--update; -v,--verbose.`
+___
+#### Example of usage of mv
+| Command | Action |
+|---------|--------|
+| mv file1 file2 | Moves file1 to file2, if file2 exists it will be overwritten with the contents from file1(renamed). If file2 doesn't exists it will be created. Either way file1 stops to exists.
+| mv -i file1 file2 | Same as above, but if file2 exists the user will be asked to confirm overwriting of the file.
+| mv file1 file2 dir1 | Moves file1 and file2 to dir1. dir1 must already exists.
+| mv dir1 dir2| If dir2 doesn't exists dir1 will be renamed to dir2. If dir2 exists dir1 will be moved there.
+
+Useful flags: `-i,--interactive; -u,--update; -v,--verbose.`
+___
+#### Example of usage of rm
+| Command | Action |
+|---------|--------|
+| rm file1 | Deletes file1 without asking for permission
+| rm -i file1 | Asks form permission when deleting
+| rm -r file1 dir1| Deletes file1 and dir1 with its content
+| rm -rf file1 dir1 | Same as above, the difference is that even if file1 and dir1 doesn't exists, `rm` will continue without any message
+
+Useful flags: `-i,--interactive; -r,--recursive; -f,--force; -v,--verbose.`
+___
+## Links
 `Hard links`: You can think a hard link as an additional name for an existing file. 
 Hard links are associating two or more file names with the same inode. 
 You can create one or more hard links for a single file. 
@@ -73,89 +131,48 @@ To delete/remove symbolic links use either the unlink or rm command.
 
 No matter which command you use, when removing a symbolic link not append the / trailing slash at the end of its name.
 If you delete or move the source file to a different location, the symbolic file will be left dangling (broken) and should be removed.
-
-#### Wildcards
-| Wildcard | Meaning |
-|--------------|--------|
-| * | any character
-| ? | any single character
-| [characters] | groups
-| [!characters] | negation of group
-| [[:alnum:]] | alphanumeric char
-| [[:alpha:]] | letters
-| [[:digit:]] | numbers
-| [[:lower:]] | lower case letters
-| [[:upper:]] | upper case letters
-
-Examples
-
-| Template | Matches |
-|----------|--------|
-| * | all files
-| g* | any file starting with g
-| b*.txt | files that starts with b then any char and end with.txt
-| Data???| files with Data and 3 characters
-| [abc]* | any file that stars with either a or b or c
-|backup.[0-9][0-9][0-9] | backup. and ther numbers from 0 to 9
-| [[:upper]] | any file starting with upper case 
-| [![:digit]] | files that don't start with numbers
-| *[[:lower]123] | any file that ends with alower case letter or 1,2,3
-#### Example of cp
-| Command | Action |
-|---------|--------|
-| cp file1 file2 | Copies file one to file2, if file2 doesn't exists it will be created 
-| cp -i file1 file2 | If file2 exists the user will be asked if he is sure about overwriting it
-| cp file1 file2 dir1 | Copies file1 and fil2 to dir1. dir1 must already exists
-| cp dir1/* dir2 | All files from dir1 copied to dir2. dir2 must exists
-| cp -r dir 1 dir2 | dir1 copied to dir2. If dir2 doesn't exists it will be created same as dir1
-
+___
 ## Getting information
 | Abbreviation | Effect |
 |--------------|--------|
-| type | Display information about command type.
-| which | Linux which command is used to identify the location of a given executable that is executed when you type the executable name (command) in the terminal prompt. The command searches for the executable specified as an argument in the directories listed in the PATH environment variable
-| help |  Display information about builtin commands.
-| man | Used to display the user manual of any executable that we can run on the terminal
-| apropos | apropos command helps the user when they don’t remember the exact command but knows a few keywords related to the command that define its uses or functionality. It searches the Linux man page with the help of the keyword provided by the user to find the command and its functions
-| whatis | Used to get a one-line manual page descriptions
-| info | Reads documentation in the info format. It will give detailed information for a command when compared with the man page
-| alias | displays a list of all aliases
-
-#### My aliases
-````
-alias st='git status'
-alias co='git checkout'
-alias ci='git commit'
-alias br='git branch'
-alias df='git diff'
-alias dfc='git diff --color-words'
-alias ..='cd ..'
-alias ..2='cd ../..'
-alias ..3='cd ../../../'
-alias ..4='cd ../../../../'
-alias ..5='cd ../../../../..'
-alias bf='git checkout $(git branch | fzf)'
-alias pf="fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-````
-SKOCZYC liste!!!
+| type | Display information about command type. `type command`
+| which | Linux which command is used to identify the location of a given executable that is executed when you type the executable name (command) in the terminal prompt. The command searches for the executable specified as an argument in the directories listed in the PATH environment variable. `which command`
+| help |  Display information about builtin commands. `help command` `help cd`
+| --help | For executable programs.
+| man | Used to display the user manual of any executable that we can run on the terminal. `man ls`
+| apropos | apropos command helps the user when they don’t remember the exact command but knows a few keywords related to the command that define its uses or functionality. It searches the Linux man page with the help of the keyword provided by the user to find the command and its functions. 
+| whatis | Used to get a one-line manual page descriptions. `whatis ls`
+| info | Reads documentation in the info format. It will give detailed information for a command when compared with the man page.
+| alias | displays a list of all aliases.
 ____
 ## I/O commands
 | Abbreviation | Effect |
 |--------------|--------|
 | cat | The cat (short for “concatenate“). cat command allows us to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
 | uniq | The uniq command in Linux is a command-line utility that reports or filters out the repeated lines in a file. In simple words, uniq is the tool that helps to detect the adjacent duplicate lines and also deletes the duplicate lines. uniq filters out the adjacent matching lines from the input file(that is required as an argument) and writes the filtered data to the output file.
-| wc | word count
-| grep | allows to search patterns in files
-| head(tail) | beginnig and ending of a file
-| tee | tee command reads the standard input and writes it to both the standard output and one or more files. The command is named after the T-splitter used in plumbing. It basically breaks the output of a program so that it can be both displayed and saved in a file. It does both the tasks simultaneously, copies the result into the specified files or variables and also display the result
-| sort | used to sort a file
+| wc | word count.
+| grep | allows to search patterns in files.
+| head(tail) | beginning and ending of a file. `head -n 5 ls-output.txt`
+| tee | tee command reads the standard input and writes it to both the standard output and one or more files. The command is named after the T-splitter used in plumbing. It basically breaks the output of a program so that it can be both displayed and saved in a file. It does both the tasks simultaneously, copies the result into the specified files or variables and also display the result. `ls /usr/bin \| tee ls.txt \| grep zip`
+| sort | used to sort a file.
 
-### cat
-`cat ls-outpu.txt` reading files
-`cat movie.mpeg.0* > movie.mpeg` concatenating files
-If no arguments are given `cat` will read input from stdin, this allows to create short files
+#### Example of usage of cat
+| Command | Action |
+|---------|--------|
+|`cat ls-outpu.txt`| reading files
+|`cat movie.mpeg.0* > movie.mpeg`| concatenating files
+
+Apart from receiving file names as arguments `cat` also reads stdin. 
+We can use this to create short files:
 ````
 cat > lazyDog.txt
 somethign soething
 ````
+Or read files by redirecting stdin:
+```
+cat < lazyDog.txt
+somethign soething
+```
+___
+
 

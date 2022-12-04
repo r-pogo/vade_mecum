@@ -178,7 +178,7 @@ Tip:
 - x- eXecuting a directory means Being allowed to “enter” a dir and gain possible access to sub-dirs
 - There are other permissions that you can set on Files and Directories which will be covered in a later advanced tutorial
 ___
-## Sources used for the creation of this cheat sheet
+## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 - M. Brent, Guru99, File Permissions in Linux / Unix: How to Read, Write & Change?, https://www.guru99.com/file-permissions.html#:~:text=Linux%20divides%20the%20file%20permissions,ownership%20of%20a%20file%2Fdirectory. 
 - Linuxize, Umask Command in Linux, https://linuxize.com/post/umask-command-in-linux/#

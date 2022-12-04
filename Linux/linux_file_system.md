@@ -26,5 +26,5 @@
 | /var | Variable files that will change as the OS is being used. e.g.: user email, data bases ecc.
 | /var/log | Contains log files recording various system activities. Important are `var/log/messages` and `var/log/syslog`
 ___
-## Sources used for the creation of this cheat sheet
+## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019

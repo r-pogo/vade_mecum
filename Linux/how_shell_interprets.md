@@ -32,7 +32,7 @@ ____
 ls -l $(which cp)
 -rwxr-xr-x 1 root root 71564 2007-12-05 80:58 /bin/cp
 ````
-Here the result of `which cp` is redirected to `ls` w obitan a list of the localization of `cp`
+Here the result of `which cp` is redirected to `ls` w obtain a list of the localization of `cp`
 
 ````
 file $(ls /usrt/bin/* | grep zip)
@@ -44,6 +44,6 @@ $, \, apostrophes,
 `' '` Single quotation mark turn off everything
 `\` backslash to tun off interpretation of the following sign like \\ o \$ is also used for some special characters like \t for tab
 ___
-## Sources used for the creation of this cheat sheet
+## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 
