@@ -12,7 +12,6 @@ Python:
 8. Generators
 9. Multithreading
 10. Multiprocessing
-11. Testing/Pytest
 12. Decorators
 13. Context Managers
 14. Debugging skills
@@ -29,11 +28,10 @@ Python:
 25. poetry
 26. do-while loop python
 27. triki czesto wykorzystywane
+28. ssh protocols
 
 PROJEKTY
-1. yt-downloader
-2. listy rzeczy ktore biore w gory kiedy sie pakuje
-3. analizator finansowy
+1. sms kiedy urodziny/okolicznosci
 
 IDE
 Pycharm
@@ -43,12 +41,6 @@ SC
 2. Data structures (binary search)
 3. Time complexity
 4. Space complexity
-
-CI/CD
-...
-
-Linux
-...
 
 SQL
 ... 

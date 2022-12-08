@@ -24,7 +24,7 @@ and assign group permission to file such that only this group members and no one
 modify the files.  
 
 `World`: any other user who has access to a file. This person has neither created the file, nor he 
-belongs to a usergroup who could own the file. Practically, it means everybody else. 
+belongs to an usergroup who could own the file. Practically, it means everybody else. 
 ___
 ## Linux file Permissions
 `-rwxrwxrwx 1 cookieMonster cookieMonster      392 Mar 25 08:03  englishWord.txt*`
@@ -37,7 +37,7 @@ drwxr-xr-x 12 linuxize users 4.0K Apr  8 20:51 dirname
 | |  |  |        |       |       
 | |  |  |        |       +-----------> Group
 | |  |  |        +-------------------> Owner
-| |  |  +----------------------------> Others Permissions
+| |  |  +----------------------------> Others(world) Permissions
 | |  +-------------------------------> Group Permissions
 | +----------------------------------> Owner Permissions
 +------------------------------------> File Type
@@ -64,25 +64,37 @@ ___
 `chmod` command stands for "change mode". Using the command, we can set permissions (read, write, execute) on 
 a file/directory for the owner, group and the world.
 
-`chmod permissions filename`
+```
+chmod [OPTIONS] MODE FILE...
+chmod permissions filename
+```
+```
+└─ $ ▶ls -l file1.txt
+-rw-r--r--  1 elski elski    0 Dec  8 19:14 file1.txt
+
+└─ $ ▶chmod 600 file1.txt
+
+└─ $ ▶ls -l file1.txt
+-rw-------  1 elski elski    0 Dec  8 19:14 file1.txt
+```
 
 ### Absolute(Numeric) Mode in Linux
 In this mode, file permissions are not represented as characters but a three-digit octal number.
 
-| Number | Permission Type | Symbol |
-|--------|-----------------|--------|
-| 0 | No Permission | ---
-| 1 | Execute | --x
-| 2 | Write | -w-
-| 3 | Execute + Write| -wx
-| 4 | Read | r--
-| 5 | Read + Execute | r-x
-| 6 | Read +Write | rw-
-| 7 | Read + Write + Execute | rwx
+| Number | Binary representation | Permission Type | Symbol |
+|--------|-----------------------|-----------------|--------|
+| 0 | 000| No Permission | ---
+| 1 | 001 | Execute | --x
+| 2 | 010 | Write | -w-
+| 3 | 011 | Execute + Write| -wx
+| 4 | 100 | Read | r--
+| 5 | 101 | Read + Execute | r-x
+| 6 | 110 | Read +Write | rw-
+| 7 | 111| Read + Write + Execute | rwx
 
 ### Symbolic Mode in Linux
 In the Absolute mode, you change permissions for all 3 owners. In the symbolic mode, you can modify permissions of a specific owner. 
-It makes use of mathematical symbols to modify the Unix file permissions.
+It makes use of mathematical symbols to modify the Linux file permissions.
 
 | Operator | Description |
 |----------|-------------|
@@ -96,6 +108,9 @@ It makes use of mathematical symbols to modify the Unix file permissions.
 | g | group
 | o | other/world
 | a | all
+
+Default option is `a` all. An option can be either `a+`(add a permission), `a-`(remove permission) or `a=`(add specific permission).  
+Permissions are either `r`(read), `w`(write), `x`(execute)
 ___
 ## umsak
 The default creation permissions can be modified using the `umask` utility.
@@ -110,10 +125,29 @@ Directories: 777 - 022 = 755.The owner can cd into the directory, and list, read
 You can also display the mask value in symbolic notation using the -S option:  
 `umask -S`  
 `u=rwx,g=rx,o=rx`
+
+```
+└─ $ ▶ls -l file1.txt
+-rw-r--r-- 1 elski elski 0 Dec  8 19:34 file1.txt
+└─ $ ▶umask
+0022
+elski @ DESKTOP-3T3MNOS: ~/linux
+└─ $ ▶rm file1.txt
+elski @ DESKTOP-3T3MNOS: ~/linux
+└─ $ ▶umask 0000
+elski @ DESKTOP-3T3MNOS: ~/linux
+└─ $ ▶ > file1.txt
+elski @ DESKTOP-3T3MNOS: ~/linux
+└─ $ ▶ls -l file1.txt
+-rw-rw-rw- 1 elski elski 0 Dec  8 19:35 file1.txt
+```
+TODO special permissions umask
 ___
 ## su
 The `su` (short for substitute or switch user) utility allows you to run commands with another user’s 
-privileges, by default the root user.
+privileges, by default the root user.  
+`su [-[l]] [user]`  
+The new shell session will be a login shell for the specified user.  
 When invoked without any option, the default behavior of su is to run an interactive shell as root:  
 `su`  
 
@@ -130,8 +164,8 @@ environment very similar to a real login and changes the current directory:
 
 After we are done just use `exit`.  
 
-If you want to run a command as the substitute user without starting an interactive shell, use the -c, --command option  
-`su -c`  
+If you want to run a command as the substitute user without starting an interactive shell, use the `-c, --command` option  
+`su -c 'ls -l /root/*`  
 
 To switch to another user account, pass the user name as an argument to su. For example, to switch to the user cookieMonster you would type:
 `su cookieMonster`  
@@ -171,13 +205,21 @@ In case you want to change group-owner only, use the command:
 
 Tip:
 - The file /etc/group contains all the groups defined in the system
-- You can use the command “groups” to find all the groups you are a member of
-- You can use the command newgrp to work as a member a group other than your default group
+- You can use the command `groups` to find all the groups you are a member of
+- You can use the command `newgrp` to work as a member a group other than your default group
 - You cannot have 2 groups owning the same file.
 - You do not have nested groups in Linux. One group cannot be sub-group of other
 - x- eXecuting a directory means Being allowed to “enter” a dir and gain possible access to sub-dirs
-- There are other permissions that you can set on Files and Directories which will be covered in a later advanced tutorial
 ___
+## Changing the password
+To set or to change the password use command `passwd`
+`passwd [user]`
+```
+elski @ DESKTOP-3T3MNOS: ~
+└─ $ ▶passwd
+Changing password for elski.
+Current password:
+```
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 - M. Brent, Guru99, File Permissions in Linux / Unix: How to Read, Write & Change?, https://www.guru99.com/file-permissions.html#:~:text=Linux%20divides%20the%20file%20permissions,ownership%20of%20a%20file%2Fdirectory. 
