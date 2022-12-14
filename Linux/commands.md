@@ -5,14 +5,14 @@ What are commands?
 - shell functions: Miniature scripts included in the environment
 - aliases: a command that you can define yourself on the basis of other commands
 ## Navigation
-| Abbreviation | Effect |
+| Command | Effect |
 |--------------|--------|
 | pwd | Print the name of the current working directory.
 | cd | Change the working directory. Just `cd` changes to home dir.`cd -` goeas to the previous dir. `cd ~user` changes to home dir of a specific user.
 | j foo | autojump is a faster way to navigate your filesystem. It works by maintaining a database of the directories you use the most from the command line. link for gihub https://github.com/wting/autojump. Need to add `. /usr/share/autojump/autojump.sh` to your bashrc file.  
 ____
 ## System overview
-| Abbreviation | Effect |
+| Command | Effect |
 |--------------|--------|
 | ls | List information about the files. cool aliases: `ll='ls -alF'`; `la='ls -A'`; `l='ls -CF'`
 | file | Determine type of files. In linux the filenames do not necessarily reflect the contents! `file file_name`
@@ -34,7 +34,7 @@ ____
 | q | quit less
 ___
 ## Manipulating files and directories
-| Abbreviation | Effect |
+| Command | Effect |
 |--------------|--------|
 | cp | Copies files and directories to another location.
 | mv | Move and rename files and directories. `mv item1 item2`, if item2 doesn't exists item1 will be renamed as item2, if item2 exist item1 will be moved to item2. 
