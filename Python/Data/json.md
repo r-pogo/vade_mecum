@@ -67,7 +67,7 @@ data = [
     }
 ]
 nameOfFile = "jsonOutput.json"
-with open(nameOfFile,"w") as file:
+with open("nameOfFile","w") as file:
     json.dump(data, file)
 ````
 ___
