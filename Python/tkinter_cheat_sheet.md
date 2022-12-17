@@ -158,6 +158,13 @@ def action():
 #calls action() when pressed
 button = Button(text="Click Me", bg="blue", fg="white" command=action, font = ("Arial",20))
 button.grid(column = 0, row = 2) # # puts it in the second column of the window
+
+# For passin arguments to the function use lambda
+def search_password(entry):
+    pass
+...
+search_password_button = Button(text="Search", width=15, command=lambda: search_password(website_entry.get()))
+search_password_button.grid(row=1, column=3)
 ````
 ___
 ### Entries
