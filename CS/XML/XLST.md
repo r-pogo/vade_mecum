@@ -14,7 +14,7 @@ document that is recognized by a browser. XSLT transforms an XML source-tree int
 XSLT depend on the use of XPATH tto navigate the XML document
 
 TODO finish description
-
+TODO finish with w3schools
 
 ## Sources
 - [w3schools](https://www.w3schools.com/XML/default.asp)

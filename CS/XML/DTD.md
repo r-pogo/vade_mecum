@@ -81,6 +81,7 @@ Default values for an attribute may be provided in the declaration.
 <!ATTLIST element_name attribute_name CDATA "default_value">
 ```
 
+TODO finish with w3schools
 
 ## Sources
 - [w3schools](https://www.w3schools.com/XML/default.asp)

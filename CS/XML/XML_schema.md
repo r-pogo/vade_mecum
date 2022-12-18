@@ -93,6 +93,8 @@ ___
 ### Examples for XML schema
 TODO
 
+TODO finish with w3schools
+
 ## Sources
 - [w3schools](https://www.w3schools.com/XML/default.asp)
 - Simon Sez IT, [Learn XML Crash Course: Discover Essential XML Fundamentals](https://www.udemy.com/course/learn-xml-crash-course/)
