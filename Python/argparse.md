@@ -164,6 +164,6 @@ Arguments can trigger different actions, specified by the action argument to add
 | count | stores an int that is equal to the times the option has been provided.
 | help | shows a help text and exits.
 ___
-## Sources used for the creation of this cheat sheet
+## Sources
 - [Python documentation](https://docs.python.org/3.9/library/argparse.html#dest)
 - J. E. Agbe, [Building Command Line Tools with Python,JavaScript and Julia](https://www.udemy.com/course/building-command-line-tools-with-pythonjavascript-and-julia)
