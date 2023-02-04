@@ -26,8 +26,7 @@ class definitions and functions are objects, and of course, objects created from
 ````
 As you can see, the two lists are nearly identical. There are some additional members in 
 NewClass like `__dict__` and `__weakref__`, but every single member of the object class is also present in Class.
-This is because every class you create in Python implicitly derives from object. You could be more explicit and write class NewClass(object),  
-but it’s redundant and unnecessary.
+This is because every class you create in Python implicitly derives from object. You could be more explicit and write class NewClass(object), but it’s redundant and unnecessary.
 ___
 ### Exceptions Are an Exception
 Every class that you create in Python will implicitly derive from object.  
@@ -46,8 +45,7 @@ TypeError: exceptions must derive from BaseException
 
 BaseException is a base class provided for all error types. 
 To create a new error type, you must derive your class from BaseException or one of its derived classes. 
-The convention in Python is to derive your custom error types from Exception,  
-which in turn derives from BaseException.
+The convention in Python is to derive your custom error types from Exception, which in turn derives from BaseException.
 ````python
 >>> class MyError(Exception):
 ...     pass
@@ -133,16 +131,9 @@ else:
 ___
 ## The super() Function
 Python's built-in `super()` method returns a temporary object of the superclass to help access its methods. It purpose is to avoid using the base class name explicity. It also enables yor class to inherit from multiple base classes.
-`super()` gives you access to methods in a superclass from the subclass that inherits from it.
-`super()` alone returns a temporary object of the superclass that then allows you to call that superclass’s methods.
-A common use case is building classes that extend the functionality of previously built classes.
-Calling the previously built methods with super() saves you from needing to rewrite those methods in your subclass,  
-and allows you to swap out superclasses with minimal code changes.
-A child class’s overridden method is often similar to the parent class’s method.  
-Even though inheritance is a code reuse technique, overriding a method might cause you to rewrite the same code  
-from the parent class’s method as part of the child class’s method. To prevent this duplicate code,  
-the built-in super() function allows an overriding method to call the original method in the parent class.
 
+A common use case is building classes that extend the functionality of previously built classes.
+Calling the previously built methods with super() saves you from needing to rewrite those methods in your subclass, and allows you to swap out superclasses with minimal code changes.
 ```python
 class Base:
     def __init__(self):
