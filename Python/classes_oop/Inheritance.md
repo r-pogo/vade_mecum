@@ -207,7 +207,59 @@ For more in deep info see:
 - https://www.youtube.com/watch?v=X1PQ7zzltz4&t=246s&ab_channel=mCoding
 - https://realpython.com/python-super/
 - https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+___
+## Composition (HAS-A relationship)
+In composition, a class known as composite contains an object of another class known to as component. 
+In other words, a composite class has a component of another class.
 
+When to an attribute is assigned another object, we speak of a HAS-A relationship. 
+If we have a class called House and its objects have an attribute with the object Kitchen assigned to it, 
+we can say Home HAS-A Kitchen.
+
+```python
+class Kitchen:
+   # composite class constructor
+    def __init__(self):
+        print('Component class kitchen created')
+  
+    # composite class instance method
+    def fridge(self):
+        print("fridge is on")
+
+class House:
+    # composite class constructor
+    def __init__(self):
+  
+        # creating object of component class
+        self.kitchen = Kitchen()
+  
+     # composite class instance method
+    def rooms(self):
+        # calling fridge() method of component class
+        self.kitchen.fridge()
+```
+Another example Employee has a Salary:
+```python
+class Employee:
+    def __init__(self, name, age, pay, bonus):
+        self.name=name
+        self.age=age
+        self.obj_salary=Salary(pay, bonus)  # instantiation of Salary class
+
+    def total_salary(self):
+        return self.obj_salary.annual_salary()
+    
+class Salary:
+    def __init__(self, pay, bonus):
+        self.pay=pay
+        self.bonus=bonus
+
+    def annual_salary(self):
+       return (self.pay*12) + self.bonus
+
+emp = Employee('Raf', 34, 5700, 1000)
+print(emp.total_salary())
+```
 
 
 # SKONCZYC
