@@ -96,6 +96,80 @@ To have a simpler, human-readable information about the type/class use the `__qu
 The `__qualname__` or `__name__`  attribute is most often used for overriding the `__repr__()` method.
 `__qualname__` gives more complete information than `__name__` and therefore can be more helpful in debugging.
 ___
+## Class Methods
+Class methods are associated with a class rather than with individual objects, like regular methods are.  
+You can recognize a class method in code when you see two markers: the `@classmethod` decorator and the use of  
+`cls` as the first parameter.
+
+```python
+class ExampleClass:
+    def exampleRegularMethod(self):
+        print('This is a regular method.')
+    # # it can’t modify object instance state. But can still modify class state that applies across all instances of the class.
+    @classmethod
+    def exampleClassMethod(cls): # cls because class is a Python keyword
+        print('This is a class method.')
+ 
+# Call the class method without instantiating an object:
+ExampleClass.exampleClassMethod()
+
+obj = ExampleClass()
+# Given the above line, these two lines are equivalent:
+obj.exampleClassMethod()
+obj.__class__.exampleClassMethod()
+```
+(A. Sweigart, 2020)
+
+Often used as a way to provide alternative constructor methods besides `__init__()`:
+```python
+class AsciiArt:
+    # constructor accepts either a string of data or a filename that contains data
+    def __init__(self, characters):
+        self._characters = characters
+
+    @classmethod  # decorator to define class method classmethod should do something that has a 
+    # relationship with the class, often used to manipulate different structures of data and to instantiate objects
+    def fromFile(cls, filename):
+        with open(filename) as fileObj:
+            characters = fileObj.read()
+            return cls(characters)
+
+    def display(self):
+        print(self._characters)
+
+    # Other AsciiArt methods would go here...
+
+face1 = AsciiArt(' _______\n' +
+                 '|  . .  |\n' +
+                 '| \\___/ |\n' +
+                 '|_______|')
+face1.display()
+
+face2 = AsciiArt.fromFile('face.txt')
+face2.display()
+```
+(A. Sweigart, 2020)
+___
+## Static method
+A static method doesn’t have a `self` or `cls` parameter. Static methods are just functions, because they can’t access the attributes or methods  
+of the class or its objects.
+A static method is defined by placing the `@staticmethod` decorator before their def statements.
+```python
+class ExampleClassWithStaticMethod:
+    # This method should do something that has a relationship with the class, but not something that is unique
+    # per instance!
+    @staticmethod # staticmethod decorator
+    def sayHello(): # First parameter is not self or cls ! You shouldn't call it from instance level. First argument is not an object no self or cls is like a regular function
+        print('Hello!')
+
+# Note that no object is created, the class name precedes sayHello():
+ExampleClassWithStaticMethod.sayHello()
+```
+(A. Sweigart, 2020)
+There would be almost no difference between the `sayHello()` static method in the `ExampleClassWithStaticMethod` class and a `sayHello()` function.
+Static methods can neither access the object instance state nor the class state. They work like regular functions but belong to the class’s and every instance’s namespace.
+
+
 ## Sources
 - A. Sweigart, Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code, No Starch Press 2020
 - D. Amos, Real Python, Object-Oriented Programming (OOP) in Python 3, https://realpython.com/python3-object-oriented-programming/
@@ -105,10 +179,7 @@ ___
 class method and static mewthod
 dunder methods
 decorators - getter, setter, property
-HAS-A relationship
 Czyanko:
-https://realpython.com/python3-object-oriented-programming/
-https://realpython.com/python-super/
 https://realpython.com/operator-function-overloading/
 https://realpython.com/inheritance-composition-python/
 https://www.youtube.com/watch?v=upmOAPk2cK8&ab_channel=SebastiaanMath%C3%B4t
