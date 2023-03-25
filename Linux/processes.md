@@ -20,12 +20,17 @@ ___
 | Command | Action |
 |---------|--------|
 | ps | displays information about a selection of the active processes on the system
-| top |  dynamic real-time view of a running system refreshed every 3 seconds
-| pstree | Display processes in form of a tree
-| vmstat | Display system resource usage information
+| top | dynamic real-time view of a running system refreshed every 3 seconds
+| jobs | list all jobs on the system; active, stopped, or otherwise
+| pstree | display processes in form of a tree
+| vmstat | display system resource usage information
 | xload | graphic program drawing a graph of system load over time
 | tload | similar to xload however, it draws a graph in the terminal
 ## Control Processes
+| Command | Action |
+|---------|--------|
+| bg | puts a program in the background 
+| fg | brings a process back to the foreground
 ### Putting a process in the background
 Suppose we want the prompt to return to the shell, but without stopping the process.  
 To start the program and immediately put it in the background, after the command we type the ampersand sign `&`.
@@ -126,7 +131,7 @@ elski @ DESKTOP-3T3MNOS: ~
 ```
 ___
 ## Killall
-To send a signal toi many processes.  
+To send a signal to many processes.  
 `killall [-u user] [-signal] name...`
 
 ```
@@ -147,11 +152,22 @@ ___
 ## Shutting down the system
 | Command | Action |
 |---------|--------|
-| halt    |
-| poweroff |
-| reboot  |
-| shutdown |
+| halt    | instructs the hardware to stop all CPU functions
+| poweroff | sends an ACPI signal which instructs the system to power down
+| reboot  | instructs the system to reboot
+| shutdown | shutting down or restarting
 
+```
+elski @ DESKTOP-3T3MNOS: ~
+└─ $ ▶ sudo reboot
+
+elski @ DESKTOP-3T3MNOS: ~
+└─ $ ▶ sudo shutdown -h now # equivalent to --poweroff, overridden by --halt
+
+elski @ DESKTOP-3T3MNOS: ~
+└─ $ ▶ sudo shutdown -r now # reboot the machine
+```
+___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 - A. Kili, All You Need To Know About Processes in Linux [Comprehensive Guide], https://www.tecmint.com/linux-process-management/
