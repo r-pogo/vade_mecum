@@ -174,5 +174,8 @@ cat < lazyDog.txt
 somethign soething
 ```
 ___
-
+SKONCZYC PRZYKŁADY I/O redirections
+___
+## Sources
+- W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 

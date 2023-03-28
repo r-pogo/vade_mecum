@@ -128,6 +128,7 @@ Backslash represents also some special characters called control characters.
 | \n | new line
 | \r | carriage return
 | \t | tab
+___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 
