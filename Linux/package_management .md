@@ -126,5 +126,5 @@ ___
 ___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
-- - Linuxize, apt Command in Linux, https://linuxize.com/post/how-to-use-apt-command/
+- Linuxize, apt Command in Linux, https://linuxize.com/post/how-to-use-apt-command/
 
