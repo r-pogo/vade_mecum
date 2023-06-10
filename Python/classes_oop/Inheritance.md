@@ -305,6 +305,94 @@ a subclass of any of the classes in the tuple.
 The key difference between isinstance() and issubclass() is that issubclass() is passed two class objects, whereas isinstance() is  
 passed an object and a class object.
 (A. Sweigart, 2020)
+___
+## Multiple Inheritance
+Multiple inheritance means a class can inherit from two or more parent classes.
+
+```python
+class ClassA:
+    def method_a(self):
+        print("Method A from ClassA")
+
+class ClassB:
+    def method_b(self):
+        print("Method B from ClassB")
+
+class ClassC(ClassA, ClassB):
+    def method_c(self):
+        print("Method C from ClassC")
+
+obj = ClassC()
+obj.method_a()  # Output: Method A from ClassA
+obj.method_b()  # Output: Method B from ClassB
+obj.method_c()  # Output: Method C from ClassC
+
+```
+It's worth noting that in case of naming conflicts between methods or attributes inherited from 
+different parent classes, the method resolution order (MRO) determines which method will be called. 
+The MRO defines the order in which Python searches for methods in the inheritance hierarchy. 
+The `super()` function is commonly used to invoke the parent class's method in such cases.
+___
+## MRO
+Method Resolution Order (MRO) is the order in which Python searches for methods in a class 
+hierarchy during method invocation. It determines the precedence of methods when a class 
+inherits from multiple parent classes, especially in the case of multiple inheritance.
+
+Python uses the C3 linearization algorithm to calculate the MRO. 
+The algorithm ensures that the order of method resolution follows a consistent 
+and predictable pattern. The MRO is represented as a linear list of classes, 
+where each class appears only once.
+
+```python
+class ClassA:
+    def method(self):
+        print("Method A from ClassA")
+
+class ClassB(ClassA):
+    def method(self):
+        print("Method B from ClassB")
+
+class ClassC(ClassA):
+    def method(self):
+        print("Method C from ClassC")
+
+class ClassD(ClassB, ClassC):
+    pass
+
+```
+In this example, we have four classes: ClassA, ClassB, ClassC, and ClassD. ClassD 
+inherits from both ClassB and ClassC, which, in turn, inherit from ClassA.
+
+Let's create an instance of ClassD and call the method():
+
+```python
+obj = ClassD()
+obj.method()
+
+Method B from ClassB
+```
+
+Here's how the MRO is calculated for ClassD:
+
+1. The MRO for ClassD starts with the class itself: [ClassD].
+2. The MRO includes the classes in the order they are listed in the inheritance declaration, 
+from left to right: [ClassD, ClassB, ClassC].
+3. The MRO includes the MROs of the parent classes (excluding duplicates) in the same order, 
+respecting the left-to-right order of the inheritance declaration. In this case, [ClassD, ClassB, ClassA, ClassC, ClassA]. Note that ClassA appears twice because it's inherited by both ClassB and ClassC.
+4. Finally, the duplicate classes are removed while maintaining their order, 
+resulting in the MRO: [ClassD, ClassB, ClassA, ClassC].
+
+When a method is invoked on an instance of ClassD, Python searches for the 
+method in the classes according to their order in the MRO. 
+It starts with ClassD, then goes to ClassB, followed by ClassA, and finally ClassC. 
+If the method is found in any of the classes, it is executed. 
+If the method is not found, Python raises an AttributeError.
+
+In the example above, since ClassB comes before ClassA in the MRO, the method method() from ClassB is called. 
+If you change the order of inheritance for ClassD (class ClassD(ClassC, ClassB)), 
+the output will be different as the MRO changes accordingly
+
+DODAC czesc z ksiazki!!!
 
 ## Sources
 - Al Sweigart, Beyond the Basic Stuff with Python: Best Practices for Writing Clean Code, No Starch Press 2020
