@@ -62,6 +62,39 @@ Nie wszystkie nioczekiwane wyniki testów oznaczją awarie:
 - `wynik fałszywie pozytywny`: może być skutkiem błędów związanych z wykonywaniem testów, defektów w danych testowych, środowisku testowym itp.
 Wyniki fałszywie pozytywne są raportowane jako defekty, których w rzeczywisotści nie ma.
 - `wynik fałszywie negatywny`: sytuacji w której testy nie wykrywają defektu, który powinny wykryć.
+___
+
+## 7 zasad testowania
+
+1. `Testowanie ujawnia usterki, ale nie może dowieść ich braku`: Testowanie pokazuje obecność, a nie brak usterek,  
+testowanie ma charakter negatywny, tzn. pokazuje, że coś nie działa, a nie, że wszystko jest w porządku.
+2. `Testowanie gruntowne jest niemożliwe`.
+3. `Wczesne testowanie oszczędza czas i pieniądze (shift left)`.
+4. `Kumulowanie się defektów`: reguła Pareto, 20% modułów zawiera 80% defektów
+5. `Paradoks pestycydów`: jeżeli powtarzamy ciągle te same testy, to - po zmianach, które prowadzą do usunięcia wykrytych  
+defektów, nie znajdziemy żadnych nowych usterek - przypadki testowe muszą być regularnie przeglądane i modyfikowane.
+6. `Testowanie jest zależne od kontekstu`.
+7. `Przekonanie o braku błędów jest błedem`: punkty 1 + 2 oraz fakt, że nawet aplikacja wolna od defektów,
+może wciąż nie spełniać wymagań użytkownika.
+___
+## Proces testowy
+`Proces testowy` to zbiór powiązanych ze sobą działań obejmujący planowanie i monitorowanie testów, ich analizę,  
+projektowanie, implementację i zkaończenie.
+
+Dobór procesu testowego do konkretnego oprogramowania zależy od wielu czynników.
+Dobrą praktyką jest zdefinowanie `mierzalnych kryteriów pokrycia` dotyczących podstawy testów.
+Mogą one pełnić funkcję tzw. kluczowych wskazników wydajnośći `KPI Key Performance Indicators`
+
+Proces testowy w typowych sytuacjach składa się z:
+1. Planowanie testów
+2. Monitorowanie testów i nadzór nad nimi
+3. Analiza testów
+4. Projektowanie testów
+5. Implementacja testów
+6. Wykonywanie testów
+7. Ukończenie testów
+
+
 
 
 
