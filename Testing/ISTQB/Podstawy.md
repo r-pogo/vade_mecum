@@ -6,7 +6,7 @@ Testowanie to `technologiczne badanie` pozwalające otrzymać informacje o jako�
 `technologiczne` = wykorystuje technologiczne podejście, eksperymenty, matematykę, logikę, narzędzia (programy wspomagające)
 `badanie` = jest to zorganizowane poszukiwanie informacji
 
-Testowanie składa się z zestawu czynności wykonywanych zarówno przed wykonaniem testów (1-5)
+Testowanie składa się z zestawu czynności (procesu testowego) wykonywanych zarówno przed wykonaniem testów (1-5)
 jak i po ich wykonaniu (7).
 
 1. Planowanie testów
