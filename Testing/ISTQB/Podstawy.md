@@ -94,6 +94,65 @@ Proces testowy w typowych sytuacjach składa się z:
 6. Wykonywanie testów
 7. Ukończenie testów
 
+Grupy te są opisane logicznie sekwencyjne, ale w rzeczywistości mogą występować iteracyjnie, zazębiać się,  
+występować jednocześnie czy być pomijane. Zalerzy od procesu.
+
+W ramach procesu testowego powstają `produkty pracy`, dobrym punktem odniesienia dla prOduktów pracy
+związanych z testowaniem jest standard międzynarodowy `ISO/IEC/IEEE 29119-3`.
+
+### Czynnosci i produkty pracy
+#### Planowanie testów
+Czynności:
+ - zdefiniowanie celów testowania
+ - określenie czynności testowych potrzebnych do wypełnienia misji i zrealizowania celów testowania
+ - określenie podejścia do osiągnięcia celów testowania w granicach wyznaczonych przez kontekst
+ - harmonogram testów, który umożliwi dotrzymanie terminów
+ - zdefiniowanie miar
+
+Produkt pracy:
+ - plan\plany testów
+
+#### Monitorowanie testów i nadzór
+Czynności:
+ - sprawdzanie rezultatów i dziennika (loga) testów pod kątem określonych kryteriów pokrycia
+ - oszacowanie poziomu jakości modułu lub systemu na podstawie rezultatów i dziennika testów
+ - ustalenie, czy są konieczne dalsze testy
+ - informowanie interesariuszy o postępie w realizacji planu testów
+ - raporty o postępie testów
+
+Produkt pracy:
+ - raporty z testów np. raporty o postępie testów (tworzone na bieżąco), sumaryczne raporty końcowe 
+   (tworzone w momencie osiągnięcia poszczególnych kamieni milowych)
+
+#### Analiza testów
+Analiza testów umożliwia zapoznanię się z podstawą testów i przeanalizowanie jej w celu  
+zidentifikowania testowalnych cech i zdefiniowania związanych z nimi warunków testowych i  
+oczywiście ustaleniem co należy testować.
+
+Ogólne cele testowania zostaną przekształcone w konkretne warunki testowe i projekty testów.
+
+Czynności:
+ - zapoznanie się z podstawą testów, specyfikacją wymagań, wymagania biznesowe, wymagania funkcjonalne  
+   wymagania systemowe, historyjki użytkownika, opowieści (epics), przypadki użycia, podobne produkty pracy;  
+   określają one pożądane zachowanie gunkcjonalne i niefunkcjonalne modułu lub systemu
+ - analiza informacji dotyczacych projektu i implementacji takich jak diagramy lub dokumenty opisujące  
+   architekturę systemu lub oprogramowania, specyfikacje projektowe, przepływy wywołań, modele oprogramowania;
+   dokumenty określające strukturę modułu lub systemu.
+ - analiza implementacji samego modułu lub systemu, kodu, metadanych, zapytań do bazy danych oraz interfejsów
+ - analiza raportów z analizy ryzyka
+ - dokonanie oceny testowalności podstawy, aby zidentifikować często wytępujące typt defektów
+ - zidentifikowanie cech które mają zostać przetestowane
+ - zdefiniowanie warunków testowych w odniesieniu do poszczególnych cech oraz określenie ich priorytetów
+ - stworzenie możliwości dwukierunkowego śledzenia powiązań między elementami podstawy testów
+   a związanymi z nimi warunkami testowymi
+
+Produkt pracy:
+ - warunki testowe
+ - dwukierunkowe śledzenie powiązań (macierz śledzenia) między tymi warunkami a  
+   pokrywanymi przez nie elementami podstawy testów.
+ - w testowaniu eksploracyjnym karty opisu testu
+ - ewentualnie zgłoszenia o wykryciu defektów w podstawie testów
+
 
 
 
