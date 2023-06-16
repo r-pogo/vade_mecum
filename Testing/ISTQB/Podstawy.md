@@ -153,6 +153,83 @@ Produkt pracy:
  - w testowaniu eksploracyjnym karty opisu testu
  - ewentualnie zgłoszenia o wykryciu defektów w podstawie testów
 
+#### Projektowanie testów
+Projektowanie testów odpowiada na pytanie "jak należy testować". Podczas projektowania testów  
+warunki testowe przekształcane są w przypadki testowe wysokiego poziomu.
+
+Cznności:  
+ - zaprojektowanie przypadków testowych i określenie ich priorytetów
+ - zidentyfikowanie niezbędnych danych testowych
+ - zaprojektowanie środowiska testowego
+ - zidentyfikowanie wszelkich niezbędnych narzędzi i elementów infrastruktury
+ - rozbudowanie macierzy śledzenia
+ - identyfikację typowych defektów w podstawie testów
+
+Produkty pracy:
+ - przypadki testowe i zbiory testów
+
+### Implementacja testów
+Odpowiada na pytanie "czy mamy wszystko, co jest potrzebne do uruchomnienia testów?".  
+Tworzone lub kończone są testalia nizbędne do wykonania testów, w tym szeregowanie przypadków testowych  
+w ramach `procedur testowych`.
+Zadania związane z projektowaniem i implementacją testów są często łączone. Mogą być także  
+realizowane i dokumentowane w ramach wykonywania testów zwłaszcza eksploracyjnych bądz opartego na doświadczeniu:
+ - testowanie eksp. może odbywać się na podstawie kart opisu testów
+ - testy eksploracyjne są wykonywane natychmiast po zaprojektowaniu i zaimplementowaniu
+
+Czynności:
+ - opracowanie procedur testowych i określenie ich priorytetów
+ - utworzenie skryptów testów automatycznych
+ - utworzenie zestawów testowych  oraz skryotów testów automatycznych
+ - uporządkowanie zestawów testowych w harmonogram wykonywania testów, tak by zapewnić
+   efektywny przebieg procesu
+ - zbudowanie środowiska testowego
+ - przygotowanie danych testowych i sprawdzenie, że zostały one poprawnie załadowane do
+   środowiska testowego
+ - zweryfikowanie i zaktualizowanie możliwości dwukierunkowego śledzenia powiązań między  
+   podstawą testów, warunkami testowymi, przypadkami testowymi, procedurami testowymi i zestawami testowymi
+
+Produkt pracy:
+ - procedury testowe oraz kolejność ich wykonania
+ - zestawy testowe
+ - harmonogram wykonaiia testów
+ - dane testowe
+
+### Wykonanie testów
+Czynności:
+ - zarejestrowanie danych identyfikacyjnych i wersji elementów testowych bądz przedmiotu  
+   testów, narzędzi testowych i testaliów
+ - wykonywanie testów ręcznie lub przy użyciu narzędzi
+ - porównanie rzeczywistych wyników testów z oczekiwanymi
+ - przeanalizowanie anomalii w celu ustalenia ich prawdopodobnych przyczybn:
+   1. defekty w kodzie
+   2. wyniki fałszywie pozytywne
+ - raportowanie defektów oparte na bserwowanych awariach
+ - zalogowanie wyniku wykonania testów (zaliczony, niezaliczony, test blokujący)
+ - Powtórzenie czynności testowych (testy potwierdzające, regresji, wykonanie poprawionego testu)
+ - zweryfikowanie i zaktualizowanie możliwości dwukierunkowego śledzenia powiązań
+
+Produkty pracy:
+ - dokumentacja dotycząca statusu poszczególnych przypadków testowych lub procedur  
+   testowych
+ - raporty o defektach
+ - dokumentacja wskazująca, co zostało wykorzystane w ramach testowych
+
+### Ukończenie testów
+Czynności:
+ - sprawdzenie czy wszystkie raporty o defektach są zamknięte
+ - wprowadzenie żądań zmian lub pozycji do rejestru produktu w odniesieniu do wszelkich  
+   defektów, które nie zostały rozwiązane do momentu zakończenia wykonywania testów
+ - utworzenie sumarycznego raportu z testów, który zostanie przekazany interesarujuszom
+ - sfinalizowanie i zarchiwizowanie środowiska testowego, danych testowych, infrstruktury testowej
+    oraz innych testaliów do ponownego wykorzystania w przyszłości
+
+Produkt pracy:
+ - sumaryczne raporty z ukończnia testów
+___
+## Sources
+ - A. Roman, L. Stapp, Certyfikowany tester ISTQB poziom podstawowy, Helion S.A 2020, 2022
+
 
 
 
