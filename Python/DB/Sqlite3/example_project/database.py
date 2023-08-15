@@ -24,15 +24,42 @@ def add_person(first_name, last_name, email):
     con = sqlite3.connect("people.db")
     cur = con.cursor()
 
-    cur.execute("INSET INTO customers (?,?,?)", (first_name, last_name, email))
+    cur.execute("INSERT INTO employees VALUES (?,?,?)", (first_name, last_name, email))
 
     con.commit()
     con.close()
 
 
-def del_person(id):
+def add_persons(list_people):
     con = sqlite3.connect("people.db")
     cur = con.cursor()
 
+    cur.executemany("INSERT INTO employees VALUES (?,?,?)",
+                list_people)
+
     con.commit()
     con.close()
+
+
+def del_person(primary_key):
+    con = sqlite3.connect("people.db")
+    cur = con.cursor()
+    cur.execute("DELETE from employees WHERE rowid = (?)", primary_key)
+
+    con.commit()
+    con.close()
+
+
+def email_lookup(email):
+    con = sqlite3.connect("people.db")
+    cur = con.cursor()
+
+    cur.execute("SELECT rowid, * FROM employees WHERE email = (?)", (email,))
+    people = cur.fetchall()
+
+    for person in people:
+        print(person)
+
+    con.commit()
+    con.close()
+
