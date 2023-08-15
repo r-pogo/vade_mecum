@@ -133,3 +133,39 @@ df.loc[df['Col name'].str.contains('String searched')]
 df.loc[~df['Col name'].str.contains('String searched')] # ~ == not
 df.loc[df['Col name']].str.contains('regex | search', flags=re.IGNORECASE ,regex=True)]
 ```
+___
+## Conditional changes
+```python
+import pandas as pd
+db = r"path/to/csv/file"
+df = pd.read_csv(db, encoding="windows-1250", sep=";", skiprows=1)
+
+df.loc[df['Price'] = 50, 'Price'] = 100
+df.loc[df['Total'] > 50, ['Price', 'Amount']] = 100
+```
+___
+## Groupby
+```python
+import pandas as pd
+db = r"path/to/csv/file"
+df = pd.read_csv(db, encoding="windows-1250", sep=";", skiprows=1)
+
+df.groupby(['Col name']).mean().sort_values('Value', ascending=False)
+```
+___
+## Chunking large amount of data
+```python
+import pandas as pd
+db = r"path/to/csv/file"
+df = pd.read_csv(db, chunksize=5)
+
+for df in pd.read_csv(db, chunksize=5):
+    print("CHUNK")
+    print(df)
+
+```
+
+
+___
+## Sources
+- Pandas documentation, https://pandas.pydata.org/docs/user_guide/index.html
