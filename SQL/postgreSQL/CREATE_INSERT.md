@@ -1,6 +1,6 @@
 # CREATE and INSERT
 ## Create a database
-```
+```sql
 CREATE DATABASE analysis;
 ```
 ___
