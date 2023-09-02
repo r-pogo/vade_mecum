@@ -7,7 +7,7 @@ ___
 ## Create table
 Create table X creates a table named `X`. This process requires the definition  
 of the data type you plan to store in each column.
-```
+```sql
 CREATE TABLE customer(
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
@@ -24,7 +24,7 @@ date_entered TIMESTAMP NOT NULL,
 id SERIAL PRIMARY KEY
 );
 ```
-```
+```sql
 CREATE TABLE product(
 type_id INTEGER REFERENCES product_type(id), -- secondary key
 name VARCHAR(30) NOT NULL,
@@ -32,7 +32,7 @@ supplier VARCHAR(30) NOT NULL,
 description TEXT NOT NULL,
 id SERIAL PRIMARY KEY);
 ```
-```
+```sql
 CREATE TABLE sales_person(
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(30) NOT NULL,
@@ -100,18 +100,18 @@ NOT NULL = If you mark data as not null that means it must have a value when a n
 DEFAULT = designates a default value when a row is created without data
 ___
 ## Inserting data to table
-```
+```sql
 INSERT INTO customer(first_name, last_name, email, company, street, city, state, zip, phone, birth_date, sex, date_entered)  
 VALUES ('Christopher', 'Jones', 'christopherjones@bp.com', 'BP', '347 Cedar St', 'Lawrenceville', 'GA', '30044', '348-848-8291', '1938-09-11', 'M', current_timestamp);
 ```
 Inserting multiple values
-```
+```sql
 INSERT INTO product_type (name) VALUES ('Business');
 INSERT INTO product_type (name) VALUES ('Casual');
 INSERT INTO product_type (name) VALUES ('Athletic');
 ```
 You can insert multiple rows without defining column names if you put the values in the same order as the table data.
-```
+```sql
 INSERT INTO product VALUES
 (1, 'Grandview', 'Allen Edmonds', 'Classic broguing adds texture to a charming longwing derby crafted in America from lustrous leather'),
 (1, 'Clarkston', 'Allen Edmonds', 'Sharp broguing touches up a charming, American-made derby fashioned from finely textured leather'),
@@ -122,13 +122,13 @@ INSERT INTO product VALUES
 ```
 ___
 ## Creating TYPE
-```
+```sql
 CREATE TYPE sex_type as enum
 ('M', 'F');
 ```
 ___
 ## Creating INDEX
-```
+```sql
 -- Create index based on a single column (Use UNIQUE INDEX for a unique index)
 CREATE INDEX transaction_id ON transaction(name)
 
