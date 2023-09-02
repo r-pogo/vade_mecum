@@ -1,37 +1,37 @@
 # Data exploration with SELECT
-```
+```sql
 SELECT column_names FROM table_name
 WHERE criteria
 ORDER BY column_names;
 ```
 ## SELECT
-```
+```sql
 SELECT * FROM my_table;
 ```
-```
+```sql
 SELECT column1, column2, column3 FROM table_name;
 ```
 ___
 ## DISTINCT
 `DISTINCT` eliminates duplicates
-```
+```sql
 SELECT DISTINCT column1 FROM table_name;
 ```
 ___
 ## ORDER BY
-```
+```sql
 SELECT column1, column2, column3 
 FROM table_name
 ORDER BY column3 DESC; -- defoult is ASC
 ```
-```
+```sql
 SELECT last_name, school, hire_date
 FROM teachers
 ORDER BY school ASC, hire_date DESC;
 ```
 ___
 ## WHERE
-```
+```sql
 SELECT last_name, school, hire_date
 FROM teachers
 WHERE school = 'Cool School'
@@ -52,17 +52,17 @@ WHERE school = 'Cool School'
 | NOT | negation | WHERE column_name NOT LIKE 'Sam%`
 ___
 ## AND/OR operators
-```
+```sql
 SELECT * FROM table_name
 WHERE column1 = 'value'
 AND column2 < value;
 ```
-```
+```sql
 SELECT * FROM table_name
 WHERE column1 = 'value'
 OR column2 < value;
 ```
-```
+```sql
 SELECT * FROM teachers
 WHERE school = 'F.D Roosvelt HS'
 AND (salary < 38000 OR slaary > 40000);

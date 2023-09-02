@@ -1,5 +1,5 @@
 # CAST
-```
+```sql
 SELECT timestamp_column, CAST(timestamp_column AS varchar(10))
 FROM date_time_types;
 
@@ -16,7 +16,7 @@ There is no way to cast text containing letters to a number. /*
 SELECT CAST(char_column AS integer) FROM char_data_types;
 ```
 CAST can be also done by using `::` symbol
-```
+```sql
 SELECT timestamp_column, CAST(timestamp_column AS varchar(10))
 FROM date_time_types;
 
@@ -25,7 +25,7 @@ FROM date_time_types;
 SELECT timestamp_column::varchar(10)
 FROM date_time_types;
 ```
-```
+```sql
 ALTER TABLE customer
 ALTER COLUMN sex TYPE sex_type USING sex::sex_type;
 ```
