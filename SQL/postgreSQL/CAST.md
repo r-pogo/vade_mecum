@@ -8,10 +8,10 @@ CAST(numeric_column AS integer),
 CAST(numeric_column AS varchar(6)
 FROM number_data_types;
 
-*/ This will return invalid input syntax for integer, because letters cannot be integers
+/* This will return invalid input syntax for integer, because letters cannot be integers
 CAST only works if the target data type can hold the original value, e.g:
 Casting an integer to text is possible because character types can include numbers.  
-There is no way to cast text containing letters to a number. /*
+There is no way to cast text containing letters to a number.*/
 
 SELECT CAST(char_column AS integer) FROM char_data_types;
 ```
