@@ -41,7 +41,7 @@ ijęta w nawias, generująca wartości dla aktulaizacji */
 SET column = (SELECT column FROM table_b
               WHERE table.column = table_b.column)
 /* Klauzula WHERE EXSISTS używa instrukcji SELECT do generowania wartości, które służą jako 
-filtr aktualizacji. Jeśli nie użyjemy tej kaluzuli, możemy nie umyślnie ustawić niektóre wartości NULL
+filtr aktualizacji. Jeśli nie użyjemy tej kaluzuli, możemy nie umyślnie ustawić niektóre wartości NULL*/
 WHERE EXISTS = (SELECT column FROM table_b
                WHERE table.column = table_b.column)
                
