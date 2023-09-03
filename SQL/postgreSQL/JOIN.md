@@ -7,6 +7,27 @@ ON table_a.key_column = table_b.foreign_key_column
 Można użyć dowolnego wyrażenia, które zwraca wartość logiczną `true` albo `false`
 do lączenia table po klauzuli `ON` n.p: `ON table_a.key_column >= table_b.foreign_key_column`
 ___
+## SELF JOIN
+To form a self-join, you specify the same table twice with different table  
+aliases and provide the join predicate after the ON keyword. For both `INNER` and `LEFT/RIGHT`.
+```sql
+SELECT select_list
+FROM table_name t1
+INNER JOIN table_name t2 ON join_predicate;
+
+select distinct t1.firstname, t1.surname
+from cd.members as t1
+join cd.members as t2 on t1.memid = t2.recommendedby
+order by surname, firstname
+
+
+
+select t1.firstname as memfname, t1.surname as memsname, t2.firstname as recfname, t2.surname as recsname
+from cd.members as t1
+left outer join cd.members as t2 on t2.memid = t1.recommendedby
+order by memsname, memfname
+```
+___
 ## INNER JOIN
 ```sql
 SELECT *
@@ -78,6 +99,14 @@ FROM schools_left AS lt LEFT JOIN schools_enrollmetn AS en
 ON lt.id = en.id
 LEFT JOIN schools_grades AS gr
 ON lt.id =gr.id
+
+
+select distinct concat(firstname, ' ', surname) as member, name as facility
+from cd.members
+join cd.bookings on cd.members.memid = cd.bookings.memid
+join cd.facilities on cd.bookings.facid = cd.facilities.facid
+where cd.facilities.name ilike 'tennis%'
+order by member, facility
 ```
 ___
 ## Obliczenia matematyczne na kolumnach łączonych tabel

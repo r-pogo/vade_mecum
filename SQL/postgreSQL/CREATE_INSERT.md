@@ -120,6 +120,12 @@ INSERT INTO product VALUES
 (1, 'Hollis', 'Johnston & Murphy', 'Leather upper, manmade sole'),
 (2, 'Venetian Loafer', 'Mezlan', 'Suede upper, leather sole'),
 ```
+`VALUES` clause is only used to supply constant data, we need to replace it with a query instead.
+```sql
+insert into cd.facilities(facid,name, membercost, guestcost, initialoutlay, monthlymaintenance)
+select (select max(facid) from cd.facilities)+1, 'Spa', 20, 30, 100000, 800; 
+
+```
 ___
 ## Creating TYPE
 ```sql

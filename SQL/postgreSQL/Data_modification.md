@@ -26,8 +26,10 @@ UPDATE table
 SET column = value;
 
 UPDATE table
-SET column1 = value,
-SET column2 = value;
+SET 
+column1 = value,
+column2 = value
+WHERE criteria;
 
 UPDATE table
 SET column = value
