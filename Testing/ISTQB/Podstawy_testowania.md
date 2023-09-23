@@ -67,6 +67,37 @@ ___
 6. Testowanie jest zależne od kontekstu.
 7. Przekonanie o braku błędów jest błędem.
 ___
+## Proces Testowy
+### Planowanie testów
+Czynności: 
+- Cele testowania (co?)  
+- Określenie czynności testowych potrzebnych do zrealizowania celów
+- Określenie podejścia/strategii do osiągania celów testowania w granicach wyznaczonych przez kontekst (jak?)
+  (np. określenie odpowiednich technik testowania i zadań testowych oraz sformułowanie harmonogramu testów, który umożliwi dotrzymanie wyznaczonego terminu)
+- Zdefiniowanie miar
+- Kryteria wyjścia
 
+Produkty pracy:
+ - Plan/y testów
+
+### Monitorowanie i nadzór - czynności
+Monitorowanie testów polega na ciągłym porównywaniu rzeczywistego z zaplanowanym  
+postępem testowania przy użyciu miar specjalnie w tym celu zdefiniowanych w planie  
+testów. Nadzór nad testami polega na podejmowaniu działań, które są niezbędne do  
+osiągnięcia celów wyznaczonych w planie testów (z uwzględnieniem jego ewentualnych  
+aktualizacji).
+
+Element wspomagający monitorowanie testów i nadzór nad nimi to ocena kryteriów wyjścia  
+z planu testów, która obejmuje:
+- sprawdzenie rezultatów testów i dziennika testów pod kątem określonych kryteriów pokrycia;
+- oszacowanie poziomu jakości modułu lub systemu na podstawie rezultatów testów i dziennika testów;
+- ustalenie, czy są konieczne dalsze testy (np. w przypadku nieosiągnięcia przez  
+  dotychczas wykonane testy pierwotnie założonego poziomu pokrycia ryzyka produktowego, co  
+  wiąże się z koniecznością napisania i wykonania dodatkowych testów)
+- raporty onpostępie testów
+- informowanie intersariuszy o postępie w realizacji planu testów
+
+Produkty pracy:
+ - Raporty z testów
 
 
