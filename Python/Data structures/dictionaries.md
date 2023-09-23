@@ -71,6 +71,16 @@ print(user['pets']['dog'])
 user['languages'] = ['polish', 'english', 'italian']
 print(user['languages'][-1])
 'italian'
+
+# get()
+person = {"name": "Rafal", "job": "Test engineer"}
+print(f"{person.get('name')} is a {person.get('job')}")
+'Rafal is a Test engineer'
+
+# you can set a default value
+person = {"name": "Rafal", "job": "Test engineer"}
+print(f"{person.get('name')} likes {person.get('sport', 'jujitsu')}")
+'Rafal likes jujitsu'
 ```
 ### Modifying and adding elements
 ```python
@@ -84,21 +94,84 @@ user['age'] = 60
 print(user)
 {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter', 'sport': 'muay thai'}
 
+# Adding with setdefault()
+person = {"name": "Rafal", "job": "Test engineer"}
+person.setdefault('sport', 'jiujitsu')
+{'name': 'Rafal', 'job': 'Test engineer', 'sport': 'jiujitsu'}
+````
+___
+### Removing items
+```python
 # Delete entry
+user = {'name': 'Rafal', 'age': 33, 'fav_animal': 'otter', 'sport': 'muay thai'}
 del user['sport']
 user
 {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter'}
-````
-___
+
+# Removing with pop()
+user = {'name': 'Rafal', 'age': 33, 'fav_animal': 'otter', 'sport': 'muay thai'}
+age = user.pop("age")
+print(age)
+'33'
+>>> user
+{'name': 'Rafal', 'fav_animal': 'otter', 'sport': 'muay thai'}
+
+# Removing with popitem()
+user = {'name': 'Rafal', 'age': 33, 'fav_animal': 'otter', 'sport': 'muay thai'}
+user.popitem()
+>>> user
+{'name': 'Rafal', 'age': 33, 'fav_animal': 'otter'}
+
+# Deleting with clear()
+user = {'name': 'Rafal', 'age': 33, 'fav_animal': 'otter', 'sport': 'muay thai'}
+user.clear()
+
+>>> user
+{}
+```
 ## 'in' operator and len()
 ```python
+# Checking keys in dictionary
 user = {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter', 'pets': {'dog': 'max', 'cat': 'łatka'}, 'languages': ['polish', 'english', 'italian']}
-'name' in user
+'name' in user.keys()
 True
-'surname' not in user
+'surname' not in user # you can omit keys()
 True
+
+# Checking values in dictionary
+user = {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter', 'pets': {'dog': 'max', 'cat': 'łatka'}, 'languages': ['polish', 'english', 'italian']}
+'italian' in user.values()
+False
+l = ['polish', 'english', 'italian']
+l in user.values()
+True
+60 in user.values()
+True
+
+# len()
 len(user) # number of keys
 5
+```
+___
+## Pretty printing
+```python
+import pprint
+user = {'name': 'Rafal', 'age': 60, 'fav_animal': 'otter', 'pets': {'dog': 'max', 'cat': 'łatka'}, 'languages': ['polish', 'english', 'italian']}
+pprint.pprint(user)
+{'age': 60,
+ 'fav_animal': 'otter',
+ 'languages': ['polish', 'english', 'italian'],
+ 'name': 'Rafal',
+ 'pets': {'cat': 'łatka', 'dog': 'max'}}
+```
+___
+## Merging
+```python
+dict_a = {'a': 1, 'b': 2}
+dict_b = {'b': 3, 'c': 4}
+dict_c = {**dict_a, **dict_b}
+print(dict_c)
+{'a': 1, 'b': 3, 'c': 4}
 ```
 ___
 ## Iterating through a dictionary
