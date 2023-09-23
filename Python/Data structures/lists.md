@@ -13,7 +13,7 @@ Table of content:
 - [Tips and Tricks](#tips-and-tricks)  
     1.[Enumerate](#enumerate)  
     2.[Difference between two lists](#difference-between-two-lists)  
-    3.[Removing duplicate items from list](#removing-duplicate-items-from-list)
+    3.[Removing duplicate items from list](#removing-duplicate-items-from-list)  
     4.[Find if all items are identical](#find-if-all-items-are-identical)  
     5.[How to efficiently compare two unordered lists](#how-to-check-if-all-elements-in-a-list-are-unique)  
     6.[Convert two lists into a dictionary](#convert-two-lists-into-a-dictionary)
