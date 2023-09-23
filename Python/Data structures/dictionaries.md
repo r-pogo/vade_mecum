@@ -6,7 +6,7 @@ Are python's implementation of associative arrays.
 | clear() | Removes all the elements from the dictionary `dict.clear()`
 | copy() | Returns a copy of the dictionary `dict. copy() `
 | fromkeys() | Returns a dictionary with the specified keys and value `dict = dict.fromkeys(keys [, value])`
-| get() | Returns the value of the specified key `value_key  = dict.get(key, default=None)`
+| get() | Returns the value of the specified key `value_key  = dict.get(key, default=None)` Don't use the "default" key word just like e.g: users.get('004', 'indefinite')
 | items() | Returns a list containing a tuple for each key value pair `list_keys_values = dict.items()`
 | keys() | Returns a list containing the dictionary's keys `list_keys = dict.keys()`
 | pop() | Removes the element with the specified key `value = dict.pop(key)`
