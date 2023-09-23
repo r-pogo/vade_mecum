@@ -1,17 +1,22 @@
 # Lists
 Table of content:
 - [List methods](#list-methods)
-  - [Basic operation](#basic-operation)  
-      1.[List comprehensions](#list-comprehensions)  
-      2.[Modifying and adding elements](#modifying-and-adding-elements)
+- [Basic operation](#basic-operation)  
+    1.[List comprehensions](#list-comprehensions)  
+    2.[Modifying and adding elements](#modifying-and-adding-elements)  
+    3.[Removing values](#removing-values)  
+    4.[Reverting a list](#reverting-a-list)  
+    5.[Finding index](#finding-index)  
+    6.[The in and not in operators](#the-in-and-not-in-operators)  
+    7.[Multiple assignment trick](#multiple-assignment-trick)
 - [List concatenation](#list-concatenation)  
-  - [Tips and Tricks](#tips-and-tricks)  
-      1.[Enumerate](#enumerate)  
-      2.[Difference between two lists](#difference-between-two-lists)  
-      3.[Removing duplicate items from list](#removing-duplicate-items-from-list)
-      4.[Find if all items are identical](#find-if-all-items-are-identical)  
-      5.[How to efficiently compare two unordered lists](#how-to-check-if-all-elements-in-a-list-are-unique)  
-      6.[Convert two lists into a dictionary](#convert-two-lists-into-a-dictionary)
+- [Tips and Tricks](#tips-and-tricks)  
+    1.[Enumerate](#enumerate)  
+    2.[Difference between two lists](#difference-between-two-lists)  
+    3.[Removing duplicate items from list](#removing-duplicate-items-from-list)
+    4.[Find if all items are identical](#find-if-all-items-are-identical)  
+    5.[How to efficiently compare two unordered lists](#how-to-check-if-all-elements-in-a-list-are-unique)  
+    6.[Convert two lists into a dictionary](#convert-two-lists-into-a-dictionary)
 
 Python’s lists are implemented as dynamic arrays behind the scenes.
 
@@ -52,7 +57,8 @@ ___
 ___
 ## Basic operation <div id='basic-operation'/>
 Python sequence slice addresses can be written as `list[start:end:step]` and any of start, stop or end can be dropped. 
-`list[::3]` is every third element of the sequence, `list[-3:]` getting the last three elements.
+`list[::3]` is every third element of the sequence, `list[-3:]` getting the last three elements.  
+Reverting `list[::-1]`.
 
 ````python
 list = list[slice]    # Or: list[from_inclusive : to_exclusive : ±step]
@@ -78,13 +84,19 @@ l[0] = 'carrots'
 l
 ['carrots', 'tort']
 ````
-Deleting single element
+Adding values
 ```python
-l = ["ciastka", "tort"]
-del l[0]
-l
-['tort']
-l.remove("ciastka") # removing item by its value
+# append() adds an element to the end of a list:
+l = ['foo', 'bar', 'baz', 'blabla', 'cookies']
+l.append('milk')
+print(l)
+['foo', 'bar', 'baz', 'blabla', 'cookies', 'milk']
+
+# insert() adds an element to a list at a given position
+l = ['foo', 'bar', 'baz', 'blabla', 'cookies']
+l.insert(1, 'jujitsu')
+print(l)
+['foo', 'jujitsu', 'bar', 'baz', 'blabla', 'cookies']
 ```
 Modifying Multiple List Values
 ```python
@@ -111,12 +123,64 @@ l[1:1] = ['cookie', 33, 88]
 l
 [1, 'cookie', 33, 88, 2, 3]
 ```
-Reverting a lis
+___
+### Removing values <div id='removing-values'/>
+```python
+# del removes an item using the index
+l = ["ciastka", "tort"]
+del l[0]
+l
+['tort']
+# remove() removes an item with using actual value of it:
+l.remove("ciastka") # removing item by its value
+
+# pop()  will remove and return the last item of the list.  
+# You can also pass the index of the element as an optional parameter
+l = ['foo', 'bar', 'baz', 'blabla', 'cookies']
+l.pop()
+print(l)
+['foo', 'bar', 'baz', 'blabla']
+
+```
+___
+### Reverting a list <div id='reverting-a-list'/>
 ```python
 l = [1,2,3]
 print(l[::-1])
 [3, 2, 1]
 ````
+___
+### Finding index <div id='finding-index'/>
+```python
+l = ['foo', 'bar', 'baz', 'blabla', 'cookies']
+l.index('blabla')
+3
+```
+___
+### The in and not in operators <div id='the-in-and-not-in-operators'/>
+```python
+1 in [1,2,3]
+True
+
+'jujitsu' not in ['football', 'hockey', 'jujitsu']
+False
+```
+### Multiple assignment trick <div id ='multiple-assignment-trick'/>
+```python
+furniture = ['table1', 'chair2', 'rack3', 'shelf4']
+table, chair, rack, shelf = furniture
+
+print(table, shelf)
+table1 shelf4
+
+# this trick can be used to swap values
+a, b = 'python', 'c++'
+a, b = b, a
+print(a)
+c++
+print(b)
+python
+```
 ___
 ## List concatenation <div id='list-concatenation'/>
 With '+' operator
@@ -127,6 +191,11 @@ list2 = [6, 7, 8]
 result = list1 + list2
 print(result)
 [1, 2, 3, 4, 5, 6, 7, 8] # list2 appended at the end of the other
+
+my_list = [1, 2, 3]
+my_list = my_list + ['A', 'B', 'C']
+print(my_list)
+[1, 2, 3, 'A', 'B', 'C']
 ```
 With a for loop:
 ```python
@@ -177,7 +246,38 @@ result = list(itertools.chain(list1, list2))
 print(result)
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
+By multiplication
+```python
+print(['a', 'b', 'c'] * 4)
+['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c']
+```
 ___
+## Sorting
+```python
+# sort()
+numbers = [2, 5, 3.14, 1, -7]
+numbers.sort()
+print(numbers)
+[-7, 1, 2, 3.14, 5]
+
+l = ['foo', 'bar', 'baz', 'blabla', 'cookies']
+l.sort(reverse=True)
+print(l)
+['foo', 'cookies', 'blabla', 'baz', 'bar']
+
+# If you need to sort the values in regular alphabetical order, pass str.lower  
+# for the key keyword argument in the sort() method call:
+letters = ['a', 'z', 'A', 'Z']
+letters.sort(key=str.lower)
+print(letters)
+['a', 'A', 'z', 'Z']
+
+# You can use the built-in function sorted() to return a new list:
+numbers = [2, 5, 3.14, 1, -7]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)
+[-7, 1, 2, 3.14, 5]
+```
 ## Tips and Tricks <div id='tips-and-tricks'/>
 ### Enumerate <div id='enumerate'/>
 ```python
@@ -257,6 +357,17 @@ list2 = ['python', 'java', 'c++']
 new_dict = dict(zip(list1,list2))
 print(new_dict)
 {1: 'python', 2: 'java', 3: 'c++'}
+```
+### Loop multiple list with zip()
+```python
+items = ['apple', 'milk', 'honey']
+prices = [1.20, 2, 3]
+
+for item, price in zip(items, prices):
+    print(f'The {item} costs {price}')
+The apple costs 1.2
+The milk costs 2
+The honey costs 3
 ```
 
 

@@ -1,5 +1,10 @@
 # Dictionaries
-Are python's implementation of associative arrays.
+Table of content: TODO
+Are python's implementation of associative arrays. Stores collection of key-pairs.  
+Sum Up:
+ - mutable
+ - unordered
+ - key-pairs
 ## Dictionary Methods
 | Functions | Explanation |
 |-----------|-------------|
