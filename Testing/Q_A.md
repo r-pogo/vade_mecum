@@ -32,7 +32,7 @@ Czy wszystkie produkty testowe są przeglądane i publikowane?
 
 Jeśli tak to git.
 
-## Na jakiej podstawie można testować?
+### Na jakiej podstawie można testować?
 Przede wszystkim dokumentacja, dokumentacja i jeszcze raz dokumentacja!
 
 Dużo zależy też od typów testów, ale inne podstawy to:
