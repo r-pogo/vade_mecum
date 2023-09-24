@@ -16,7 +16,9 @@ Table of content:
     3.[Removing duplicate items from list](#removing-duplicate-items-from-list)  
     4.[Find if all items are identical](#find-if-all-items-are-identical)  
     5.[How to efficiently compare two unordered lists](#how-to-check-if-all-elements-in-a-list-are-unique)  
-    6.[Convert two lists into a dictionary](#convert-two-lists-into-a-dictionary)
+    6.[Convert two lists into a dictionary](#convert-two-lists-into-a-dictionary)  
+    7.[Loop multiple list with zip()](#loop-multiple-list-with-zip)  
+    8.[Convert list to dictionary with enumerate](#convert-list-to-dictionary-with-enumerate)
 
 Python’s lists are implemented as dynamic arrays behind the scenes.
 
@@ -359,7 +361,7 @@ new_dict = dict(zip(list1,list2))
 print(new_dict)
 {1: 'python', 2: 'java', 3: 'c++'}
 ```
-### Loop multiple list with zip()
+### Loop multiple list with zip() <div id='loop-multiple-list-with-zip'/>
 ```python
 items = ['apple', 'milk', 'honey']
 prices = [1.20, 2, 3]
@@ -370,7 +372,7 @@ The apple costs 1.2
 The milk costs 2
 The honey costs 3
 ```
-### Covert list to dictionary with enumerate
+### Convert list to dictionary with enumerate <div id='convert-list-to-dictionary-with-enumerate'/>
 ```python
 import pprint
 tickers = [
