@@ -233,6 +233,7 @@ list2 = [6, 7, 8]
 
 result = [*list1, *list2] # * operator unpacks a collection of items
 print(result)
+[1, 2, 3, 4, 5, 6, 7, 8]
 ```
 With itertools.chain()
 ```python
@@ -368,6 +369,31 @@ for item, price in zip(items, prices):
 The apple costs 1.2
 The milk costs 2
 The honey costs 3
+```
+### Covert list to dictionary with enumerate
+```python
+import pprint
+tickers = [
+    'AAPL.US', 'AXP.US', 'BA.US', 'CAT.US',
+    'CSCO.US', 'CVX.US', 'DIS.US', 'DOW.US',
+    'GS.US', 'HD.US', 'IBM.US', 'INTC.US'
+]
+
+pprint.pprint(dict(list(enumerate(tickers))))
+
+{0: 'AAPL.US',
+ 1: 'AXP.US',
+ 2: 'BA.US',
+ 3: 'CAT.US',
+ 4: 'CSCO.US',
+ 5: 'CVX.US',
+ 6: 'DIS.US',
+ 7: 'DOW.US',
+ 8: 'GS.US',
+ 9: 'HD.US',
+ 10: 'IBM.US',
+ 11: 'INTC.US'}
+
 ```
 
 
