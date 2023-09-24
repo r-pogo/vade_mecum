@@ -128,7 +128,34 @@ usług zewnętrznych, przetestuj integrację i uwierzytelnianie z tymi usługami
 ### Konflikt dev tester, czy to bug czy feature?
 Pogadaj z product owner
 
-### what are test metric
+### Czym są metryki testowe
+Metryki testowe to miary i wskaźniki używane w procesie testowania oprogramowania  
+do oceny jakości testów, monitorowania postępu testów oraz śledzenia efektywności  
+procesu testowego. Metryki testowe dostarczają danych i informacji, które pozwalają  
+zrozumieć, jakie aspekty testów wymagają uwagi, identyfikować obszary, które wymagają  
+poprawy oraz oceniać, czy cele testów są osiągane.
+Naprzykład:  
+1. Pokrycie testów (Test Coverage)
+2. Liczba błędów (Defect Count):
+3. Przepustowość testów (Test Throughput): Mierzy, ile testów zostaje wykonanych w  
+   określonym czasie. Pomaga określić, czy tempo testów jest odpowiednie w stosunku 
+   do harmonogramu projektu.
+4. Średni czas znalezienia i rozwiązania błędów (Average Defect Detection and Resolution Time
+5. Stopień krytyczności błędów (Defect Severity)
+6. Stopień stabilności oprogramowania (Software Stability): Ocenia, jak  
+   stabilne jest oprogramowanie w określonym okresie. Wykorzystywane do monitorowania,  
+   czy nowe zmiany wprowadzają regresje.
+7. Pokrycie wymagań (Requirement Coverage): Określa, jak wiele wymagań projektu  
+   zostało przetestowanych. Pomaga w zapewnieniu, że wszystkie wymagania są  
+   uwzględnione w testach.
+8. Wskaźnik automatyzacji testów (Test Automation Ratio)
+9. Efektywność przypadków testowych (Test Case Effectiveness): Określa, jak  
+   skuteczne są przypadki testowe w wykrywaniu błędów. Może być mierzone przez  
+   liczbę znalezionych błędów na przypadki testowe.
+10. Wskaźnik pokrycia interakcji (Interaction Coverage Ratio): W przypadku testów,  
+    które sprawdzają interakcje między różnymi elementami systemu, ten wskaźnik mierzy,  
+    ile z tych interakcji zostało pokryte przez testy.
+
 ### Jak podejdziesz do testowania dowolnej historii użytkownika w zwinnym projekcie?
 1. Rozumienie hisorii i czego dokładnie wymaga użytkownik
 2. Jakie cele i wartości dana historyjka ma dostarczyć użytkownikowi
