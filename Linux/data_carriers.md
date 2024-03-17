@@ -213,6 +213,62 @@ To reformat your device to its original FAT32 file system, you must specify the 
 ___
 ## Testing and repairing file systems
 `fsck - filesystem check`
+In addition to checking the integrity of file systems, fsck can also repair corrupt file systems.
+In Unix file systems, recovered file portions are placed in the `lost+found` directory located in the root of each file system.
+
+`sudo fsck /dev/sdb1` 
+___
+## Transferring data directly to and from devices
+`dd - data definition`
+The `dd` command is used to copy blocks of data from one place to another.
+
+`dd if=input_file of=outpu_file [bs=block_size [count=blocks]]`
+
+**NB**: is SUPER important ot check the input/output files before hit Enter!!!
+`dd` is also called destroy disk!!!
+
+Copying the entire contents of one medium to another:
+`dd if=/dev/sdb of=/dev/sdc`  
+Copying to a file:
+`dd if=/dev/sdb of=flash_drive.img`
+___
+### Creating CD images
+Writing CDs involves two steps:  
+1. Creating an ISO image file that is an exact image of the CD file system
+2. Saving the image file on CD-ROM
+
+#### Creating an image copy of a CD
+`dd if='dev'cdrom of=ubuntu.iso`  
+This won't work with audio because they do not store data in a file system.
+In this situation use `cdrdao` command.
+
+#### Creating an image based on a set of files
+`genisoimage -o cd-rom.iso -R -J ~/cd-rom-files`
+`~/cd-rom-files`: directory with files that will be saved on CD
+___
+### Saving images on CD
+#### Direct mounting of the ISO image
+There is a trick to mount an ISO image while it is still on the hard drive and 
+treating it as if it were already on optical media.  
+By adding the `-o loop` option to the `mount` command 
+(along with the required filesystem type `-t iso9660`), 
+we can mount the image file as a device and add it to the filesystem tree:  
+```
+mkdir /mnt/iso_image
+mount -t iso9660 -o loop image.iso /mnt/iso_image
+```
+
+#### Emptying a recorded CD
+`wodim` is a command used to delete CD-RW 
+To the command you should pass the name of the CD writer device and the type of erasing that should be performed.  
+The minimal and fastest type is `fast`:  
+`wodim dev=/dev/cdrw blank=fast`
+
+#### Saving the image
+To save the image, we also use the `wodim` program, providing the name of the optical  
+media recorder device and the name of the image file:  
+`wodim dev=/dev/cdrw image.iso`  
+
 https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/
 
 
