@@ -268,7 +268,9 @@ The minimal and fastest type is `fast`:
 To save the image, we also use the `wodim` program, providing the name of the optical  
 media recorder device and the name of the image file:  
 `wodim dev=/dev/cdrw image.iso`  
-
-https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/
+___
+## Sources
+- W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
+- Linuxize, How to Mount and Unmount File Systems in Linux, https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/
 
 

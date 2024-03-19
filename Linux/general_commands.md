@@ -155,6 +155,9 @@ ____
 | head(tail) | beginning and ending of a file. `head -n 5 ls-output.txt`
 | tee | tee command reads the standard input and writes it to both the standard output and one or more files. The command is named after the T-splitter used in plumbing. It basically breaks the output of a program so that it can be both displayed and saved in a file. It does both the tasks simultaneously, copies the result into the specified files or variables and also display the result. `ls /usr/bin \| tee ls.txt \| grep zip`
 | sort | used to sort a file.
+| "pipe line" | Potoki zwykle używane do filtrowania
+
+Różnica między operatorem `>` a `|`: opeator przekierowania łączy polecenie zplikiem, a operator potoku łączy wyjście jednego polecenia z wejściem drugiego. 
 
 #### Example of usage of cat
 | Command | Action |
@@ -174,8 +177,31 @@ cat < lazyDog.txt
 somethign soething
 ```
 ___
-SKONCZYC PRZYKŁADY I/O redirections
+#### Example of usage of unique
+Polecenie `uniqe` jest zwykle używane wraz z poleceniem `sort`.
+Domyślnie usuwa wszystkie duplikaty
+
+`$ ▶ls /bin /usr/bin | sort | uniq | less`
+
+Gdybyśmy chcieli wyświetlić listę duplikatów, możemy dodać do polecenia opcję `-d`
+`$ ▶ls /bin /usr/bin | sort | uniq -d | less`
 ___
+#### Example of usage of wc
+`wc` - word count wyświetla liczbę wierszy, słów i bajtów zawartych w plikach
+```
+$ ▶wc Linux/input_output_redirection.md
+  71  665 4005 Linux/input_output_redirection.md
+```
+Opcja `-l` pozwala ograniczyć wynik do licznika samych wierszy.
+___
+#### Example of usage of tee
+`tee` --> trójkąt w sieci kanalizacyjnej.
+Program `tee` odczytuje dane ze standardowego strumienia wejścia i kopiuje je zarówno do standardowego strumienia wyjścia  
+(pozwalając danym na dalszy przepływ w potoku), jak i do jednego pliku lub kilku plików. Przydaje się to do przechwytywania danych przepływających przez potok w   
+pośrednim etapie procesowania  
+
+W przykładzie przechwytujemy całą zawartość folderu do pliku ls.tx, zanim polecenie `grep` przefiltruje zawartość potoku:  
+`$ ▶wc ls /usr/bin | tee ls.txt | grep zip`
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 
