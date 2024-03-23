@@ -105,15 +105,49 @@ Aby połączyć się ze zdalnym hostem o nazwie np: `remote-sys`
 Gdy spróbujemy się połączyć po raz pierwszy, pojawi się komunikat informujący, że nie można było stwierdzić autentyczności hosta zdalnego.
 Przyczyną jest to, że program klienta nigdy wcześniej nie miał do czynienia z tym hostem zdalnym. 
 Aby zaakceptować dane dostępowe hosta zdalnego, należy wpisać `yes`, gdy pojawi się odpowiednie pytanie.  
-Po ustanowieniu połączenia użytkownik zostanie poproszony o hasło.  
+Po ustanowieniu połączenia użytkownik zostanie poproszony o hasło.
+```
+▶ssh bandit.labs.overthewire.org
+The authenticity of host 'bandit.labs.overthewire.org (51.20.13.48)' can't be established.
+ECDSA key fingerprint is SHA256:IJ7FrX0mKSSHTJ63ezxjqtnOE0Hg116Aq+v5mN0+HdE.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+```
 Po wpisaniu poprawnego hasła zobaczy, znak zachęty powłoki systemu zdalnego.  
 Sesja powłoki zdalnej będzie kontynuować działanie, dopóki użytkownik nie wpisze `exit`, w ten sposób zostanie przywrócona sesja powłoki lokalnej.  
 Istnieje również możliwość połączenia się z systemem zdalnym z wykorzystaniem innej nazwy urzytkownika:
-``$ ▶ ssh InnaNazwa@reomte-sys``
+``$ ▶ ssh InnaNazwa@reomte-sys
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+``
 
 SSH sprawdza autentyczność hosta zdalnego. Jeśli uwierzytelnienie hosta zdalnego się nie powiedzie, na ekranie pojawi się komunikat.  
 Mól to być atak man in the middle ale raczej coś się stało z systemem zdalnym, na przykład system operacyjny lub serwer SSH został ponownie zainstalowany.  
 Po stroni klienta w takim przypadku można usunąć zdezaktualizowany klucz z pliku `~/.ssh.known_hosts`
+```
+ $ ▶ssh bandit.labs.overthewire.org
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+The ECDSA host key for bandit.labs.overthewire.org has changed,
+and the key for the corresponding IP address 51.20.13.48
+is unknown. This could either mean that
+DNS SPOOFING is happening or the IP address for the host
+and its host key have changed at the same time.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:IJ7FrX0mKSSHTJ63ezxjqtnOE0Hg116Aq+v5mN0+HdE.
+Please contact your system administrator.
+Add correct host key in /home/elski/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/elski/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/elski/.ssh/known_hosts" -R "bandit.labs.overthewire.org"
+ECDSA host key for bandit.labs.overthewire.org has changed and you have requested strict checking.
+Host key verification failed.
+```
 
 Pracując na systemie zdalnym możemy przekierować wyniki do pliku w systemie lokalnym
 `$ ▶ ssh remote-sys 'ls *' > dirlist.txt`
