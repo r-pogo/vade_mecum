@@ -190,19 +190,19 @@ pozwalają na opcjonalne użycie znaku `null` jako separatora argumentów. Znak 
 przez liczbę `0`. Polecenie `find` przyjmuje opcje `-print0`, która tworzy wynik z separatorami w postaci znaków `null`.  
 Natomiast polecenia `xargs` przyjmuje opcję `-null`, która akceptuje dane wejściowe rozdzielone znakami `null`.  
 `find ~ -iname '*.jpg' -print0 | xargs --null ls -l`  
-Dzięki wykorzystaniu tej techniki mamy pewność, że wszystkie pliki, nawet te o nazwach zawierających znaki spacji, zostaną poprawnie prztworzone.  
+Dzięki wykorzystaniu tej techniki mamy pewność, że wszystkie pliki, nawet te o nazwach zawierających znaki spacji, zostaną poprawnie przetworzone.  
 
 ### Opcje
-Opcje służą do sterowania zakresem wyszukiwania przez polecenie `find`. Można ichużywać razem z innymi testami i akcjami przy tworzeniu wyrażeń `find`.  
+Opcje służą do sterowania zakresem wyszukiwania przez polecenie `find`. Można ich używać razem z innymi testami i akcjami przy tworzeniu wyrażeń `find`.  
 Przykłady często używanych
 
 | Opcja | Opis |
 |---------|--------|
 | -depth | Sprawia że `find` najpierw procesuje pliki znajdujące się w katalogu a potem sam katalog. Stosowana automatycznie z `-delete`
-| -maxdepth poziomy | Określa maksymalną liczbę poziomów zgłebnienia, na których `find` będzie przeszukiwało drzewo katalogów podczas wykonywania testów i akcji
+| -maxdepth poziomy | Określa maksymalną liczbę poziomów zgłębienia, na których `find` będzie przeszukiwało drzewo katalogów podczas wykonywania testów i akcji
 | -mindepth poziomy | Ustawia minimalną liczbę poziomów, na których `find` będzie przeszukiwał drzewo katalogów przed wykonaniem testów i akcji
 | -mount | Sprawia, że polecenie `find` będzie ignorować katalogi zamontowane w innych systemach plików
-| -noleaf | Sprawia, że polecenie `find` będzie optymalizować wyszukiwania na podstwie przypuszczenia, że przeszykiwany jest uniksowy system plików. Opcja ta jest niezbędna podczas skanowania systemów plików DOS (Windows) i płyt CD-ROM.
+| -noleaf | Sprawia, że polecenie `find` będzie optymalizować wyszukiwania na podstawie przypuszczenia, że przeszukiwany jest uniksowy system plików. Opcja ta jest niezbędna podczas skanowania systemów plików DOS (Windows) i płyt CD-ROM.
 ___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
