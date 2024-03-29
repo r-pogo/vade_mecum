@@ -8,7 +8,7 @@ What are commands?
 | Command | Effect |
 |--------------|--------|
 | pwd | Print the name of the current working directory.
-| cd | Change the working directory. Just `cd` changes to home dir.`cd -` goeas to the previous dir. `cd ~user` changes to home dir of a specific user.
+| cd | Change the working directory. Just `cd` changes to home dir.`cd -` goes to the previous dir. `cd ~user` changes to home dir of a specific user.
 | j foo | autojump is a faster way to navigate your filesystem. It works by maintaining a database of the directories you use the most from the command line. link for gihub https://github.com/wting/autojump. Need to add `. /usr/share/autojump/autojump.sh` to your bashrc file.  
 ____
 ## System overview
