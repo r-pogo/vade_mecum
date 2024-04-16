@@ -140,3 +140,45 @@ Często wykorzystywane opcje:
 | -u | --unique | Wyświetla jedynie unikalne wiersze
 
 ## cut
+`cut` służy do wyodrębniania sekcji tekstu z wiersza i zwrócenia tej sekcji do standardowego strumienia wyjścia.  
+Program ten akceptuje kilka nazw plików w postaci argumentów lub dane ze standardowego strumienia wejścia.
+Sekcji wiersza, która ma zostać wyodrębniona jest zdefinowana za pomocą opcji:  
+
+| Opcja | Długa opcja | Opis |
+|-------|-------------|------|
+| -c lista | --characters=lista | Wyodrębnia fragment wiersza zdefiniowany przez listę. Lista może zawierać zakres liczbowy lub kilka zakresów liczbowych oddzielonych przecinkami
+| -f lista | --fields=lista | Wyodrębnia co najmniej jedno pole z wiersza zgodnie z definicją w liście. Lista może zawierać jedno pole lub kilka pól lub zakresów pól oddzielonych przecinkami
+| -d znak_sep | --delimiter=znek_sep | Domyślnie pola musszą być oddzielone jednym znakiem tabulacji
+| | --complement | Wyodrębnia cały wiersz tekstu z wyjątkiem fragmentów określonych za pomocą opcji -c i/lub -f
+
+````
+└─ $ ▶cat -A distros.txt.txt 
+SUSE^II10.2^II12/07/2006$^M$
+Fedora^II10^II11/25/2008$^M$
+
+# tylko pojedyncze znaki tabulacji
+
+└─ $ ▶cut -f 3 distros.txt.txt 
+I12/07/2006$
+I11/25/2008$
+I11/25/2008$
+
+└─ $ ▶cut -f 3 distros.txt.txt | cut -c 8-11
+2006
+2008
+2008
+````
+Podczas pracy z polami możemy zdefiniować inny separator pola zamiast znaku tabulacji:  
+```
+└─ $ ▶cut -d ':' -f 1 /etc/passwd | head
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+```
