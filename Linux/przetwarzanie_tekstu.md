@@ -100,7 +100,7 @@ Opcja `-k 3.7` sprawia, że pole `sort` będzie sortować według klucza, który
 Co, jeśli plik nie używa białych znaków do separacji? Ale np. `:`?
 W takich sytuacjach używamy `-t` do określenia znak separatora.
 `sort -t ':' -k 7 /etc/passwd | head`
-
+___
 ## uniq
 `uniq` domyślnie usuwa wszystkie powtarzające się wiersze i i wyśle wynik do standardowego strumienia wyjścia. Często używany razem z `sort`
 ```
@@ -138,7 +138,7 @@ Często wykorzystywane opcje:
 | -i | --ignore-case | Ignoruje wielkość liter
 | -s n | --skip-chars=n | Ignoruje n początkowych znaków w każdym wierszu
 | -u | --unique | Wyświetla jedynie unikalne wiersze
-
+___
 ## cut
 `cut` służy do wyodrębniania sekcji tekstu z wiersza i zwrócenia tej sekcji do standardowego strumienia wyjścia.  
 Program ten akceptuje kilka nazw plików w postaci argumentów lub dane ze standardowego strumienia wejścia.
@@ -182,3 +182,32 @@ lp
 mail
 news
 ```
+___
+## paste
+`paste` dodaje kolumnę lub kolumny tekstu do pliku. Odczytuje wiele plików i łączy pola
+znalezione w każdym pliku w jeden standardowy strumień wyjścia.  
+```
+ $ ▶paste numbers.txt distros.txt.txt 
+1       SUSE    I10.2   I12/07/2006$
+2       Fedora  I10     I11/25/2008$
+3       Ubuntu  I10     I11/25/2008$
+```
+___
+## join
+`join`trochę jak JOIN z SQL, łączy dane z wielu plików na podstawie wspólnego pola kluczowego.  
+___
+## comm
+`comm` porównuje dwa liki tekstowe, wyświetlając wiersze, które są unikalne w każdym z plików, oraz wiersze wspólne.  
+
+```
+└─ $ ▶comm file1.txt file2.txt 
+a  # pierwsza kolumna zawiera wiersze unikalne dla pierwszego argumentu
+                b
+                c    # trzecia kolumna wspólne
+                d
+        e # pierwsza kolumna zawiera wiersze unikalne dla drugiego argumentu
+```
+`comm` przyjmuje opcję -n, która może mieć wartości 1,2,3. Opcje te określają, które kolumny należy pominąć w zwracanym wyniku.
+___
+## diff
+
