@@ -14,7 +14,7 @@
 | tr | transliteruje lub usuwa znaki
 | sed | edytor strumieniowy służący do filtrowania i przekształcania tekstu
 | aspell | interaktywny program do sprawdzania pisowni
-
+___
 ## cat
 `cat` ma wiele zastosowań i ciekawych opcji np. `-A`, która służy do wyświetlania znaków niedrukowalnych w tekście.  
 ```
