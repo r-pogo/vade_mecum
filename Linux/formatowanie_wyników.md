@@ -226,3 +226,6 @@ w przeciwnym razie nie zostaną odpowiednio zinterpretowane.
 | flags | There are five different flags: # – Use the “alternate format” for output. This varies by data type. For o (octal number) conversion, the output is prefixed with 0. For x and X (hexadecimal number) conversions, the output is prefixed with 0x or 0X respectively. 0–(zero) Pad the output with zeros. This means that the field will be filled with leading zeros, as in “000380”. - – (dash) Left-align the output. By default, printf right-aligns output. ‘ ’ – (space) Produce a leading space for positive numbers. + – (plus sign) Sign positive numbers. By default, printf only + signs negative numbers. 
 | width | A number specifying the minimum field width.
 | .precision | For floating point numbers, specify the number of digits of precision to be output after the decimal point. For string conversion, precision specifies the number of characters to output.
+___
+## Sources
+- W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
