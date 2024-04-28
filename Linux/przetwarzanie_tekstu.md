@@ -336,6 +336,7 @@ Adresy można podawać na wiele sposobów:
 | adr! | Pasuje do wszystkich wierszy z wyjątkiem adr, który może mieć jedną z powyższych postaci
 
 ```
+└─ $ ▶ sed -n '12,22p' # wyświetl wiersze 12-22
 └─ $ ▶sed -n '/SUSE/p' distros.txt.txt 
 SUSE    I10.2   I12/07/2006$
 
