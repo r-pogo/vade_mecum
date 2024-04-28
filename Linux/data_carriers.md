@@ -4,12 +4,12 @@
 | mount | mounts the file system
 | umount | detaches (unmounts) the mounted file system
 | fsck | checks and repairs the file system
-| fdisk |
-| mkfs |
-| dd |
-| genisoimage (mkisofs) |
-| wodim (cdrecord) |
-| md5sum |
+| fdisk | Check and repair a file system
+| mkfs | Create a file system
+| dd | Write block oriented data directly to a device
+| genisoimage (mkisofs) | Create an ISO 9660 image file
+| wodim (cdrecord) | Write data to optical storage media
+| md5sum | Calculate an MD5 checksum
 ___
 ## Mounting and unmounting storage devices
 Mounting is a process that enables the device to be included in the operating system.

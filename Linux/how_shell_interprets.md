@@ -1,4 +1,9 @@
 # Interpretation
+Each time you type a command line and press the enter key, bash performs several 
+processes upon the text before it carries out your command.
+The process that makes this happen is called expansion. With expansion, you enter 
+something and it is expanded into something else before the shell acts upon it.
+
 | Command | Action |
 |--------------|--------|
 | echo | display a line of text
@@ -6,6 +11,10 @@
 echo ~
 /home/elski
 ```
+
+`~` tilde has a special meaning when used at the beginning of a word, it expands into the name of the 
+home directory of the named user, or if no user is named, the home directory of the cur
+rent user.
 ___
 ## Interpretation of arithmetic expressions
 | Operator | Description |
@@ -15,7 +24,7 @@ ___
 | * | multiplication
 | / | division integers
 | % | modulo
-| **| exponentiation
+| ** | exponentiation
 
 The interpretation of arithmetic expressions requires the use of the following syntax:
 `$((expression))`
@@ -60,6 +69,13 @@ Useful for directory and files creation:
 mkdir Photos
 cd Photos
 mkdir {2007,,2009}-0{1..12}
+ls
+2007-01  2007-07  2008-01  2008-07  2009-01  2009-07
+2007-02  2007-08  2008-02  2008-08  2009-02  2009-08
+2007-03  2007-09  2008-03  2008-09  2009-03  2009-09
+2007-04  2007-10  2008-04  2008-10  2009-04  2009-10
+2007-05  2007-11  2008-05  2008-11  2009-05  2009-11
+2007-06  2007-12  2008-06  2008-12  2009-06  2009-12
 ````
 ___
 ## Parameter interpretation
@@ -86,6 +102,7 @@ ___
 |`""` | Double quotation mark will turn off the interpretation of all special characters apart from `$, \, left apostrophes`. Also the interpretation of parameters, arithmetic and command result will be carried on.
 `' '` Single quotation mark turn off everything.
 `\` backslash to turn off interpretation of the following sign like \\ o \$ is also used for some special characters like \t for tab
+
 ```
 Double quotation mark dosen't stop the interpretation of parameters, arithmetic calculation and evaluation of commands
 echo "$USER $((2+2)) $(cal)"

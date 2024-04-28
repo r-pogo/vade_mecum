@@ -88,7 +88,7 @@ index.php                                                  100%[================
 ```
 ___
 ## Bezpieczna komunikacja z hostami zdalnymi
-## ssh
+### ssh
 `ssh` protokół secure shell rozwiązuje dwa podstawowe problemy bezpiecznej komunikacji z hostem zdalnym:
 1. Uwierzytelnienia hosta zdalnego, czyli sprawdza, czy jest tym, za którego się podaje, zapobiegając atakom `man-in -the-middle`  
 2. Szyfruje całą komunikację pomiędzy hostami lokalnymi a zdalnymi.  
@@ -151,6 +151,18 @@ Host key verification failed.
 
 Pracując na systemie zdalnym możemy przekierować wyniki do pliku w systemie lokalnym
 `$ ▶ ssh remote-sys 'ls *' > dirlist.txt`
+
+Useful Options with Forwarding
+
+| Option  | Result |
+|---------|--------|
+| -f | Fork SSH process into the background
+| -n | Don't read from STDIN
+| -N | Don't run remote commands
+| -T | Don't allocate a TTY
+
+Np.:
+`ssh -fnNT -D 3000 user@server`
 
 ### scp i sftp
 Pakiet OpenSSH zawiera także dwa programy wykorzystujące zaszyfrowany tunel SSH przeznaczone do kopiowania plików poprzez sieć.  

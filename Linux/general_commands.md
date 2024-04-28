@@ -157,7 +157,7 @@ ____
 | sort | used to sort a file.
 | "pipe line" | Potoki zwykle używane do filtrowania
 
-Różnica między operatorem `>` a `|`: opeator przekierowania łączy polecenie zplikiem, a operator potoku łączy wyjście jednego polecenia z wejściem drugiego. 
+Różnica między operatorem `>` a `|`: operator przekierowania łączy polecenie z plikiem, a operator potoku łączy wyjście jednego polecenia z wejściem drugiego. 
 
 #### Example of usage of cat
 | Command | Action |
@@ -202,6 +202,7 @@ pośrednim etapie procesowania
 
 W przykładzie przechwytujemy całą zawartość folderu do pliku ls.tx, zanim polecenie `grep` przefiltruje zawartość potoku:  
 `$ ▶wc ls /usr/bin | tee ls.txt | grep zip`
+___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 
