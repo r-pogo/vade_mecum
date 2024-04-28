@@ -167,6 +167,8 @@ I11/25/2008$
 2006
 2008
 2008
+
+└─ $ ▶ cut -c 13- # od 13 znaku do końca
 ````
 Podczas pracy z polami możemy zdefiniować inny separator pola zamiast znaku tabulacji:  
 ```
