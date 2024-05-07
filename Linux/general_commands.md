@@ -203,6 +203,10 @@ pośrednim etapie procesowania
 W przykładzie przechwytujemy całą zawartość folderu do pliku ls.tx, zanim polecenie `grep` przefiltruje zawartość potoku:  
 `$ ▶wc ls /usr/bin | tee ls.txt | grep zip`
 ___
+#### Example of usage of head/tail
+```
+head -c 20 # pierwsze 20 znaków
+```
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 

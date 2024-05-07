@@ -85,7 +85,7 @@ Białe znaki są wykorzystywane jako separatory pomiędzy polami i separatory wc
 Można również sortować na więcej niż jednym polu:
 ```sort -k1,1 -k 2n foo.txt
 #Albo
-soet --key=1,1 --key=2n foo.txt
+sort --key=1,1 --key=2n foo.txt
 ```
 `1,1` tu ograniczamy do sortowania do pierwszego pola, oznacza "rozpocznij od pola1 i skończy na polu 1"
 `2n` oznacza, że kluczem sortowania jes pole 2 oraz że sortowanie powinno być numeryczne.
@@ -99,10 +99,13 @@ Opcja `key -k` pozwala określić przesunięcie wewnątrz pól, dzięki czemu mo
 Opcja `-k 3.7` sprawia, że pole `sort` będzie sortować według klucza, który rozpoczyna się od siódmego znaku w trzecim polu.
 Co, jeśli plik nie używa białych znaków do separacji? Ale np. `:`?
 W takich sytuacjach używamy `-t` do określenia znak separatora.
-`sort -t ':' -k 7 /etc/passwd | head`
+```
+sort -t ':' -k 7 /etc/passwd | head
+$ ▶ sort -r -n -k 2 -t $'\t' # znak tabulacji
+```
 ___
 ## uniq
-`uniq` domyślnie usuwa wszystkie powtarzające się wiersze i i wyśle wynik do standardowego strumienia wyjścia. Często używany razem z `sort`
+`uniq` domyślnie usuwa wszystkie powtarzające się wiersze i wyśle wynik do standardowego strumienia wyjścia. Często używany razem z `sort`
 ```
 $ ▶cat > foo.txt
 a
@@ -138,6 +141,10 @@ Często wykorzystywane opcje:
 | -i | --ignore-case | Ignoruje wielkość liter
 | -s n | --skip-chars=n | Ignoruje n początkowych znaków w każdym wierszu
 | -u | --unique | Wyświetla jedynie unikalne wiersze
+
+```
+$ ▶ uniq -c | tr -s ' ' | cut -c 2- # rozwiązanie do HackerRank uniq -c zostawia białe znaki na początku
+```
 ___
 ## cut
 `cut` służy do wyodrębniania sekcji tekstu z wiersza i zwrócenia tej sekcji do standardowego strumienia wyjścia.  
@@ -167,6 +174,8 @@ I11/25/2008$
 2006
 2008
 2008
+
+└─ $ ▶ cut -c 13- # od 13 znaku do końca
 ````
 Podczas pracy z polami możemy zdefiniować inny separator pola zamiast znaku tabulacji:  
 ```
@@ -191,6 +200,9 @@ znalezione w każdym pliku w jeden standardowy strumień wyjścia.
 1       SUSE    I10.2   I12/07/2006$
 2       Fedora  I10     I11/25/2008$
 3       Ubuntu  I10     I11/25/2008$
+
+
+ $ ▶ paste -s -d '\t' file.csv # rozwiązanie HackeRank -s option is used to merge all lines from the input file into a single line.
 ```
 ___
 ## join
@@ -283,6 +295,9 @@ ___
 ```
 └─ $ ▶echo "lowercase letters" | tr a-z A-Z
 LOWERCASE LETTERS
+
+└─ $ ▶ tr -s ' ' #  replace each sequence of a repeated character that is listed in the last specified SET,
+                 # with a single occurrence of that character
 ```
 Akceptuje dwa argumenty: zestaw znaków, które mają być przekształcone, oraz odpowiadający im
 zestaw znaków, na które należy je przekształcić. Zestaw znaków można przekazać na kilka sposobów:
@@ -334,6 +349,7 @@ Adresy można podawać na wiele sposobów:
 | adr! | Pasuje do wszystkich wierszy z wyjątkiem adr, który może mieć jedną z powyższych postaci
 
 ```
+└─ $ ▶ sed -n '12,22p' # wyświetl wiersze 12-22
 └─ $ ▶sed -n '/SUSE/p' distros.txt.txt 
 SUSE    I10.2   I12/07/2006$
 
