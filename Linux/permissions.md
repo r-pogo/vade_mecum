@@ -220,6 +220,7 @@ elski @ DESKTOP-3T3MNOS: ~
 Changing password for elski.
 Current password:
 ```
+___
 ## Sources
 - W. Shotts, The Linux Command Line, 2nd Edition: A Complete Introduction, No Starch Press 2019
 - M. Brent, Guru99, File Permissions in Linux / Unix: How to Read, Write & Change?, https://www.guru99.com/file-permissions.html#:~:text=Linux%20divides%20the%20file%20permissions,ownership%20of%20a%20file%2Fdirectory. 
