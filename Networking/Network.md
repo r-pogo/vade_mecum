@@ -49,7 +49,7 @@ In most cases, static IP addresses are reserved for servers and network devices 
 ___
 ### IP datagram
 `IP datgram`:
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 IP datagram is a highly structured series of fields that are strictly defined.
 The very first field, `Version`, is four bits and indicates what version of Internet Protocol is being used v4 or v6.
@@ -91,7 +91,7 @@ IP addresses can be split into two sections; the `network ID` and the `host ID`.
 `Host address/ID`: is what is assigned to the host within that network. Host is like your home number
 
 Here the Network Address is 192.168.1.0
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 
 Network + host is mainly for manageability to break bigger networks into smaller ones which is known as `subnetting`.
 IP addresses have a network and host part., so networks can be logically broken down into smaller networks, which is `subnetting`.
@@ -99,13 +99,13 @@ IP addresses have a network and host part., so networks can be logically broken 
 If we have a large network and one computer starts to broadcasting it will send the message to all others machines, it would definitely slow dow the network
 maybe eve bring it to a hold.
 Networks are broken down and physically separated by using routers, broadcast do not get pass through routers, they only stay within they network/sub-network
-![img_25.png](img_25.png)
+![img_25.png](img/img_25.png)
 So if this computer what to communicate with the other computer:
-![img_26.png](img_26.png)
+![img_26.png](img/img_26.png)
 It will send a broadcast that only the computer in its subnet will hear:
-![img_27.png](img_27.png)
+![img_27.png](img/img_27.png)
 But since the other computer is on a different subnet the signal will be sent through the default getaway, which is the router:
-![img_28.png](img_28.png)
+![img_28.png](img/img_28.png)
 
 `Subnetting` is done by changing the default subnet mask by borrowing some of the bits from the host portion.
 
@@ -168,7 +168,7 @@ What if subnet is something like 255.255.224.0?
 ...
 255.255.225.254 = 11111111.11111111.11111111.11111110 = 128 neworks with 0 usable hosts 
 ````
-![img_29.png](img_29.png)
+![img_29.png](img/img_29.png)
 
 Subnet mask can also be express in `CIDR - Classless Inter-Domain Routing (slash notation)`:
 
@@ -218,7 +218,7 @@ used for the network ID and only the final octet is used for the host ID.
 
 ```
 Each address class represents a network of vastly different size.
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 
 If the first bit has to be a zero, as it is with the Class A address, the possible values for the first octet are 0-127. 
 This means that any IP address with a first octet with one of those values is a Class A address. Similarly, Class B addresses are 
@@ -239,12 +239,12 @@ An ARP table is just a list of IP addresses and the MAC address is associated wi
 
 Let's say we want to send some data to the IP address 10.20.30.40. 
 It might be the case that this destination doesn't have an entry in the ARP table.
-![img_7.png](img_7.png)
+![img_7.png](img/img_7.png)
 When this happens, the node that wants to send data sends a `broadcast ARP message` to the `MAC Broadcast address`, which is all Fs.  
 These kinds of broadcast ARP messages are delivered to all computers on the local network.
-![img_8.png](img_8.png)
+![img_8.png](img/img_8.png)
 When the network interface that's been assigned an IP of 10.20.30.40 receives this ARP broadcast, it sends back what's known as an `ARP response`.
-![img_9.png](img_9.png)
+![img_9.png](img/img_9.png)
 Now the transmitting computer knows what MAC address to put in the destination hardware address field and the Ethernet frame is ready for delivery. 
 It will also likely store this IP address in its local ARP table so that it won't have to send an ARP broadcast the next time it needs to communicate with this IP.
 ARP table entries generally expire after a short amount of time to ensure changes in the network are accounted for.
@@ -258,13 +258,13 @@ Basic routing:
 4. The router forwards that out through the interface that's closest to the remote network as determined by additional info within the routing table. 
 These steps are repeated as often as needed until the traffic reaches its destination. 
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 Example with 2 networks:  
 Network A address space: 192.168.1.0/24.  
 Network B address space: 10.0.0.0/24. 
 
-![img_10.png](img_10.png)
+![img_10.png](img/img_10.png)
 
 The router has an interface on each network. On network A, it has an IP of 192.168.1.1 and on network B it has an IP of 10.0.0.254. 
 IP addresses belong to networks, not individual nodes on a network. 
@@ -274,13 +274,13 @@ So it sends this packet to the MAC address of its gateway, the router.
 The router's interface on network A receives the packet because it sees that destination MAC address belongs to it. 
 
 The router then strips away the data link layer encapsulation, leaving the network layer content, the IP datagram. 
-![img_11.png](img_11.png)
+![img_11.png](img/img_11.png)
 
-![img_12.png](img_12.png)
+![img_12.png](img/img_12.png)
 
 Now, the router can directly inspect the IP datagram header for the destination IP field. 
 
-![img_13.png](img_13.png)
+![img_13.png](img/img_13.png)
 
 It finds the destination IP of 10.0.0.10. The router looks at its `routing table` and 
 sees that network B or the 10.0.0.0/24, network is the correct network for the destination IP. 
@@ -299,9 +299,9 @@ takes all of the data from the first IP datagram and duplicates it, but it detri
 the TTL field by one and calculates a new checksum. 
 Then, it encapsulates this new IP datagram inside of a new Ethernet frame.
 
-![img_14.png](img_14.png)
+![img_14.png](img/img_14.png)
 
-![img_15.png](img_15.png)
+![img_15.png](img/img_15.png)
 
 
 This time it sets its own MAC address of the interface on network B as the source MAC address.
@@ -317,7 +317,7 @@ There's a second router connecting network B and network C, its interface on net
 interface on network C has an IP of 172.16.1.1. 
 This time around our computer at 192.168.1.100 wants to send some data to the computer that has an IP of 172.16.1.100
 
-![img_30.png](img_30.png)
+![img_30.png](img/img_30.png)
 
 The computer at 192.168.1.100 knows that 172.16.1.100 is not on its local network. 
 So it sends the packet to its gateway, the router between network A network B. Again, the router inspects the content of 
@@ -338,7 +338,7 @@ This happens over and over every single packet, making up every single bit of tr
 Routing tables can vary a ton depending on the make and class of the router, but they all share a few things in common.
 Basic Routing Table:
 
-![img_31.png](img_31.png)
+![img_31.png](img/img_31.png)
 
 
 The most basic routing table will have four columns:
@@ -384,15 +384,15 @@ They just have some information about their immediate neighbors.
 Example:
 Router A based on his routing table knows that it needs 4 hops to reach network X
 
-![img_32.png](img_32.png)
+![img_32.png](img/img_32.png)
 
 Router B is just 2 hops to reach network X. Router B using a distance vector protocol send s it's the basic contents of its routing table to Router A. 
 
-![img_33.png](img_33.png)
+![img_33.png](img/img_33.png)
 
 Router A sees that network X is only two hops away from Router B. 
 
-![img_34.png](img_34.png)
+![img_34.png](img/img_34.png)
 
 Even with the extra hop to get from Router A to Router B, 
 this means that Network X is only three hops away from router A. If it forwards data to Router B instead of router C, armed with this new information, 
@@ -403,7 +403,7 @@ Because of this, a router might be slow to react to a change in the network far 
 
 `Link state protocols`: get their name because each router advertises the state of the link of each of its interfaces. 
 
-![img_35.png](img_35.png)
+![img_35.png](img/img_35.png)
 
 These interfaces could be connected to other routers or they could be direct connections to networks. 
 The information about each router is propagated to every other router on the autonomous system. 
@@ -423,7 +423,7 @@ Exterior gateway protocols are really key to the Internet operating how it does 
 
 The Internet is an enormous mesh of `autonomous systems`. 
 
-![img_36.png](img_36.png)
+![img_36.png](img/img_36.png)
 
 At the highest levels, core Internet routers need to know about autonomous systems in order to properly forward traffic. 
 Since autonomous systems are known and defined collections of networks, getting data to the edge router of an autonomous system is the number 1 goal of `core Internet routers`. 

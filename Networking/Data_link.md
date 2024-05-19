@@ -45,7 +45,7 @@ link into meaningful data or vice versa.
 
 Ethernet frame:
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 Almost all sections of an Ethernet frame are mandatory, and most of them have a fixed size. 
 The first part of an Ethernet frame is known as the `preamble`. A preamble is eight bytes or 64 bits long, and can itself be split into two sections. 
