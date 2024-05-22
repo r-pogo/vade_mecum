@@ -84,7 +84,7 @@ The main purpose of this field is to make sure that when there's a miss configur
 
 `Paddinbg`: The padding field is just a series of zeroes used to ensure the header is the correct total size.
 ___
-## Network ID/Host ID/Subnetting
+### Network ID/Host ID/Subnetting
 IP addresses can be split into two sections; the `network ID` and the `host ID`.
 
 `Netwrok address/ID`: Every network have a unique address. Network portion of the IP address is like the street name where you live
@@ -120,7 +120,12 @@ masking the network portion of the IP address.
    255.     255.     255.     0 ---> Subnet mask
 11111111.11111111.11111111.00000000 ---> binary format
 ````
-How to understand binary:
+#### Binary
+
+How to understand binary:  
+
+![img.png](img/img_50.png)
+
 ````
 1 = on
 0 = off
@@ -132,7 +137,17 @@ How to understand binary:
 
 192 = 11000000 = 128+64= 192
 ````
-Masking:
+#### Masking
+IP addresses type:
+Network address: identifier for a group of devices, network prefix
+
+![img.png](img/img_42.png)
+
+Broadcast address: Identifier for all devices on a network
+![img.png](img/img_43.png)
+
+Host address: identifies unique device on a network
+![img.png](img/img_44.png)
 ````
 Ipv4       192.168.57.139
             |   |   |  |
@@ -171,6 +186,8 @@ What if subnet is something like 255.255.224.0?
 ![img_29.png](img/img_29.png)
 
 Subnet mask can also be express in `CIDR - Classless Inter-Domain Routing (slash notation)`:
+
+![img.png](img/img_45.png)
 
 ````
 192.168.1.0 /24 ---> the number counts the 1 in the subnet mask
@@ -455,4 +472,5 @@ ___
 ## Sources
 - PowerCertAnimated videos, Subnet Mask - Explained, https://www.youtube.com/@PowerCertAnimatedVideos
 - Google, The Bits and Bytes of Computer Networking, https://www.coursera.org/
+- Ross Bagurdes, Network Concepts and Protocols, https://app.pluralsight.com/
 

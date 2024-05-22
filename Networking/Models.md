@@ -10,15 +10,24 @@
 | Data Link | Ethernet, PPP, Switch, Bridge | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate
 | Physical | n/a | Bits | n/a | Physical devices that interconnect computers (Coax, fiber, wireless, hubs, repeaters)
 ___
-## The TCP/IP five layer model
+## TCP/IP five layer model
 
 | Layer Name | Protocol | Protocol Data Unit | Addressing | Explanation |
 |------------|----------|--------------------|------------|-------------|
-| Application | HTTP,SMTP etc...| Messages | n/a | 
+| Application | HTTP,SMTP etc...| Messages | 7,6,5 OSI layers | 
 | Transport | TCP/UDP | Segment | Port#'s | Sorts out which client and server programs are supposed to get that data. End-to-end connection
 | Network | IP | Packet/Datagram | IP Address | Allows different networks to communicate with each other through devices known as routers
 | Data Link | Ethernet, Wi-Fi | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate
 | Physical | n/a | Bits | n/a | Physical devices that interconnect computers
+___
+## TCP/IP 
+
+| Layer Name | OSI model layers|
+|------------|----------|
+| Application | 7,6,5
+| Host to Host | 4
+| Internet | 3
+| Network Access | 2,1
 
 `Etherent`: Ethernet standards also define a protocol responsible for getting data 
 to nodes on the same network or link  
