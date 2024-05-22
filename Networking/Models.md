@@ -60,7 +60,7 @@ This is accomplished by using a special destination known as a broadcast address
 The ethernet broadcast address is all F's `FF:FF:FF:FF:FF:FF`. Ethernet broadcasts are used so that devices can learn more about each other.
 ___
 ## Encapsulation
-`Encapsulation`:
+`Encapsulation`:  
 ![img_4.png](img/img_4.png)
 
 ![img_16.png](img/img_16.png)
