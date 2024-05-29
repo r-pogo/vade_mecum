@@ -69,5 +69,7 @@ TCP connection. In fact, your local computer from your phone to a desktop will g
 That way, it doesn't have to bother its local name server for every TCP connection either.
 ![img_1.png](img_1.png)
 
-
-
+___
+## Sources
+- PowerCertAnimated videos, How a DNS Server (Domain Name System) works, https://www.youtube.com/@PowerCertAnimatedVideos
+- Google, The Bits and Bytes of Computer Networking, https://www.coursera.org/
