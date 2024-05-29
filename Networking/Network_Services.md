@@ -67,7 +67,7 @@ IP it's told to, so by using a hierarchical system controlled by trusted entitie
 that the responses to DNS lookups are accurate. Now it makes sense why our local name servers to cache DNS lookups. It's so that full lookup path doesn't't have to happen for every single 
 TCP connection. In fact, your local computer from your phone to a desktop will generally have its own temporary DNS cache as well. 
 That way, it doesn't have to bother its local name server for every TCP connection either.
-![img_1.png](img_1.png)
+![img_1.png](img/img_51.png)
 
 ___
 ## Sources
