@@ -54,21 +54,17 @@ lookup with what `authoritative name server` to contact.
 parts of any domain name, which is the resolution at which a single organization may be responsible for DNS lookups.
 Using www.weather.com as an example, the TLD name server will point a lookup at the authoritative server for weather.com, 
 which would likely be controlled by the weather channel, the organization itself that runs the site.
+Finally, the DNS lookup could be redirected at the authoritative server for weather.com, which would finally provide the
+actual IP of the server in question.
+Now the resolver will tell your computer the IP and your computer can retrieve the bestSite.com web page.
+Once the resolver will receive the IP address it will store it in its cache memory in case of a 
+query for the same page, so it doesn't have to go through all these steps again.
 
-Authoritative name servers are responsible for knowing everything about the domain which include the IP address.
-The resolver again will ask the authoritative name server for the searched IP and the authoritative will respond with the  correct IP,
-and the resolver will tell your computer the IP and your computer can retrieve the bestSite.com web page.
-Once the resolver will receive the IP address it will store it in its cache memory in case of a query for the same page, so it doesn't have to go through all these steps again
-
-
-
- Finally, the DNS lookup could be redirected at the authoritative server for weather.com, which would finally provide the actual IP of the server in question. 
 This strict hierarchy is very important to the stability of the Internet. Making sure that all full 
 DNS resolutions go through a strictly regulated and controlled series of lookups to get the correct responses is the 
 best way to protect against malicious parties redirecting traffic. Your computer will blindly send traffic to whatever 
 IP it's told to, so by using a hierarchical system controlled by trusted entities in the way DNS does, we can better ensure 
-that the responses to DNS lookups are accurate. Now that you see how many steps are involved, it should make sense why we 
-trust our local name servers to cache DNS lookups. It's so that full lookup path doesn't have to happen for every single 
+that the responses to DNS lookups are accurate. Now it makes sense why our local name servers to cache DNS lookups. It's so that full lookup path doesn't't have to happen for every single 
 TCP connection. In fact, your local computer from your phone to a desktop will generally have its own temporary DNS cache as well. 
 That way, it doesn't have to bother its local name server for every TCP connection either.
 ![img_1.png](img_1.png)
