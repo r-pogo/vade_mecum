@@ -51,10 +51,10 @@ The typical test objectives are:
 • Validating whether the test object is complete and works as expected by the stakeholders  
 
 ### Testing and Debugging
-Testowanie (ujawnia awarię): triggers failures that are caused by defects in
+`Testowanie (ujawnia awarię)`: triggers failures that are caused by defects in
 the software (dynamic testing) or can directly find defects in the test object (static testing). 
 
-Debugowanie (szuka przyczyny): debugging is concerned with finding causes of
+`Debugowanie (szuka przyczyny)`: debugging is concerned with finding causes of
 this failure (defects), analyzing these causes, and eliminating them
 ___
 ### Why is Testing Necessary?
