@@ -39,7 +39,7 @@ Testowanie skupia się zarówno na:
 - Walidacji (Czy tworzony jest prawidłowy produkt?)
 
 ### Cele testowania K1
-The typical test objectives are:
+The typical test objectives are:  
 • Evaluating work products such as requirements, user stories, designs, and code  
 • Triggering failures and finding defects  
 • Ensuring required coverage of a test object  
