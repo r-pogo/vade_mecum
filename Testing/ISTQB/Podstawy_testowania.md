@@ -278,16 +278,16 @@ reporting, etc.
 
 The following list of work products is not exhaustive: 
 
-• Test planning work products include: test plan, test schedule, risk register, and entry and exit 
+• `Test planning work products include`: test plan, test schedule, risk register, and entry and exit 
 criteria. Risk register is a list of risks together with risk likelihood, risk impact and 
 information about risk mitigation. Test schedule, risk register and entry and exit 
 criteria are often a part of the test plan. 
 
-• Test monitoring and control work products include: test progress reports, 
+• `Test monitoring and control work products include`: test progress reports, 
 documentation of control directives and risk information. All kinds of reports such as test 
 progress reports and test summaries - In other words, who is working on what report? 
 
-• Test analysis work products include: (prioritized) test conditions (e.g., acceptance criteria), 
+• `Test analysis work products include`: (prioritized) test conditions (e.g., acceptance criteria), 
 and defect reports regarding defects in the test basis (if not fixed directly). 
 What are the test conditions again? It means a testable aspect of a component 
 or a system identified as a basis for testing. In plain English, you can break down requirements into logical chunks, 
@@ -297,16 +297,16 @@ Test design and test implementation are the phases where you create specific tes
 cases packaged into test sets and you map or trace those to the more broadly defined test conditions. Additionally, you may 
 define the necessary test data.
 
-• Test design work products include: (prioritized) test cases, test charters, coverage items, test 
+• `Test design work products include`: (prioritized) test cases, test charters, coverage items, test 
 data requirements and test environment requirements. 
 
-• Test implementation work products include: test procedures, automated test scripts, test 
+• `Test implementation work products include`: test procedures, automated test scripts, test 
 suites, test data, test execution schedule, and test environment elements. Examples of test 
 environment elements include: stubs, drivers, simulators, and service virtualizations. 
 
-• Test execution work products include: test logs, and defect reports. 
+• `Test execution work products include`: test logs, and defect reports. 
 
-• Test completion work products include: test completion report, action items 
+• `Test completion work products include`: test completion report, action items 
 for improvement of subsequent projects or iterations, documented lessons learned, and change 
 requests (e.g., as product backlog items). 
 
