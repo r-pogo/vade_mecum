@@ -1,5 +1,5 @@
 # Podstawy Testowania
-ISO/ICE/IEE 29119-1: info about software testing concepts
+ISO/ICE/IEE 29119-1: info about software testing concepts  
 ISO/ICE/IEE 29119-2: info about test processes
 ## What is testing
 Software testing is a set of activities to discover defects and evaluate the quality of software artifacts.
