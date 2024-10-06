@@ -1,44 +1,27 @@
 # Podstawy Testowania
-
+ISO/ICE/IEE 29119-1: info about software testing concepts
+ISO/ICE/IEE 29119-2: info about test processes
 ## What is testing
 Software testing is a set of activities to discover defects and evaluate the quality of software artifacts.
 These artifacts, when being tested, are known as `test objects`.
-A common misconception about testing is that it only consists of executing tests. 
-However, software testing also includes other activities and must be aligned with the 
-software development lifecycle.
+No, just executing test but includes also other activities aligned with SDLC.
 
-Another common misconception about testing is that testing focuses entirely on verifying the test object.
-Whilst testing involves `verification`, i.e., checking whether the system meets specified requirements, it also
-involves `validation`, which means checking whether the system meets users’ and other stakeholders’
-needs in its operational environment.
+`verification`, checking whether the system meets specified requirements (Czy produkt tworzony jest prawidłowo?)
+`validation`, which means checking whether the system meets users’ and other stakeholders’ needs in its operational environment. (Czy tworzony jest prawidłowy produkt?)
 
 Testing is not only a technical activity. It also needs to be properly planned, managed, estimated,
 monitored and controlled.
 
-Testers use tools, but it is important to remember that testing is largely an intellectual
-activity, requiring the testers to have specialized knowledge, use analytical skills and apply critical
+Testing is largely an intellectual activity, requiring the testers to have specialized knowledge, use analytical skills and apply critical
 thinking and systems thinking.
 
 Testowanie to technologiczne badanie pozwalające otrzymać informacje o jakości  
 testowanego produktu.
 
-Testowanie jest procesem który składa się z następujących głównych punktów:
-1. Planowanie testów
-2. Monitorowanie i nadzór testów
-3. Analiza testów
-4. Projektowanie testów
-5. Implementacja testów
-6. Wykonywanie testów
-7. Ukończenie testów
-
 Testowanie może mieć zarówno formę `dynamiczną` (uruchamiamy testowany moduł/system),  
 jak i `statyczną` (bez uruchomiania, dokumentacja itp).
 
-Testowanie skupia się zarówno na:
-- Weryfikacji (Czy produkt tworzony jest prawidłowo?)
-- Walidacji (Czy tworzony jest prawidłowy produkt?)
-
-### Cele testowania K1
+### Cele testowania K1 (Identify typical test objectives)
 The typical test objectives are:  
 • Evaluating work products such as requirements, user stories, designs, and code  
 • Triggering failures and finding defects  
@@ -55,23 +38,31 @@ The typical test objectives are:
 the software (dynamic testing) or can directly find defects in the test object (static testing). 
 
 `Debugowanie (szuka przyczyny)`: debugging is concerned with finding causes of
-this failure (defects), analyzing these causes, and eliminating them
+this failure (defects), analyzing these causes, and eliminating them.
+
+Debugging process:
+- Reproducing failure
+- Diagnosis (finding root cause)
+- Fixing the cause
+
+Static testing identifies a defect, debugging here is concerned with removing it.
+Static testing directly finds defects, and cannot cause failures.
 ___
 ### Why is Testing Necessary?
 
 Testing provides a cost-effective means of detecting defects. These defects can then be removed (by
 debugging – a non-testing activity), so testing indirectly contributes to higher quality test objects.
+
 Testing provides a means of directly evaluating the quality of a test object at various stages in the SDLC.
-These measures are used as part of a larger project management activity, contributing to decisions to
+These measures are used as part of a larger project management activity, contributing to decision to
 move to the next stage of the SDLC, such as the release decision.
-Testing provides users with indirect representation on the development project. Testers ensure that their
-understanding of users’ needs are considered throughout the development lifecycle. The alternative is to
-involve a representative set of users as part of the development project, which is not usually possible due
-to the high costs and lack of availability of suitable users.
+
+Testers ensure that their understanding of users’ needs are considered throughout the development lifecycle.
+
 Testing may also be required to meet contractual or legal requirements, or to comply with regulatory
 standards
 
-### QM/QA/TQC/testing K1
+### QM/QA/TQC/testing K1 (Recall the relation between testing and quality assurance)
 `Quality assurance` (zapewnianie jakości) jest często utożsamiane z testowaniem.
 Są to dwa oddzielne procesy, które zawierają się w szerszym pojęciu `Quality management` (zarządzanie jakościa).  
 `QM` obejmuje wszystkie czynności mające na celu kierowanie organizacji w dziedzinie  
@@ -91,14 +82,7 @@ processes. It works on the basis that if a good process is followed correctly, t
 product.
 
 Test results are used by QA and QC. In QC they are used to fix defects, while in QA they provide 
-feedback on how well the development and test processes are performing. 
-
-Elementami `QM` są:
-- `Zapewnianie jakości`: skupia się na przestrzeganiu właściwych procesów w celu uzyskania  
-  pewności, że osiągnięte zostaną odpowiednie poziomy jakości. Jeśli proces jest wykonywany prawidłowo  
-  powstające produkty pracy mają wyższą jakość.
-- `Kontrola jakości`: obejmuje cały szereg czynności, także testowych, które wspierają  
-  osiągnięcie odpowiednich poziomów jakości.
+feedback on how well the development and test processes are performing.
 
 ### Errors, Defects, Failures, Root Causes
 - `Pomyłka/Error (błąd)`: działanie człowieka powodujące powstanie nieprawidłowego rezultatu (programista zle NAPISAŁ funkcje, w której pomylił znak + z *)
@@ -137,6 +121,8 @@ and standards applicable to your domain.
 
 Internal factors: e.g: multiple software development lifecycle models that hugely influence your workflow, budgets, resources, time, and overall complexity of the system
 
+`Testware/Test work products`:  is created as output work products from the test activities.
+
 `Testing activites` can be broadly grouped as test planning, test monitoring and control, test analysis, test design, test implementation, test execution, and test completion. 
 Each of these groups can be broken down further. One note, although these activities seem logically sequential, they don't have to be carried out in sequence. 
 So instead of doing all of the planning, then all test analysis, then all test design and execution, and then reporting, and finally, test completion without ever 
@@ -147,6 +133,9 @@ The dynamic of your workflow will largely depend on how the entire team works, a
 
 `Test planning`: consists of defining the test objectives and then selecting an approach that best achieves 
 the objectives within the constraints imposed by the overall context. A test plan is not something set in stone.
+`Test planning work products include`: test plan, test schedule, risk register, and entry and exit 
+criteria. Risk register is a list of risks together with risk likelihood, risk impact and 
+information about risk mitigation. 
 
 `Test monitoring and control`: Test monitoring involves the ongoing checking of all test activities and the 
 comparison of actual progress against the plan. Are we doing what we planned to do, if no, why not? Are we on track to meet the deadline?
@@ -171,6 +160,10 @@ elements. This can also assist in communicating the technical aspects of testing
 understandable manner. Traceability provides information to assess product quality, process capability, 
 and project progress against business goals. 
 
+`Test monitoring and control work products include`: test progress reports, 
+documentation of control directives and risk information. All kinds of reports such as test 
+progress reports and test summaries - In other words, who is working on what report? 
+
 `Test analysis (what to test?)`: includes analyzing the test basis to identify testable features and to define and prioritize 
 associated test conditions, together with the related risks and risk levels. The test basis 
 and the test objects are also evaluated to identify defects they may contain and to assess their testability. 
@@ -184,6 +177,12 @@ All of this is material for your test basis, the foundation upon which you will 
 Reading and then what? Yes, reading and trying to identify all possible defects such as ambiguities, omissions, inconsistencies, inaccuracies, contradictions, superfluous 
 statements. Any of these defects on paper has the potential to be converted to defects in software and eventually to failures. This might ring a bell. 
 This is directly related to one of the seven testing principles, early testing saves time and money.
+
+`Test analysis work products include`: (prioritized) test conditions (e.g., acceptance criteria), 
+and defect reports regarding defects in the test basis (if not fixed directly). 
+What are the test conditions again? It means a testable aspect of a component 
+or a system identified as a basis for testing. In plain English, you can break down requirements into logical chunks, 
+map those to test conditions, each with a limited scope, and then based on those, create individual test cases.
 
 Test Design and Implementation
 Okay, we analyzed everything we possibly could, and so we know what to test. Now we have to answer how to test it. Test design includes 
@@ -201,7 +200,7 @@ if we're talking about the same big piece of software. And in that case, you may
 subsection of requirements. 
 I'll explain what the test condition is in more detail a bit later. Regardless of how you do it, you should create requirements 
 to test mapping, also known as traceability, between the requirements, your test basis, and the test work products, in this case, the test cases. 
-This is important to do and to remember for the exam. So test design answers how to test, 
+This is important to do and to remember for the exam. So test design answers how to test. 
 
 `Test design (how to test)`: includes elaborating the test conditions into test cases and other testware (e.g., test 
 charters). This activity often involves the identification of coverage items, which serve as a guide to 
@@ -224,6 +223,9 @@ You should create requirements to test mapping, also known as traceability, betw
 
 ![img.png](img/img_4.png)
 
+`Test design work products include`: (prioritized) test cases, test charters, coverage items, test 
+data requirements and test environment requirements. 
+
 `Test implementation (do we now have everything in place to run the tests?)`: includes creating or acquiring the testware necessary for test execution (e.g., test 
 data). Test cases can be organized into test procedures and are often assembled into test suites. Manual 
 and automated test scripts are created. Test procedures are prioritized and arranged within a test 
@@ -235,11 +237,17 @@ simulators, and any other kind of infrastructure, preparing test data and ensuri
 In the previous step, you identified which data you need. Now you're getting it or creating it. Finally, verifying and updating 
 bi‑directional traceability between the test basis, test conditions, test cases, and so forth.
 
+`Test implementation work products include`: test procedures, automated test scripts, test 
+suites, test data, test execution schedule, and test environment elements. Examples of test 
+environment elements include: stubs, drivers, simulators, and service virtualizations. 
+
 `Test execution`: includes running the tests in accordance with the test execution schedule (test runs). 
 Test execution may be manual or automated. Test execution can take many forms, including continuous 
 testing or pair testing sessions. Actual test results are compared with the expected results. The test 
 results are logged. Anomalies are analyzed to identify their likely causes. This analysis allows us to report 
-the anomalies based on the failures observed
+the anomalies based on the failures observed.
+
+`Test execution work products include`: test logs, and defect reports. 
 
 `Test completion`: activities usually occur at project milestones (e.g., release, end of iteration, test level 
 completion) for any unresolved defects, change requests or product backlog items created. Any testware 
@@ -256,6 +264,16 @@ test evidence for a year or even more in case some external audit comes in and d
 from the completed test activities to determine changes needed for future iterations, releases, and projects, basically, 
 learn from mistakes and do things better in the future.
 
+`Test completion work products include`: test completion report, action items 
+for improvement of subsequent projects or iterations, documented lessons learned, and change 
+requests (e.g., as product backlog items).
+
+
+![img_1.png](img/img_5.png)
+
+![img_2.png](img/img_6.png)
+
+
 Testing is not performed in isolation. Test activities are an integral part of the development processes 
 carried out within an organization. Testing is also funded by stakeholders and its final goal is to help fulfill 
 the stakeholders’ business needs. Therefore, the way the testing is carried out will depend on a number 
@@ -271,49 +289,72 @@ regulations, etc.)
 • Tools (availability, usability, compliance, etc.) 
 These factors will have an impact on many test-related issues, including: test strategy, test techniques 
 used, degree of test automation, required level of coverage, level of detail of test documentation, 
-reporting, etc. 
+reporting, etc.
 
+### Role in testing
+`test management`: takes overall responsibility for the test process, test team and leadership of the 
+test activities. The test management role is mainly focused on the activities of test planning, test 
+monitoring and control and test completion
 
-`Testware/Test work products`:  is created as output work products from the test activities.
+`testing role`: takes overall responsibility for the engineering (technical) aspect of testing. The testing 
+role is mainly focused on the activities of test analysis, test design, test implementation and test 
+execution.
 
-The following list of work products is not exhaustive: 
+## Essential Skills and Good Practices in Testing
 
-• `Test planning work products include`: test plan, test schedule, risk register, and entry and exit 
-criteria. Risk register is a list of risks together with risk likelihood, risk impact and 
-information about risk mitigation. Test schedule, risk register and entry and exit 
-criteria are often a part of the test plan. 
+ - Testing knowledge (to increase effectiveness of testing, e.g., by using test techniques) 
+ - Thoroughness, carefulness, curiosity, attention to details, being methodical (to identify defects, 
+especially the ones that are difficult to find) 
+ - Good communication skills, active listening, being a team player (to interact effectively with all 
+stakeholders, to convey information to others, to be understood, and to report and discuss 
+defects) 
+ - Analytical thinking, critical thinking, creativity (to increase effectiveness of testing) 
+ - Technical knowledge (to increase efficiency of testing, e.g., by using appropriate test tools) 
+ - Domain knowledge (to be able to understand and to communicate with end users/business 
+representatives)
 
-• `Test monitoring and control work products include`: test progress reports, 
-documentation of control directives and risk information. All kinds of reports such as test 
-progress reports and test summaries - In other words, who is working on what report? 
+## Whole Team Approach K1 (Recall the advantage of the whole team approach)
 
-• `Test analysis work products include`: (prioritized) test conditions (e.g., acceptance criteria), 
-and defect reports regarding defects in the test basis (if not fixed directly). 
-What are the test conditions again? It means a testable aspect of a component 
-or a system identified as a basis for testing. In plain English, you can break down requirements into logical chunks, 
-map those to test conditions, each with a limited scope, and then based on those, create individual test cases.
+One of the important skills for a tester is the ability to work effectively in a team context and to contribute 
+positively to the team goals. The whole team approach – a practice coming from Extreme Programming 
+(see section 2.1) – builds upon this skill.  
 
-Test design and test implementation are the phases where you create specific test 
-cases packaged into test sets and you map or trace those to the more broadly defined test conditions. Additionally, you may 
-define the necessary test data.
+In the whole-team approach any team member with the necessary knowledge and skills can perform any 
+task, and everyone is responsible for quality. The team members share the same workspace (physical or 
+virtual), as co-location facilitates communication and interaction. The whole team approach improves 
+team dynamics, enhances communication and collaboration within the team, and creates synergy by 
+allowing the various skill sets within the team to be leveraged for the benefit of the project. 
 
-• `Test design work products include`: (prioritized) test cases, test charters, coverage items, test 
-data requirements and test environment requirements. 
+Testers work closely with other team members to ensure that the desired quality levels are achieved. This 
+includes collaborating with business representatives to help them create suitable acceptance tests and 
+working with developers to agree on the test strategy and decide on test automation approaches. Testers 
+can thus transfer testing knowledge to other team members and influence the development of the 
+product. 
 
-• `Test implementation work products include`: test procedures, automated test scripts, test 
-suites, test data, test execution schedule, and test environment elements. Examples of test 
-environment elements include: stubs, drivers, simulators, and service virtualizations. 
+Depending on the context, the whole team approach may not always be appropriate. For instance, in 
+some situations, such as safety-critical, a high level of test independence may be needed. 
 
-• `Test execution work products include`: test logs, and defect reports. 
+## Independence of Testing
+A certain degree of independence makes the tester more effective at finding defects due to differences 
+between the author’s and the tester’s cognitive biases (cf. Salman 1995). Independence is not, however, 
+a replacement for familiarity, e.g., developers can efficiently find many defects in their own code. 
 
-• `Test completion work products include`: test completion report, action items 
-for improvement of subsequent projects or iterations, documented lessons learned, and change 
-requests (e.g., as product backlog items). 
+Work products can be tested by their author (no independence), by the author's peers from the same 
+team (some independence), by testers from outside the author's team but within the organization (high 
+independence), or by testers from outside the organization (very high independence). For most projects, it 
+is usually best to carry out testing with multiple levels of independence (e.g., developers performing 
+component and component integration testing, test team performing system and system integration 
+testing, and business representatives performing acceptance testing). 
 
-![img_1.png](img/img_5.png)
+The main benefit of independence of testing is that independent testers are likely to recognize different 
+kinds of failures and defects compared to developers because of their different backgrounds, technical 
+perspectives, and biases. Moreover, an independent tester can verify, challenge, or disprove 
+assumptions made by stakeholders during specification and implementation of the system. 
 
-![img_2.png](img/img_6.png)
- 
+However, there are also some drawbacks. Independent testers may be isolated from the development 
+team, which may lead to a lack of collaboration, communication problems, or an adversarial relationship 
+with the development team. Developers may lose a sense of responsibility for quality. Independent 
+testers may be seen as a bottleneck or be blamed for delays in release.
 ___
 ## Sources
 - A. Doronins, ISTQB® Foundation: Getting Started, https://app.pluralsight.com/
