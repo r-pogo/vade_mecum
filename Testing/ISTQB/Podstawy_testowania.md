@@ -3,10 +3,10 @@ ISO/ICE/IEE 29119-1: info about software testing concepts
 ISO/ICE/IEE 29119-2: info about test processes
 ## What is testing
 Software testing is a set of activities to discover defects and evaluate the quality of software artifacts.
-These artifacts, when being tested, are known as `test objects`.
+These artifacts, when being tested, are known as `test objects`.  
 No, just executing test but includes also other activities aligned with SDLC.
 
-`verification`, checking whether the system meets specified requirements (Czy produkt tworzony jest prawidłowo?)
+`verification`, checking whether the system meets specified requirements (Czy produkt tworzony jest prawidłowo?)  
 `validation`, which means checking whether the system meets users’ and other stakeholders’ needs in its operational environment. (Czy tworzony jest prawidłowy produkt?)
 
 Testing is not only a technical activity. It also needs to be properly planned, managed, estimated,
@@ -132,7 +132,7 @@ analyze, test, report.
 The dynamic of your workflow will largely depend on how the entire team works, and you'll have to adapt to that.
 
 `Test planning`: consists of defining the test objectives and then selecting an approach that best achieves 
-the objectives within the constraints imposed by the overall context. A test plan is not something set in stone.
+the objectives within the constraints imposed by the overall context. A test plan is not something set in stone.  
 `Test planning work products include`: test plan, test schedule, risk register, and entry and exit 
 criteria. Risk register is a list of risks together with risk likelihood, risk impact and 
 information about risk mitigation. 
