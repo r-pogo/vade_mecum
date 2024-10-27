@@ -10,18 +10,6 @@ Examples of SDLC:
 - iterative development models (e.g., spiral model, prototyping)
 - incremental development models (e.g., Unified Process). 
 
-
-Some activities within software development processes can also be described by more detailed software 
-development methods and Agile practices, examples: 
-- acceptance test-driven development(ATDD)
-- behavior-driven development (BDD)
-- domain-driven design (DDD)
-- extreme programming (XP), 
-- feature-driven development (FDD)
-- Kanban (iterative agile)
-- Lean IT
-- Scrum (iterative agile)
-- test-driven development (TDD). 
 ___
 
 ### Impact of the Software Development Lifecycle on Testing 
@@ -32,7 +20,7 @@ Testing must be adapted to the SDLC to succeed. The choice of the SDLC impacts o
 • Extent of test automation 
 • Role and responsibilities of a tester 
 
-In sequential development models, in the initial phases testers typically participate in requirement 
+In sequential development models: in the initial phases typically is requirement 
 reviews, test analysis, and test design. The executable code is usually created in the later phases, so 
 typically dynamic testing cannot be performed early in the SDLC.
 
@@ -169,13 +157,17 @@ testing is normally performed by developers in their development environments.
 
 ![img_4.png](img/img_9.png)
 
+![img.png](img/img_12.png)
+
 • `Component integration testing (also known as unit integration testing)` focuses on testing the 
 interfaces and interactions between components. Component integration testing is heavily 
 dependent on the integration strategy approaches like bottom-up, top-down or big-bang. 
 
 ![img_5.png](img/img_10.png)
 
-• `System testing (end-to-end)` focuses on the overall behavior and capabilities of an entire system or product, 
+![img.png](img/img_13.png)
+
+• `System testing (end-to-end. front-to-back)` focuses on the overall behavior and capabilities of an entire system or product, 
 often including functional testing of end-to-end tasks and the non-functional testing of quality 
 characteristics. For some non-functional quality characteristics, it is preferable to test them on a 
 complete system in a representative test environment (e.g., usability). Using simulations of subsystems is also possible. System testing may be performed by an independent test team, and is 
@@ -183,7 +175,7 @@ related to specifications for the system.
 Your starting point is typically not within the system, but rather outside.
 Consider system paths and flows
 
-![img_9.png](img/img_9.png)
+![img.png](img/img15.png)
 
 • `System integration testing` focuses on testing the interfaces of the system under test and other 
 systems and external services . System integration testing requires suitable test environments 
@@ -191,7 +183,7 @@ preferably similar to the operational environment.
 
 ![img_6.png](img/img_11.png)
 
-![img_8.png](img/img_8.png)
+![img_1.png](img/img_14.png)
 
 • `Acceptance testing` focuses on validation and on demonstrating readiness for deployment, 
 which means that the system fulfills the user’s business needs. Ideally, acceptance testing should 
@@ -208,8 +200,7 @@ OAT: Operational Acceptance Testing
 ![img_7.png](img/img_7.png)
 
 • `Beta testing`: The point of beta testing is to use the infrastructure, both hardware and software of the end user.
-• `Alpha testing`:
-
+• `Alpha testing`: end user in our env.
 
 Test levels are distinguished by the following non-exhaustive list of attributes, to avoid overlapping of test 
 activities: 
@@ -237,13 +228,13 @@ system. Non-functional testing is the testing of “how well the system behaves�
 
 The main objective of non-functional testing is checking the non-functional software quality characteristics. The ISO/IEC 25010
 standard provides the following classification of the non-functional software quality characteristics: 
-• Performance efficiency 
-• Compatibility 
-• Usability 
-• Reliability 
-• Security 
-• Maintainability 
-• Portability 
+• Performance efficiency  
+• Compatibility  
+• Usability  
+• Reliability  
+• Security  
+• Maintainability  
+• Portability  
 
 It is sometimes appropriate for non-functional testing to start early in the life cycle (e.g., as part of reviews 
 and component testing or system testing). Many non-functional tests are derived from functional tests as constraint is satisfied (e.g., checking that a function performs within a specified time, or a function can be 
@@ -307,3 +298,15 @@ maintained.
 can require testing of data archiving if long data-retention periods are required. Testing of restore 
 and retrieval procedures after archiving may also be needed in the event that certain data is 
 required during the archiving period. 
+
+```Impact Analysis```:
+- What has changed?
+- Where in the system?
+- Which parts are definitely affected?
+- Which parts are likely to be affected?
+
+___
+## Sources
+- A. Doronins, ISTQB® CTFL: Testing Throughout the SDLC, https://app.pluralsight.com/
+- A. Roman, L. Stapp, Certifikowany tester ISTQB Poziom Podstawowy, Helion SA 2020
+- Certified Tester Foundation Level Syllabus v4.0
