@@ -20,19 +20,17 @@ Testing must be adapted to the SDLC to succeed. The choice of the SDLC impacts o
 • Extent of test automation 
 • Role and responsibilities of a tester 
 
-In sequential development models: in the initial phases typically is requirement 
-reviews, test analysis, and test design. The executable code is usually created in the later phases, so 
-typically dynamic testing cannot be performed early in the SDLC.
 
-In some iterative and incremental development models, it is assumed that each iteration delivers a 
-working prototype or product increment. This implies that in each iteration both static and dynamic testing 
-may be performed at all test levels. Frequent delivery of increments requires fast feedback and extensive 
-regression testing. 
+In sequential development models, testing activities like requirement reviews and test  
+design occur early, while dynamic testing happens later when code is available.  
 
-Agile software development assumes that change may occur throughout the project. Therefore, 
-lightweight work product documentation and extensive test automation to make regression testing easier 
-are favored in agile projects. Also, most of the manual testing tends to be done using experience-based 
-test techniques that do not require extensive prior test analysis and design. 
+In iterative and incremental models, each iteration delivers a working prototype,  
+allowing for both static and dynamic testing at all levels, along with rapid feedback  
+and regular regression testing.
+
+Agile development expects continuous change, favoring  
+minimal documentation and extensive test automation for easier regression testing.  
+Agile also emphasizes experience-based manual testing, which requires less upfront test analysis and design.
 ___
 ### Software Development Lifecycle and Good Testing Practices 
 Good testing practices, independent of the chosen SDLC model, include the following: 
@@ -46,8 +44,7 @@ phase of the SDLC, so that testing can adhere to the principle of early testing
 available, so that this earlier testing and defect detection can support the shift-left strategy
 ___
 ### Testing as a Driver for Software Development 
-TDD, ATDD and BDD are similar development approaches, where tests are defined as a means of 
-directing development. Each of these approaches implements the principle of early testing 
+Each of these approaches implements the principle of early testing 
 and follows a shift-left approach, since the tests are defined before the code is 
 written. They support an iterative development model. These approaches are characterized as follows:   
 `Test-Driven Development (TDD)`:   
@@ -71,14 +68,13 @@ For all the above approaches, tests may persist as automated tests to ensure the
 adaptions / refactoring. 
 ___
 ### DevOps and Testing 
-DevOps: Developer Operations, making things smooth like configure servers, manage networks, security, automate deployment.
-DevOps is an organizational approach aiming to create synergy by getting development (including 
-testing) and operations to work together to achieve a set of common goals. DevOps requires a cultural 
-shift within an organization to bridge the gaps between development (including testing) and operations 
-while treating their functions with equal value. DevOps promotes team autonomy, fast feedback, 
-integrated toolchains, and technical practices like continuous integration (CI) and continuous delivery 
-(CD). This enables the teams to build, test and release high-quality code faster through a DevOps 
-delivery pipeline (Kim 2016). 
+DevOps: Developer Operations, 
+
+DevOps is an approach focused on integrating development, testing, and operations to  
+streamline processes like server configuration, network management, security,  
+and deployment automation. This collaboration requires a cultural shift valuing  
+both development and operations equally, promoting autonomy, fast feedback, integrated toolchains,  
+and continuous integration/delivery (CI/CD) practices.  
 From the testing perspective, some of the benefits of DevOps are: 
 • Fast feedback on the code quality, and whether changes adversely affect existing code 
 • CI promotes a shift-left approach in testing  by encouraging developers to 
@@ -117,38 +113,21 @@ to save efforts and/or costs later in the process.
 For the shift-left approach it is important that stakeholders are convinced and bought into this concept.
 ___
 ### Retrospectives and Process Improvement 
-Retrospectives (also known as “post-project meetings” and project retrospectives) are often held at the 
-end of a project or an iteration, at a release milestone, or can be held when needed. The timing and 
-organization of the retrospectives depend on the particular SDLC model being followed. In these 
-meetings the participants (not only testers, but also e.g., developers, architects, product owner, business 
-analysts) discuss: 
-• What was successful, and should be retained?
-• What was not successful and could be improved? 
-• How to incorporate the improvements and retain the successes in the future? 
-The results should be recorded and are normally part of the test completion report (see section 5.3.2). 
-Retrospectives are critical for the successful implementation of continuous improvement and it is 
-important that any recommended improvements are followed up. 
-Typical benefits for testing include: 
-• Increased test effectiveness / efficiency (e.g., by implementing suggestions for process 
-improvement) 
-• Increased quality of testware (e.g., by jointly reviewing the test processes) 
-• Team bonding and learning (e.g., as a result of the opportunity to raise issues and propose 
-improvement points) 
-• Improved quality of the test basis (e.g., as deficiencies in the extent and quality of the 
-requirements could be addressed and solved) 
-• Better cooperation between development and testing (e.g., as collaboration is reviewed and 
-optimized regularly)
+Retrospectives are meetings held at the end of a project, iteration, or as needed,  
+involving team members (testers, developers, product owners, etc.) to review successes,   
+identify areas for improvement, and discuss future actions. These insights are recorded, 
+often as part of the test completion report, supporting continuous improvement.  
+Key benefits for testing include improved test effectiveness, enhanced quality of test  
+processes and testware, team bonding and shared learning, higher quality of test inputs  
+(like requirements), and strengthened collaboration between development and testing.
 ___
 ## Test Levels and Test Types 
-Test levels are groups of test activities that are organized and managed together. Each test level is an 
-instance of the test process, performed in relation to software at a given stage of development, from 
-individual components to complete systems or, where applicable, systems of systems.  
-Test levels are related to other activities within the SDLC. In sequential SDLC models, the test levels are 
-often defined such that the exit criteria of one level are part of the entry criteria for the next level. In some 
-iterative models, this may not apply. Development activities may span through multiple test levels. Test 
-levels may overlap in time. 
-Test types are groups of test activities related to specific quality characteristics and most of those test 
-activities can be performed at every test level. 
+Test levels are organized stages of testing activities, each focused on a specific  
+development phase, from individual components to complete systems. In sequential  
+SDLC models, each test level typically builds on the previous one, with exit criteria  
+for one level serving as entry criteria for the next. This sequential handoff may not  
+apply in iterative models, where test levels can overlap. Test types, meanwhile, focus  
+on particular quality aspects and can be applied across various test levels. 
 ___
 ### Test Levels
 • `Component testing (also known as unit or module testing)` focuses on testing components in isolation. It 
@@ -252,28 +231,15 @@ different at each level. Different test techniques can be used to derive test co
 all the mentioned test types.  
 ___
 ### Confirmation Testing and Regression Testing 
-Changes are typically made to a component or system to either enhance it by adding a new feature or to 
-fix it by removing a defect. Testing should then also include confirmation testing and regression testing. 
-Confirmation testing confirms that an original defect has been successfully fixed. Depending on the risk, 
-one can test the fixed version of the software in several ways, including: 
-• executing all test cases that previously have failed due to the defect, or, also by 
-• adding new tests to cover any changes that were needed to fix the defect 
-However, when time or money is short when fixing defects, confirmation testing might be restricted to 
-simply exercising the steps that should reproduce the failure caused by the defect and checking that the 
-failure does not occur. 
-Regression testing confirms that no adverse consequences have been caused by a change, including a 
-fix that has already been confirmation tested. These adverse consequences could affect the same 
-component where the change was made, other components in the same system, or even other 
-connected systems. Regression testing may not be restricted to the test object itself but can also be 
-related to the environment. It is advisable first to perform an impact analysis to optimize the extent of the 
-regression testing. Impact analysis shows which parts of the software could be affected. 
-Regression test suites are run many times and generally the number of regression test cases will 
-increase with each iteration or release, so regression testing is a strong candidate for automation. 
-Automation of these tests should start early in the project. Where CI is used, such as in DevOps (see 
-section 2.1.4), it is good practice to also include automated regression tests. Depending on the situation, 
-this may include regression tests on different levels. 
-Confirmation testing and/or regression testing for the test object are needed on all test levels if defects 
-are fixed and/or changes are made on these test levels. 
+When changes are made to a system—whether to add features or fix defects confirmation  
+and regression testing are essential. Confirmation testing ensures that the specific  
+defect has been resolved, often by re-running failed test cases or adding tests for any  
+modifications involved in the fix. In tight schedules, this may be limited to verifying the  
+original failure no longer occurs. Regression testing ensures that the fix or change hasn't  
+negatively impacted other areas of the software or connected systems. This testing should  
+ideally be automated and may include various levels, especially in CI setups like DevOps.  
+Both confirmation and regression testing apply across all test levels whenever changes or  
+fixes are introduced. 
 ___
 ## Maintenance Testing 
 There are different categories of maintenance, it can be corrective, adaptive to changes in the 

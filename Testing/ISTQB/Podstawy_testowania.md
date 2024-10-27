@@ -54,8 +54,6 @@ Testing provides a cost-effective means of detecting defects. These defects can 
 debugging – a non-testing activity), so testing indirectly contributes to higher quality test objects.
 
 Testing provides a means of directly evaluating the quality of a test object at various stages in the SDLC.
-These measures are used as part of a larger project management activity, contributing to decision to
-move to the next stage of the SDLC, such as the release decision.
 
 Testers ensure that their understanding of users’ needs are considered throughout the development lifecycle.
 
@@ -75,14 +73,11 @@ Testing is a form of quality control.
 ![img_1.png](img/img_1.png)
 
 `QC`: `product-oriented`, corrective approach that focuses on those activities supporting the achievement 
-of appropriate levels of quality.
+of appropriate levels of quality. QC results are used to fix defects.
 
 `QA`: `process-oriented`, preventive approach that focuses on the implementation and improvement of 
 processes. It works on the basis that if a good process is followed correctly, then it will generate a good 
-product.
-
-Test results are used by QA and QC. In QC they are used to fix defects, while in QA they provide 
-feedback on how well the development and test processes are performing.
+product. QA results provide feedback on how well the development and test processes are performing.
 
 ### Errors, Defects, Failures, Root Causes
 - `Pomyłka/Error (błąd)`: działanie człowieka powodujące powstanie nieprawidłowego rezultatu (programista zle NAPISAŁ funkcje, w której pomylił znak + z *)
@@ -304,46 +299,32 @@ representatives)
 
 ## Whole Team Approach K1 (Recall the advantage of the whole team approach)
 
-One of the important skills for a tester is the ability to work effectively in a team context and to contribute 
-positively to the team goals. The whole team approach – a practice coming from Extreme Programming 
-(see section 2.1) – builds upon this skill.  
-
-In the whole-team approach any team member with the necessary knowledge and skills can perform any 
-task, and everyone is responsible for quality. The team members share the same workspace (physical or 
-virtual), as co-location facilitates communication and interaction. The whole team approach improves 
-team dynamics, enhances communication and collaboration within the team, and creates synergy by 
-allowing the various skill sets within the team to be leveraged for the benefit of the project. 
-
-Testers work closely with other team members to ensure that the desired quality levels are achieved. This 
-includes collaborating with business representatives to help them create suitable acceptance tests and 
-working with developers to agree on the test strategy and decide on test automation approaches. Testers 
-can thus transfer testing knowledge to other team members and influence the development of the 
-product. 
-
-Depending on the context, the whole team approach may not always be appropriate. For instance, in 
-some situations, such as safety-critical, a high level of test independence may be needed. 
+The "whole-team approach" in testing, rooted in Extreme Programming, emphasizes 
+collaboration where all team members share responsibility for quality.  
+In this model, any team member with the required skills can handle any task,  
+creating a cohesive and dynamic environment. Co-location (physical or virtual) supports effective  
+communication, and the diverse skills within the team are utilized to enhance project outcomes.  
+Testers collaborate closely with business representatives and developers to establish acceptance tests,  
+test strategy, and automation. However, in specific contexts like safety-critical projects, a high 
+degree of test independence may be required, limiting the use of the whole-team approach.
 
 ## Independence of Testing
-A certain degree of independence makes the tester more effective at finding defects due to differences 
-between the author’s and the tester’s cognitive biases (cf. Salman 1995). Independence is not, however, 
-a replacement for familiarity, e.g., developers can efficiently find many defects in their own code. 
+Independence in testing can enhance effectiveness by reducing cognitive biases  
+between the author and tester, though it doesn't replace the need for familiarity with the product. 
 
 Work products can be tested by their author (no independence), by the author's peers from the same 
 team (some independence), by testers from outside the author's team but within the organization (high 
-independence), or by testers from outside the organization (very high independence). For most projects, it 
-is usually best to carry out testing with multiple levels of independence (e.g., developers performing 
-component and component integration testing, test team performing system and system integration 
-testing, and business representatives performing acceptance testing). 
+independence), or by testers from outside the organization (very high independence).
+A mixed approach is often ideal, where developers, test teams, and business representatives handle different testing stages.
 
 The main benefit of independence of testing is that independent testers are likely to recognize different 
 kinds of failures and defects compared to developers because of their different backgrounds, technical 
 perspectives, and biases. Moreover, an independent tester can verify, challenge, or disprove 
 assumptions made by stakeholders during specification and implementation of the system. 
 
-However, there are also some drawbacks. Independent testers may be isolated from the development 
-team, which may lead to a lack of collaboration, communication problems, or an adversarial relationship 
-with the development team. Developers may lose a sense of responsibility for quality. Independent 
-testers may be seen as a bottleneck or be blamed for delays in release.
+However, drawbacks include potential isolation from developers, communication issues,  
+strained team dynamics, and the risk of developers disengaging from quality ownership,  
+with independent testers possibly being blamed for delays.
 ___
 ## Sources
 - A. Doronins, ISTQB® Foundation: Getting Started, https://app.pluralsight.com/
