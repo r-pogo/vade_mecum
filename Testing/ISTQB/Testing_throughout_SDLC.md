@@ -146,6 +146,11 @@ dependent on the integration strategy approaches like bottom-up, top-down or big
 
 ![img.png](img/img_13.png)
 
+Atrapy stymulują działanie innych nieistniejących jeszcze obiektów
+Atrapy wykorzystywane w trakcie testowania modułowego:
+- zaślepki (stub) jest wywoływana przez testowany moduł
+- sterowniki (driver) wywołuję testowany moduł
+
 • `System testing (end-to-end. front-to-back)` focuses on the overall behavior and capabilities of an entire system or product, 
 often including functional testing of end-to-end tasks and the non-functional testing of quality 
 characteristics. For some non-functional quality characteristics, it is preferable to test them on a 
@@ -164,22 +169,36 @@ preferably similar to the operational environment.
 
 ![img_1.png](img/img_14.png)
 
+Strategie testowania integracyjnego:
+- Strategie oparte na architekturze systemu:
+1. Zastępujące (top-down): W pierwszej kolejności testuje się integrację modułu głównego z modułami przezeń wywołanymi i tak dalej, 
+czyli poziomami zagłębienia modułów w hierarchii wywołań.
+2. Występujące (bottom-up): Tu kierunek jest odwrotny, zaczynamy oid dołu i kolejno dołączane są moduły leżące na wyższych poziomach.
+- Strategie oparte na zadaniach funkcjonalnych: Testujemy grupę modułów odpowiedzialnych za ważną dla nas funkcjonalność, a potem integrację z pozostałymi.
+- Strategia oparta na sekwencjach przetwarzania transakcji: Np. ścieżka przepływu informacji (określone wejście i określone wyjście), najpierw  
+właśnie testowane są moduły leżące na tej ścieżce.
+- Strategia oparta na innych aspektach systemu: Np. wielkość modułu, ich krytyczność czy częstość wykorzystywania komunikacji między modułami.
+
 • `Acceptance testing` focuses on validation and on demonstrating readiness for deployment, 
 which means that the system fulfills the user’s business needs. Ideally, acceptance testing should 
-be performed by the intended users. The main forms of acceptance testing are: user acceptance 
-testing (UAT), operational acceptance testing, contractual and regulatory acceptance testing, 
-alpha testing and beta testing.
-OAT: Operational Acceptance Testing
- - Backup and restore
- - Installing, uninstalling, upgrading
- - Disaster recovery
- - Data load and migration
- - Performance and load testing
+be performed by the intended users. The main forms of acceptance testing are:  
+- user acceptance testing (UAT): głównie sprawdzenie, czy system nadaję się do użytkowania przez przyszłych odbiorców systemu.
+- operational acceptance testing (OAT): głównym celem jest uzyskanie pewności, że operatorzy lub administratorzy systemu będą w stanie zapewnić użytkownikom prawidłową pracę systemu.  
+- contractual and regulatory acceptance testing  
+- alpha testing and beta testing
+
+OAT example: 
+- Backup and restore
+- Installing, uninstalling, upgrading
+- Disaster recovery
+- Data load and migration
+- Performance and load testing
 
 ![img_7.png](img/img_7.png)
 
+• `Alpha testing`: end user/independent tester in our company/systems/env.
 • `Beta testing`: The point of beta testing is to use the infrastructure, both hardware and software of the end user.
-• `Alpha testing`: end user in our env.
+
 
 Test levels are distinguished by the following non-exhaustive list of attributes, to avoid overlapping of test 
 activities: 
@@ -196,6 +215,23 @@ addressed:
 `Functional testing` evaluates the functions that a component or system should perform. The functions 
 are “what” the test object should do. The main objective of functional testing is checking the functional 
 completeness, functional correctness and functional appropriateness. 
+
+```Pokrycie testów funkcjonalnych przykład```:
+
+| Wymaganie | Req 1 | Req 2 | Req 3 |
+|-----------|-------|-------|-------|
+|Test1 ważność 2| x |
+|Test2 ważność 5| x | | x |
+|Test3 ważność 1| | x | x |
+|Test4 ważność 1| | x | |
+|Test5 ważność 4| | x | |
+|Test6 ważność 2| | | x |
+
+Np. z wymaganiem Req 1 związane są testy 1 i 2 o sumie ważności 2 + 5= 7. Ponieważ oba testy są zdane, pokrycie wymagania 
+req 1 wynosi 7/7=100%
+Req1: pokrycie = (2+5)/(2+5) = 7/7 = 100%
+Req2: pokrycie = (1)/(1+1+4) = 1/6 = 17%
+Req3: pokrycie = (5)/(5+1+2)=5/8=62,5%
 
 `Non-functional testing` evaluates attributes other than functional characteristics of a component or 
 system. Non-functional testing is the testing of “how well the system behaves”. 
@@ -229,6 +265,17 @@ objective of white-box testing is to cover the underlying structure by the tests
 All the four above mentioned test types can be applied to all test levels, although the focus will be 
 different at each level. Different test techniques can be used to derive test conditions and test cases for 
 all the mentioned test types.  
+
+```Pokrycie testów białoskrzyniwych - pokrycie strukturalne przykład```:
+Pokrycie strukturalne oznacza stopień, w jakim został przetestowany określony typ elementu strukturalnego,
+wyrażony jako procent elementów danego typu pokrytych przez testy:
+
+```pokrycie = A/B```
+A = liczba strukturalnych elementów pokrytych przez testy
+B = liczba wszystkich elementów strukturalnych (np. wykonywalnych instrukcji kodu)
+Np. jeśli pokryliśmy naszymi testami 5 spośród 20 wykonywalnych instrukcji kodu:
+(5/20) * 100 = 25%
+
 ___
 ### Confirmation Testing and Regression Testing 
 When changes are made to a system—whether to add features or fix defects confirmation  
@@ -254,13 +301,13 @@ The scope of maintenance testing typically depends on:
 • The size of the existing system 
 • The size of the change 
 The triggers for maintenance and maintenance testing can be classified as follows: 
-• Modifications, such as planned enhancements (i.e., release-based), corrective changes or hot 
+• ```Modifications```, such as planned enhancements (i.e., release-based), corrective changes or hot 
 fixes. 
-• Upgrades or migrations of the operational environment, such as from one platform to another, 
+• ```Upgrades or migrations``` of the operational environment, such as from one platform to another, 
 which can require tests associated with the new environment as well as of the changed software, 
 or tests of data conversion when data from another application is migrated into the system being 
 maintained. 
-• Retirement, such as when an application reaches the end of its life. When a system is retired, this 
+• ```Retirement```, such as when an application reaches the end of its life. When a system is retired, this 
 can require testing of data archiving if long data-retention periods are required. Testing of restore 
 and retrieval procedures after archiving may also be needed in the event that certain data is 
 required during the archiving period. 
