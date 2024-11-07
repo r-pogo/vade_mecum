@@ -159,7 +159,7 @@ related to specifications for the system.
 Your starting point is typically not within the system, but rather outside.
 Consider system paths and flows
 
-![img.png](img/img15.png)
+![img.png](img/img_15.png)
 
 • `System integration testing` focuses on testing the interfaces of the system under test and other 
 systems and external services . System integration testing requires suitable test environments 
