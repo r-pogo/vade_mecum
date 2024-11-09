@@ -197,3 +197,127 @@ not be boundary values. To achieve 100% coverage with 3-value BVA, test cases mu
 coverage items, i.e., identified boundary values and their neighbors. Coverage is measured as the 
 number of boundary values and their neighbors exercised, divided by the total number of identified 
 boundary values and their neighbors, and is expressed as a percentage. 
+___
+### Decision Table Testing (Tabele Decyzyjne)
+#### Charakterystyka
+Decision tables are used for testing the implementation of system requirements that specify how different 
+combinations of conditions result in different outcomes. Decision tables are an effective way of recording 
+complex logic, such as business rules.
+Testowanie na podstawie tablic decyzyjnych to technika, którá wykorzystuję się do weryfikacji
+poprawności implementacji reguł biznesowych.
+Reguły biznesowe zazwyczaj mają postać logicznej implementacji:  
+```JEZELI(warunek)TO(akcja)```
+Zarówno warunek, jak i akcja mogą być złożone z więcej niż jednego czynnika.
+Tablice decyzyjne pozwalają w systematyczny sposób przetestować implementacje kombinacje warunków.  
+
+Przykład:
+
+| Warunki | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---------|---|---|---|---|---|---|---|---|
+| Ma kartę stałego klienta? | T | T | T | T | N | N | N | N |
+| Sumaryczna kwota > 1000? | T | T | N | N | T | T | N | N |
+| Kupował w ostatnich 30 dniach? | T | N | T | N | T | N | T | N |
+| Akacja |
+|Przyznana zniżka | 10% | 5% | 5% | 0%| 0% | 0% | 0% | 0% |
+
+Tablica decyzyjna składa się z dwóch części, opisujących, odpowiednio, warunki oraz akcje.
+W poszczególnych kolumnach opisane są reguły biznesowe.
+
+Wyżej jest przedstawiona tablica dla takich warunków i akcji:
+- Czy posiada kartę stałego klienta (TAK/NIE)
+- Czy sumaryczna kwota zakupów przekracza 1000zl? (TAK/NIE)
+- Czy klient dokonywał zakupów w okresie ostatnich 30 dni? (TAK/NIE)
+
+Na podstawie odpowiedzi na te warunki/pytania przydzielana jest zniżka (akcja):
+0%, 5%, 10%.
+
+#### Implementacja
+1. Identyfikacja wszystkich możliwych warunków (z podstawy testów, np. specyfikacja, rozmowy z klientem itp.)  
+i wpisanie ich do tablicy.
+2. Identyfikacja wszystkich odpowiadających warunkom akcji, jakie mogą zajć w systemie i jakie są zależne od tych warunków,  
+i wpisanie ich do tablicy.
+3. Generowanie wszystkich kombinacji warunków i eliminacja kombinacji nieosiągalnych. Dla każdej osiągalnej kombinacji   
+tworzona jest osobna kolumna.
+4. Identyfikacja dla każdej zidentyfikowanej kombinacji warunków, które akcje i w jaki sposób mogą zajść. Uzupełnienie dolnej część tablcy.  
+5. Stworzenie dla każdej kolumny przypadku testowego, w którym wymuszana jest zadana w kolumnie kombinacja warunków.  
+Test jest zaliczony, jeśli po wykonaniu system podejmie akcje w taki sposób jak opisane w dolnej części tablicy.
+
+Zazwyczaj wartości warunków przyjmują postać PRAWDA/FALSZ (T/F) (1/0) (TAK/NIE).  
+Wartości warunków i akcji mogą być dowolnymi obiektami.  
+ 
+In limited-entry decision tables all the values of the conditions and actions (except for irrelevant or infeasible ones; see below) are shown as Boolean values 
+(true or false). Alternatively, in extended-entry decision tables some or all the conditions and actions may 
+also take on multiple values (e.g., ranges of numbers, equivalence partitions, discrete values). 
+
+The notation for conditions is as follows: “T” (true) means that the condition is satisfied. “F” (false) means 
+that the condition is not satisfied. “–” means that the value of the condition is irrelevant for the action 
+outcome. “N/A” means that the condition is infeasible for a given rule. For actions: “X” means that the 
+action should occur. Blank means that the action should not occur. Other notations may also be used
+
+```Sposób wyznaczania wszystkich kombinacji warunków - Mwtoda drzewa```:
+Przykład:
+3 warunki:
+1. zarobki (M-małe ;D-durze)
+2. wiek (ML-młody; SR-średni; ST-stary)
+3. miejsce zamieszkania (MI-miasto; W-wieś)
+
+Aby stworzyć wszystkie wartości warunków, budujemy drzewo, z którego korzenia wyprowadzamy wszystkie możliwości pierwszego warunku (zarobki).
+Jest to pierwszy poziom drzewa. Następnie z każdego wierzchołka tego poziomu wyprowadzamy wszystkie możliwości drugiego warunku-drugi poziom.
+Na końcu z każdego wierzchołka drugiego poziomu wyprowadzamy wszystkie możliwe wartości trzeciego warunku.
+
+```
+                           ROOT
+                       /         \
+                     /            \
+                   /               \
+ZAROBKI           M                D
+              /    |   \          /  |  \
+             /     |    \        /   |   \
+            /      |     \      /    |    \
+WIEK       ML     SR    ST     ML    SR   ST
+          /  \   /  \  /  \   /  \   /\    /\
+M. ZAM.  MI  W  MI  W  MI  W  MI  W MI W  MI W
+
+```
+Tablica na podstawie tego drzewa:
+
+
+| Warunki | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---------|---|---|---|---|---|---|---|---|---|----|----|----|
+| Zarobki | M | M | M | M | M | M | D | D | D | D | D | D | 
+| Wiek | ML | ML | SR | SR | ST | ST | ML | ML | SR | SR | ST |ST |
+| Miejsce Zam. | MI | W | MI | W | MI | W | MI | W | MI | W | MI | W |
+
+####  Kombinacje nieosiągalne
+Np.:
+wiek klient  > 18 (T/N)
+wiek klienta <= 18 (T/N)
+
+Czasami tablica nie będzie zawierała wszystkich możliwych kombinacji ze względów czysto logicznych albo semantycznych.
+Wtedy potrzebna jest ```minimalizacja```  
+Np, jeśli system pozwala wykupić ubezpieczenie jedynie pełnoletnim klientom, a w zależności od tego, czy palą, czy nie dostaj ą
+zniżkę na to ubezpieczenie. System i tak pozwoli na wykup ubezpieczenie, tylko jeśli klient jest pełnoletni. 
+Wartości nieistotne zaznacza się znakiem "-" albo "N/A".
+Algorytmy minimalizacji są omówione na certyfikat ISTQB Analityk Testów.
+
+#### Pokrycie
+100% pokrycie wymaga, by dla każdej kolumny przygotować i wykonać przynajmniej jeden przypadek
+testowy odpowiadający danej kombinacji warunków. Test jest zaliczony, jeśli system rzeczywiści wykona zdefiniowane dla tej  
+kolumny akcje.
+Nie bierzemy pod uwagę wszystkich możliwych kombinacji warunków tylko kolumny-minimalizacja!.
+
+Coverage is measured as the number of exercised columns, divided by the total number of feasible 
+columns, and is expressed as a percentage. 
+
+#### Tablice decyzyjne jako statyczna technika testowania
+Technika tablic decyzyjnych znakomicie nadaje się do wykrywania problemów dotyczących wymagań.
+Np. problemy ze specyfikacją takie jak:
+- niepełność: brak zdefiniowanych akcji dla określonego zestawu warunków
+- sprzeczność: zdefiniowanie w dwóch różnych miejscach specyfikacji dwóch różnych zachowań systemu wobec tego samego zestawu warunków.
+- redundatność: zdefiniowanie tego samego zachowania systemu w dwóch różnych miejscach specyfikacji-opisane w inny sposób.
+___
+
+
+
+
+
