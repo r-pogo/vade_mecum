@@ -15,6 +15,8 @@ PID identifies each program and  it's parent processes ID (PPID).
 `Init` process is the mother of all processes on the system. It’s the first program that is executed when the Linux system boots up.  
 It manages all other processes on the system. It is started by the kernel itself, so in principle it does not have a parent process.  
 The `init` process has always an ID of 1.
+
+You can find directories related to processes in `/proc` folder
 ___
 ## How to View Processes
 | Command | Action |
@@ -37,6 +39,7 @@ $ ▶ps
 
 `TTY` is short for “Teletype,” and refers to the controlling terminal for the process
 `TIME` field is the amount of CPU time consumed by the process.
+`PID` process id
 
 ```
 $ ▶ps x
@@ -131,12 +134,16 @@ $ ▶top
 
 The `top` program accepts a number of keyboard commands. The two most interesting are 
 `h`, which displays the program's help screen, and `q`, which quits top
+
+### pstree
+`pstree -?` for help menu
 ___
 ## Control Processes
 | Command | Action |
 |---------|--------|
 | bg | puts a program in the background 
 | fg | brings a process back to the foreground
+
 ### Putting a process in the background
 Suppose we want the prompt to return to the shell, but without stopping the process.  
 To start the program and immediately put it in the background, after the command we type the ampersand sign `&`.
