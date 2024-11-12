@@ -126,7 +126,7 @@ AWB to rozszerzenie KR. W AWB do testów wybierane są wartości leżące na brz
 Elementy dziedziny muszą być uszeregowane/uporządkowane od najmniejszego do największego, aby tę technikę zastosować.
 Wartości brzegowe to po prostu element największy i najmniejszy dla danej klasy.
 
-- ```Wersaj dwupunktowa```: dla każdej zidentyfikowanej wartości brzegowej wybiera się tę wartość oraz 
+- ```Wersja dwupunktowa```: dla każdej zidentyfikowanej wartości brzegowej wybiera się tę wartość oraz 
 najbliższego sąsiada NIENALEŻĄCEGO do tej klasy.
 Np. klasa z wartościami 1 do 6:
 - 1 wartość brzegowa
@@ -315,7 +315,7 @@ Np. problemy ze specyfikacją takie jak:
 - niepełność: brak zdefiniowanych akcji dla określonego zestawu warunków
 - sprzeczność: zdefiniowanie w dwóch różnych miejscach specyfikacji dwóch różnych zachowań systemu wobec tego samego zestawu warunków.
 - redundatność: zdefiniowanie tego samego zachowania systemu w dwóch różnych miejscach specyfikacji-opisane w inny sposób.
-
+___
 ### State transition testing (Testowanie przejść między stanami)
 #### Charakterystyka
 Technika stosowana w celu sprawdzenia zachowania się modułu lub systemu-sprawdza aspekt behawioralny.
@@ -434,12 +434,98 @@ Biorąc pod uwagę, że chcemy uzyskać 100% pokrycie jak najmniejszą ilością
 | S1>(A)>S2>(A)>S2>(A)>S2>(B)>S1>(A)>S2>(B)>S1>(C)>S3>(B)>S4 | PP1, PP5, PP6, PP8, PP2, PP9, PP4 |
 | S1>(A)>S2>(C)>S4 | PP3 |
 | S1>(A)>S2>(A)>S2>(C)>S4 | PP1,PP7 |
+___
+### Testowanie oparte na przypadkach użycia NIE na egzamin
+#### Charakterystyka
+Przypadek użycia (use case), opisuję interakcję pomiędzy tzw. aktorami, najczęściej użytkownik systemu.
+Przypadek użycia jest opisem kroków, które wykonują użytkownik i system. Każdy przypadek użycia powinien opisywać jeden scenariusz.
+Dla każdego przypadku użycia można skonstruować odpowiadający mu przypadek testowy, albo ich zestaw.
 
+#### Implementacja
+Poprawnie zbudowany przypadek użycia, poza technicznymi informacjami jak unikatowy numer i nazwa  
+powinien składać się z:
+- warunków wstępnych
+- jeden sekwencyjny scenariusz główny
+- opcjonalnie oznaczenie miejsc wystąpień sytuacji wyjątkowych oraz obsługi błędów
+- warunków wyjścia
+
+Przypadek główny nie powinien zawierać logiki biznesowej, scenariusz główny powinien być linearny i nie zawierać rozgałęzień.
+Istnienie takich rozgałęzień sugeruje, że tak naprawdę mamy do czynienia z więcej niż jednym przypadkiem użycia.
+Każda z takich ścieżek powinna zostać opisana w osobnym przypadku użycia.
+
+#### Pokrycie
+Należy zaprojektować:
+- jeden PT do realizacji scenariusza głównego (poprawny scenariusz)
+- po jednym PT do realizacji sytuacji wyjątkowej i błędu.
+
+Każda sytuacja wyjątkowa oraz każda obsługa błędu powinna być testowana w osobnym PT, aby uniknąć maskowania błędów.
+
+Pokrycie to stosunek liczby zweryfikowanych ścieżek przepływu w przypadku użycia w stosunku do wszystkich możliwych ścieżek przepływu użycia.
+___
+## White-box testing (białoskrzyniowe techniki testowania)
+### Statement Testing
+
+In statement testing, the coverage items are executable statements. The aim is to design test cases that 
+exercise statements in the code until an acceptable level of coverage is achieved. Coverage is measured 
+as the number of statements exercised by the test cases divided by the total number of executable 
+statements in the code, and is expressed as a percentage. 
+
+When 100% statement coverage is achieved, it ensures that all executable statements in the code have 
+been exercised at least once. In particular, this means that each statement with a defect will be executed, 
+which may cause a failure demonstrating the presence of the defect. However, exercising a statement 
+with a test case will not detect defects in all cases. For example, it may not detect defects that are data 
+dependent (e.g., a division by zero that only fails when a denominator is set to zero, calcualtor with + instead of * 2+2 = 4 2*2 =4).  
+Also, 100% statement coverage does not ensure that all the decision logic has been tested as, for instance, it may not 
+exercise all the branches (see chapter 4.3.2) in the code.  
+
+
+````python
+
+def calcualate_ice_cream_price(cone, has_souce):
+    price = 3
+    if cone and has_souce:
+        price = price * 1.5
+    else:
+        price = price * 0.5
+    return price
+````
+![img.png](img/img_19.png)
+
+Sum up:
+- Exercises executable statements in the code
+- Coverage is measured as the number of statements exercised by the test divided by the total number of executable statements * 100
+- Use control flow diagrams to visalise the control flows of the code
+- Does not guarantee that it will detect all defects
+
+### Branch testing
+A branch is a transfer of control between two nodes in the control flow graph, which shows the possible 
+sequences in which source code statements are executed in the test object. Each transfer of control can 
+be either unconditional (i.e., straight-line code) or conditional (i.e., a decision outcome). IFY 
+In branch testing the coverage items are branches and the aim is to design test cases to exercise 
+branches in the code until an acceptable level of coverage is achieved.  
+
+Coverage is measured as the number of branches exercised by the test cases divided by the total number of branches, and is 
+expressed as a percentage. 
+
+When 100% branch coverage is achieved, all branches in the code, unconditional and conditional, are 
+exercised by test cases. Conditional branches typically correspond to a true or false outcome from an 
+`if...then` decision, an outcome from a `switch/case` statement, or a decision to exit or continue in a `loop`. 
+However, exercising a branch with a test case will not detect defects in all cases. For example, it may not 
+detect defects requiring the execution of a specific path in a code. 
+Branch coverage subsumes statement coverage. This means that any set of test cases achieving 100% 
+branch coverage also achieves 100% statement coverage (but not vice versa). 
+
+Sum up:
+- Exercises the branches in the test objects
+- Coverage is measured as the number of branches exercised by tests divided by total number of branches * 100
+- 100% branch coverage guarantees 100% statement coverage but not vice versa
+- Doesn't guarantee detection of all defects
 
 ___
 ## Sources
 - A. Roman, L. Stapp, Certifikowany tester ISTQB Poziom Podstawowy, Helion SA 2020
 - Certified Tester Foundation Level Syllabus v4.0
+- G. McNeilly, ISTQB® CTFL: Test Analysis and Design, https://app.pluralsight.com/
 
 
 
