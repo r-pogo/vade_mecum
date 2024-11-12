@@ -22,7 +22,7 @@ Do dziedzin wejściowych, wyjściowych oraz wewnętrznych (związanych ze zmienn
 zwracane na wyjściu).
 Nie musi być to koniecznie dziedzina liczbowa, może to być dowolny zbiór np. słowa (jednoliterowe czy dwuliterowe), typy OS (windows, Linux, Mac)
 
-Technika KR indentyfikuje problemy wynikłe z błędnego przetwarzania danych.
+Technika KR identyfikuje problemy wynikłe z błędnego przetwarzania danych.
 
 #### Implementacja
 - Każdy element dziedzin należy do dokładnie jednej klasy równoważności.
@@ -315,7 +315,131 @@ Np. problemy ze specyfikacją takie jak:
 - niepełność: brak zdefiniowanych akcji dla określonego zestawu warunków
 - sprzeczność: zdefiniowanie w dwóch różnych miejscach specyfikacji dwóch różnych zachowań systemu wobec tego samego zestawu warunków.
 - redundatność: zdefiniowanie tego samego zachowania systemu w dwóch różnych miejscach specyfikacji-opisane w inny sposób.
+
+### State transition testing (Testowanie przejść między stanami)
+#### Charakterystyka
+Technika stosowana w celu sprawdzenia zachowania się modułu lub systemu-sprawdza aspekt behawioralny.
+Model opisujący aspekt behawioralny to `diagram przejść między stanami` i składa się z następujących elementów:
+- `states (stany)`: reprezentują możliwe sytuacje, w jakich może się znajdować system.
+- `transitions (przejścia)`: reprezentują możliwe poprawne zmiany stanów.
+- `event, event [guard condition] (zdarzenia)`: reprezentują zjawiska, zazwyczaj zewnętrzne wobec systemu, których zajście  
+wyzwala odpowiadające im przejście. They may be additionally qualified by a guard condition.
+- `action (akcje)`: czynności, które system może podjąć podczas przejścia między stanami.
+
+#### Implementacja
+Przykładowy diagram przejść między stanami:
+
+![img.png](img/img_17.png)
+
+Model przejść między stanami może być wyrażony poprzez: diagram przejść między stanami, tablica stanów, pełna tablica stanów.
+
+![img_1.png](img/img_18.png)
+
+W przypadku `pełnej tablicy stanów` ukazane są wszystkie możliwe kombinacje stanów oraz wszystkich możliwych zdarzeń.
+
+A state table is a model equivalent to a state transition diagram. Its rows represent states, and its 
+columns represent events (together with guard conditions if they exist). Table entries (cells) represent 
+transitions, and contain the target state, as well as the resulting actions, if defined. In contrast to the state 
+transition diagram, the state table explicitly shows invalid transitions, which are represented by empty 
+cells.
+
+A test case based on a state transition diagram or state table is usually represented as a sequence of 
+events, which results in a sequence of state changes (and actions, if needed). One test case may, and 
+usually will, cover several transitions between states. 
+
+#### Pokrycie
+
+- `All state coverage (Pokrycie wszystkich stanów) TAK na egazmin`: To achieve 100% all states coverage, test 
+cases must ensure that all the states are visited. Coverage is measured as the number of visited states 
+divided by the total number of states, and is expressed as a percentage. 
+
+Przykład: mamy do pokrycia stany: S1, S2, S3, S4
+Można to uzyskać w ramach jednego testu:
+
+S1 > (A) > S2 > (B) > S1 > (C) > S3 > (B) > S4
+
+W ramach jednego przypadku testowego osiągnęliśmy 100% pokrycia.
+
+- `Valid transition coverage (also called 0-switch coverage) TAK na egzamin`:  the coverage items are single valid 
+transitions. To achieve 100% valid transitions coverage, test cases must exercise all the valid transitions. 
+Coverage is measured as the number of exercised valid transitions divided by the total number of valid 
+transitions, and is expressed as a percentage.
+
+Przykład: biorąc pod uwagę, że chcemy zaprojektować możliwie najmniejszą liczbę testów  
+aby pokryć wszystkie zidentyfikowane przejścia:
+
+P1: S1 > (A) > S2,  
+P2: S1 > (C) > S3,  
+P3: S2 > (A) > S2,  
+P4: S2 > (B) > S1,  
+P5: S2 > (C) > S4,  
+P6: S3 > (B) > S4.  
+
+Można to sięgnąć za pomocą dwóch PT:
+
+| PT | Pokryte przejście |
+|----|-------------------|
+| S1>(A)>S2>(A)>S2>(B)>S1>(C)>S3>(B)>S4 | P1,P3,P4,P2,P6
+| S1>(A)>S2>(C)>S4 | P1,P5
+
+- `All transition coverage TAK na egzamin`:  the coverage items are all the transitions shown in a state table. To achieve 
+100% all transitions coverage, test cases must exercise all the valid transitions and attempt to execute 
+invalid transitions.  
+
+Testing only one invalid transition in a single test case helps to avoid `fault masking`, 
+i.e., a situation in which one defect prevents the detection of another. Coverage is measured as the 
+number of valid and invalid transitions exercised or attempted to be covered by executed test cases, 
+divided by the total number of valid and invalid transitions, and is expressed as a percentage.  
+
+All states coverage is weaker than valid transitions coverage, because it can typically be achieved without 
+exercising all the transitions. Valid transitions coverage is the most widely used coverage criterion. 
+Achieving full valid transitions coverage guarantees full all states coverage. Achieving full all transitions 
+coverage guarantees both full all states coverage and full valid transitions coverage and should be a 
+minimum requirement for mission and safety-critical software.   
+
+W książce są opisane dodatkowe dwa typy pokrycia NIE na egzaminie:
+
+- `pokrycie przejść n ie poprawnych`: musimy spróbować wywołać każde niezdefiniowane w modelu przejście.
+Przykład:
+
+| PT | Pokryte niepoprawne przejścia |
+|----|-------------------------------|
+| S1>(B)>? | S1>(B)>? |
+| S1>(C)>S3>(A)>? | S3>(A)>? |
+| S1>(C)S3>(C)>? | S3>(C)>? |
+| S1>(C)>S3>(B)>S4(A)>? | S4>(A)>? |
+| S1>(C)>S3>(B)>S4>(B)>? | S4>(B)>? |
+| S1>(C)>S3>(B)>S4(C)>? | S4>(C)>? |
+
+- `kryterium pokrycia par przejść`: musimy zdefiniować wszystkie dozwolone pary przejść.  
+Dla każdego pojedynczego przejścia rozważane są wszystkie jego możliwe kontynuacje w postaci następującego po nim pojedynczego   
+przejścia.  
+
+Przykład: najpierw trzeba zidentyfikować wszystkie możliwe pary:
+
+PP1: S1>(A)>S2>(A)>S2,  
+PP2: S1>(A)>S2>(B)>S1,  
+PP3: S1>(A)>S2>(C)>S4,  
+PP4: S1>(C)>S3>(B)>S4,  
+PP5: S2>(A)>S2>(A)>S2,  
+PP6: S2>(A)>S2>(B)>S1,  
+PP7: S2>(A)>S2>(C)>S4,  
+PP8: S2>(B)>S1>(A)>S2,  
+PP9: S2>(B)>S1>(C)>S3.  
+
+Biorąc pod uwagę, że chcemy uzyskać 100% pokrycie jak najmniejszą ilością PT:
+
+| PT | Pokryte pary przejść |
+|----|----------------------|
+| S1>(A)>S2>(A)>S2>(A)>S2>(B)>S1>(A)>S2>(B)>S1>(C)>S3>(B)>S4 | PP1, PP5, PP6, PP8, PP2, PP9, PP4 |
+| S1>(A)>S2>(C)>S4 | PP3 |
+| S1>(A)>S2>(A)>S2>(C)>S4 | PP1,PP7 |
+
+
 ___
+## Sources
+- A. Roman, L. Stapp, Certifikowany tester ISTQB Poziom Podstawowy, Helion SA 2020
+- Certified Tester Foundation Level Syllabus v4.0
 
 
 
