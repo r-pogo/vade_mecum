@@ -1,33 +1,33 @@
-## OSI model
+## OSI model (Open Systems Interconnection Model)
 
-| Layer Name | Protocol | Protocol Data Unit | Addressing | Explanation |
-|------------|----------|--------------------|------------|-------------|
-| Application | HTTP, FTP, IRC, SSH, DNS etc...| Messages | n/a | End user layer
-| Presentation | SSL, SSH, IMAP, FTP, MPEG, JPEG | | |  Syntax layer
-| Session | ApI's, Sockets, WinSock | | | Synch & send to port
-| Transport | TCP, UDP | Segment | Port#'s | Sorts out which client and server programs are supposed to get that data. End-to-end connection.
-| Network | IP, ICMP, IPSec, IGMP | Packet/Diagram | IP Address | Allows different networks to communicate with each other through devices known as routers
-| Data Link | Ethernet, PPP, Switch, Bridge | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate
-| Physical | n/a | Bits | n/a | Physical devices that interconnect computers (Coax, fiber, wireless, hubs, repeaters)
+| Level | Layer Name | Protocol | Protocol Data Unit | Addressing | Explanation |
+|-------|------------|----------|--------------------|------------|-------------|
+| 7 | Application | HTTP, FTP, IRC, SSH, DNS etc...| Messages | n/a | End user layer. The application layer of the OSI model is the layer that you will be most familiar with. This familiarity is because the application layer is the layer in which protocols and rules are in place to determine how the user should interact with data sent or received. Everyday applications such as email clients, browsers, or file server browsing software such as FileZilla provide a friendly, Graphical User Interface (GUI) for users to interact with data sent or received. Other protocols include DNS (Domain Name System), which is how website addresses are translated into IP addresses.
+| 6 | Presentation | SSL, SSH, IMAP, FTP, MPEG, JPEG | | |  Syntax layer. Layer 6 of the OSI model is the layer in which standardisation starts to take place. Because software developers can develop any software such as an email client differently, the data still needs to be handled in the same way — no matter how the software works. This layer acts as a translator for data to and from the application layer (layer 7). The receiving computer will also understand data sent to a computer in one format destined for in another format. For example, when you send an email, the other user may have another email client to you, but the contents of the email will still need to display the same. Security features such as data encryption (like HTTPS when visiting a secure site) occur at this layer.
+| 5 | Session | ApI's, Sockets, WinSock | | | Synch & send to port. Once data has been correctly translated or formatted from the presentation layer (layer 6), the session layer (layer 5) will begin to create and maintain the connection to other computer for which the data is destined. When a connection is established, a session is created. Whilst this connection is active, so is the session. The session layer is also responsible for closing the connection if it hasn't been used in a while or if it is lost. Additionally, a session can contain "checkpoints," where if the data is lost, only the newest pieces of data are required to be sent, saving bandwidth. What is worthy of noting is that sessions are unique — meaning that data cannot travel over different sessions, but in fact, only across each session instead.
+| 4 | Transport | TCP, UDP | Segment | Port#'s | Sorts out which client and server programs are supposed to get that data. End-to-end connection.
+| 3 | Network | IP, ICMP, IPSec, IGMP | Packet/Diagram | IP Address | Allows different networks to communicate with each other through devices known as routers
+| 2 | Data Link | Ethernet, PPP, Switch, Bridge | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate. The data link layer focuses on the physical addressing of the transmission. It receives a packet from the network layer (including the IP address for the remote computer) and adds in the physical MAC (Media Access Control) address of the receiving endpoint. Inside every network-enabled computer is a Network Interface Card (NIC) which comes with a unique MAC address to identify it. MAC addresses are set by the manufacturer and literally burnt into the card; they can’t be changed – although they can be spoofed. When information is sent across a network, it’s actually the physical address that is used to identify where exactly to send the information. Additionally, it’s also the job of the data link layer to present the data in a format suitable for transmission.
+| 1 | Physical | n/a | Bits | n/a | Physical devices that interconnect computers (Coax, fiber, wireless, hubs, repeaters)
 ___
 ## TCP/IP five layer model
 
-| Layer Name | Protocol | Protocol Data Unit | Addressing | Explanation |
-|------------|----------|--------------------|------------|-------------|
-| Application | HTTP,SMTP etc...| Messages | 7,6,5 OSI layers | 
-| Transport | TCP/UDP | Segment | Port#'s | Sorts out which client and server programs are supposed to get that data. End-to-end connection
-| Network | IP | Packet/Datagram | IP Address | Allows different networks to communicate with each other through devices known as routers
-| Data Link | Ethernet, Wi-Fi | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate
-| Physical | n/a | Bits | n/a | Physical devices that interconnect computers
+| Level | Layer Name | Protocol | Protocol Data Unit | Addressing | Explanation |
+|-------|------------|----------|--------------------|------------|-------------|
+| 5 | Application | HTTP,SMTP etc...| Messages | 7,6,5 OSI layers | 
+| 4 | Transport | TCP/UDP | Segment | Port#'s | Sorts out which client and server programs are supposed to get that data. End-to-end connection
+| 3 | Network | IP | Packet/Datagram | IP Address | Allows different networks to communicate with each other through devices known as routers
+| 2 | Data Link | Ethernet, Wi-Fi | Frames | MAC Address | Responsible for defining a common way of interpreting these signals so network devices can communicate. The data link layer focuses on the physical addressing of the transmission. It receives a packet from the network layer (including the IP address for the remote computer) and adds in the physical MAC (Media Access Control) address of the receiving endpoint. Inside every network-enabled computer is a Network Interface Card (NIC) which comes with a unique MAC address to identify it. MAC addresses are set by the manufacturer and literally burnt into the card; they can’t be changed – although they can be spoofed. When information is sent across a network, it’s actually the physical address that is used to identify where exactly to send the information. Additionally, it’s also the job of the data link layer to present the data in a format suitable for transmission.
+| 1 | Physical | n/a | Bits | n/a | Physical devices that interconnect computers
 ___
 ## TCP/IP 
 
-| Layer Name | OSI model layers|
-|------------|----------|
-| Application | 7,6,5
-| Host to Host | 4
-| Internet | 3
-| Network Access | 2,1
+| Level | Layer Name | OSI model layers|
+|-------|------------|----------|
+| 4 | Application | 7,6,5
+| 3 | Host to Host | 4
+| 2 | Internet | 3
+| 1 | Network Access | 2,1
 
 `Etherent`: Ethernet standards also define a protocol responsible for getting data 
 to nodes on the same network or link  
@@ -60,7 +60,10 @@ This is accomplished by using a special destination known as a broadcast address
 The ethernet broadcast address is all F's `FF:FF:FF:FF:FF:FF`. Ethernet broadcasts are used so that devices can learn more about each other.
 ___
 ## Encapsulation
+Packets and frames are small pieces of data that, when forming together, make a larger piece of information or message. However, they are two different things in the OSI model. A frame is at layer 2 - the data link layer, meaning there is no such information as IP addresses. Think of this as putting an envelope within an envelope and sending it away. The first envelope will be the packet that you mail, but once it is opened, the envelope within still exists and contains data (this is a frame).
+This process is called encapsulation
 `Encapsulation`:  
+
 ![img_4.png](img/img_4.png)
 
 ![img_16.png](img/img_16.png)
@@ -137,6 +140,7 @@ ___
 ## Sources
 - Ross Bagurdes, Network Concepts and Protocols, https://app.pluralsight.com/
 - Google, The Bits and Bytes of Computer Networking, https://www.coursera.org/
+- https://tryhackme.com/
 
 
 

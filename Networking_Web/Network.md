@@ -266,6 +266,29 @@ Now the transmitting computer knows what MAC address to put in the destination h
 It will also likely store this IP address in its local ARP table so that it won't have to send an ARP broadcast the next time it needs to communicate with this IP.
 ARP table entries generally expire after a short amount of time to ensure changes in the network are accounted for.
 ___
+## Switch
+A switch is a dedicated networking device responsible for providing a means of connecting to multiple devices. Switches can facilitate many devices (from 3 to 63) using Ethernet cables.
+
+Switches can operate at both layer 2 and layer 3 of the OSI model. However, these are exclusive in the sense that Layer 2 switches cannot operate at layer 3.
+
+Level 2: These switches are solely responsible for sending frames to the correct device.
+
+![img_4.png](img/img_58.png)
+
+Level 3: These switches are more sophisticated than layer 2, as they can perform some of the responsibilities of a router. Namely, these switches will send frames to devices (as layer 2 does) and route packets to other devices using the IP protocol. 
+
+Let's take a look at the diagram below of a layer 3 switch in action. We can see that there are two IP addresses: 
+
+192.168.1.1
+192.168.2.1
+
+A technology called VLAN (Virtual Local Area Network) allows specific devices within a network to be virtually split up. This split means they can all benefit from things such as an Internet connection but are treated separately. This network separation provides security because it means that rules in place determine how specific devices communicate with each other. This segregation is illustrated in the diagram below
+
+![img_5.png](img/img_59.png)
+
+In the context of the diagram above, the "Sales Department" and "Accounting Department" will be able to access the Internet, but not able to communicate with each other (although they are connected to the same switch).
+
+___
 ## Routing
 `Router` = A network device that forwards traffic depending on the destination address of that traffic. It has at least two network interfaces.
 Basic routing:

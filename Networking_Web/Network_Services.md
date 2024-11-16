@@ -276,6 +276,9 @@ How DHCP actually works:
 
 `DHCP discovery`: The process by which a client configured to use DHCP attempts to get network configuration information 
 DHCP discovery has 4 steps:
+
+![img.png](img/img_54.png)
+
 1. First, we have the `server discovery step`. The DHCP client sends what's known as a `DHCP discover message` out onto the network.
 Since the machine doesn't have an IP and it doesn't't know the IP of the DHCP server, a specially crafted broadcast message is
 formed instead. 
@@ -285,6 +288,7 @@ This is then encapsulated inside of an IP datagram with a destination IP of 255.
 This broadcast message would get delivered to every node on the local area network, and if a DHCP server is present,
 it would receive this message.
 
+
 2. DHCP server would examine its own configuration and would make a decision on what, if any, IP address to offer to the client.
 This will depend on if it's configured to run with dynamic, automatic or fixed address allocation.
 The response would be sent as a `DHCP offer message` with a destination port of 68, a source port of 67, a destination
@@ -292,12 +296,14 @@ broadcast IP of 255.255.255.255, and its actual IP as the source. Since the DHCP
 it would reach every machine on the network. The original client would recognize that this message was intended for itself.
 This is because the DHCP offer has the field that specifies the MAC address of the client that sent the DHCP discover message.
 
-3.The client machine would now process this DHCP offer to see what IP is being offered to it. Technically, a
+
+3. The client machine would now process this DHCP offer to see what IP is being offered to it. Technically, a
 DHCP client could reject this offer. It's totally possible for multiple DHCP servers to be running on the same
 network and for a DHCP client to be configured to only respond to an offer of an IP within a certain range. But this is rare.
 More often, the DHCP client would respond to the DHCP offer message with a `DHCP request message`.
 This message essentially says, yes, I would like to have an IP that you offered to me. Since the IP hasn't
 been assigned yet, this is again sent from an IP of 0.0.0.0 and to the broadcast IP of 255.255.255.255.
+
 
 4. Finally, the DHCP server receives the DHCP request message and respond with a `DHCPACK or DHCP Acknowledgement message`.
 This message is again sent to a broadcast IP of 255.255.255.255, and with a source IP corresponding to the actual IP of the DHCP server.
@@ -305,6 +311,7 @@ Again, the DHCP client would recognize that this message was intended for itself
 the message fields. The networking stack on the client computer can now use the configuration information presented to
 it by the DHCP server to set up its own network layer configuration. At this stage, the computer that's acting as the DHCP
 client should have all the information it needs to operate in a full-fledged manner on the network it's connected to.
+
 
 All of this configuration is known as `DHCP lease`, as it includes an expiration time. 
 A DHCP lease might last for days or only for a short amount of time. Once a lease has expired, the DHCP client would need to
@@ -317,3 +324,4 @@ ___
 - PowerCertAnimated videos, DNS record explained, https://www.youtube.com/@PowerCertAnimatedVideos
 - PowerCertAnimated videos, DHCP Explained - Dynamic Host Configuration Protocol, https://www.youtube.com/@PowerCertAnimatedVideos
 - Google, The Bits and Bytes of Computer Networking, https://www.coursera.org/
+- https://tryhackme.com/

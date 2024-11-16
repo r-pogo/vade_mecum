@@ -1,8 +1,8 @@
 # Transport layer
 The transport layer has the ability to `multiplex` and `demultiplex`.
 
-Multiplexing: nodes on a network have the ability to direct traffic toward many different receiving services.
-Demultiplexing: is the same concept just at the receiving end, it's taking traffic that's all aimed at the same node and delivering it to the proper receiving service.
+`Multiplexing`: nodes on a network have the ability to direct traffic toward many different receiving services.
+`Demultiplexing`: is the same concept just at the receiving end, it's taking traffic that's all aimed at the same node and delivering it to the proper receiving service.
 
 ![img.png](img/img_37.png)
 
@@ -114,6 +114,22 @@ A handshake is a way for two devices to ensure that they're speaking the same pr
 Now, Computer A is free to send whatever data it wants to Computer B and vice versa. Since both sides have now sent SYN/ACK pairs to each other, a TCP connection in this state is operating in full duplex. 
 Each segment sent in either direction should be responded to by a TCP segment with the ACK field sent. This way the other side always knows what has been received. 
 
+`DATA`: Once a connection has been established, data (such as bytes of a file) is sent via the "DATA" message
+
+Any sent data is given a random number sequence and is reconstructed using this number sequence and incrementing by 
+Both computers must agree on the same number sequence for data to be sent in the correct order. This order is agreed upon during three steps:
+
+1. SYN - Client: Here's my Initial Sequence Number(ISN) to SYNchronise with (0)
+2. SYN/ACK - Server: Here's my Initial Sequence Number (ISN) to SYNchronise with (5,000), and I ACKnowledge your initial number sequence (0)
+3. ACK - Client: I ACKnowledge your Initial Sequence Number (ISN) of (5,000), here is some data that is my ISN+1 (0 + 1)
+
+| Device | Initial Number Sequence | Final Number Sequence |
+|--------|-------------------------|-----------------------|
+| Client (sender) | 0 | 0+1=1 |
+| Client (sender) | 1 | 1+1=2 |
+| Client (sender) | 2 | 2+1=3 |
+
+
 ![img.png](img/img_48.png)
 
 Once one of the devices involved with the TCP connection is ready to close the connection, something known as a `four-way handshake happens`:
@@ -166,9 +182,41 @@ For many companies and almost all home users, the functionality of a router and 
 Firewalls can run on individual hosts instead of being a network device. 
 All major modern operating systems have firewall functionality built in. 
 That way, blocking or allowing traffic to various ports and therefore to specific services can be performed at the host level as well.
+
+A firewall is a device within a network responsible for determining what traffic is allowed to enter and exit. Think of a firewall as border security for a network. An administrator can configure a firewall to permit or deny traffic from entering or exiting a network based on numerous factors such as:
+
+
+
+Where the traffic is coming from? (has the firewall been told to accept/deny traffic from a specific network?)
+Where is the traffic going to? (has the firewall been told to accept/deny traffic destined for a specific network?)
+What port is the traffic for? (has the firewall been told to accept/deny traffic destined for port 80 only?)
+What protocol is the traffic using? (has the firewall been told to accept/deny traffic that is UDP, TCP or both?)
+Firewalls perform packet inspection to determine the answers to these questions
+
+
+
 TODO finish firewalls
+TODO UDP UDP/IP
+___
+## UDP
+The User Datagram Protocol (UDP) is another protocol that is used to communicate data between devices.
+Unlike its brother TCP, UDP is a stateless protocol that doesn't require a constant connection between the two devices for data to be sent. For example, the Three-way handshake does not occur, nor is there any synchronisation between the two devices.
+amely, UDP is used in situations where applications can tolerate data being lost (such as video streaming or voice chat) or in scenarios where an unstable connection is not the end-all.
+
+As mentioned, no process takes place in setting up a connection between two devices. Meaning that there is no regard for whether or not data is received, and there are no safeguards such as those offered by TCP, such as data integrity.
+UDP packets are much simpler than TCP packets and have fewer headers. However, both protocols share some standard headers, which are what is annotated in the table below:
+
+| Header | Description |
+|--------|-------------|
+| Time to Live (TTL) | This field sets an expiry timer for the packet, so it doesn't clog up your network if it never manages to reach a host or escape!|
+| Source Address | The IP address of the device that the packet is being sent from, so that data knows where to return to.
+| Destination Address | The device's IP address the packet is being sent to so that data knows where to travel next.
+| Source Port | This value is the port that is opened by the sender to send the UDP packet from. This value is randomly chosen (out of the ports from 0-65535 that aren't already in use at the time).
+| Destination Port | This value is the port number that an application or service is running on the remote host (the one receiving the data); for example, a webserver running on port 80. Unlike the source port, this value is not chosen at random.
+| Data | This header is where data, i.e. bytes of a file that is being transmitted, is stored.
 ___
 ## Sources
 - PowerCertAnimated videos, Comparison between TCP and UDP, https://www.youtube.com/@PowerCertAnimatedVideos
 - Google, The Bits and Bytes of Computer Networking, https://www.coursera.org/
+- https://tryhackme.com/
 
