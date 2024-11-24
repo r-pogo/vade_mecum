@@ -30,7 +30,13 @@ Proxy: Software or hardware service acting as a middle person between clients an
 Cache: Method of storing data on the client or server to speed up  performance.  
 
 ## Request/Response
+
+When we access a website, your browser will need to make requests to a web server for assets such as HTML, Images, and download the responses. Before that, you need to tell the browser specifically how and where to access these resources, this is where URLs will help
+
 ### Anatomy of URL
+
+![img.png](img/img_18.png)
+
 URL: Human readable address describing where on the web a particular resources i s located.  
 
 ![img.png](img/img.png)
@@ -38,6 +44,22 @@ URL: Human readable address describing where on the web a particular resources i
 `URN` provides the location of the resource and is made up of several pieces:  
 
 ![img_1.png](img/img_1.png)
+
+
+Scheme: This instructs on what protocol to use for accessing the resource such as HTTP, HTTPS, FTP (File Transfer Protocol).
+
+User: Some services require authentication to log in, you can put a username and password into the URL to log in.
+
+Host: The domain name or IP address of the server you wish to access.
+
+Port: The Port that you are going to connect to, usually 80 for HTTP and 443 for HTTPS, but this can be hosted on any port between 1 - 65535.
+
+Path: The file name or location of the resource you are trying to access.
+
+Query String: Extra bits of information that can be sent to the requested path. For example, /blog?id=1 would tell the blog path that you wish to receive the blog article with the id of 1.
+
+Fragment: This is a reference to a location on the actual page requested. This is commonly used for pages with long content and can have a certain part of the page directly linked to it, so it is viewable to the user as soon as they access the page
+
 
 `Host`: this is the domain which is registered at a domain name service - DNS. And this domain points to a dedicated server IP address, somewhere on the web.  
 `Port number`: Implied and usually invisible connection port, stating which port we want to access on the server. For http is  80 for https is 443.  
@@ -110,11 +132,11 @@ It deletes a specified resource. A DELETE request must contain the ID for the re
 
 ## HTTP status messages
 
-1xx - Information  
-2xx - Success  
-3xx - Redirection  
-4xx - Client error  
-5xx - Server error  
+1xx - Information: These are sent to tell the client the first part of their request has been accepted and they should continue sending the rest of their request
+2xx - Success: This range of status codes is used to tell the client their request was successful.
+3xx - Redirection: These are used to redirect the client's request to another resource. This can be either to a different webpage or a different website altogether.
+4xx - Client error: Used to inform the client that there was an error with their request.
+5xx - Server error: This is reserved for errors happening on the server-side and usually indicate quite a major problem with the server handling the request.
 ___
 ## HTTP headers
 An HTTP header is a human readable name value pair separated by a colon, added to the HTTP request or response,  
@@ -149,6 +171,19 @@ With HTTP2 and other modern technologies, we're also seeing new headers come onl
 which allows us to use server Push, to push files to the client before they are requested.
 
 ### Anatomy of a request header
+
+Common Request Headers
+
+﻿These are headers that are sent from the client (usually your browser) to the server.
+
+Host: Some web servers host multiple websites so by providing the host headers you can tell it which one you require, otherwise you'll just receive the default website for the server.
+
+User-Agent: This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
+
+Content-Length: When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
+
+Accept-Encoding: Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
+
 Example:
 
 First the client states what method is using and what resources it's requesting using a regular URL.
@@ -172,6 +207,19 @@ and sets the cache-control of the current file to zero seconds, meaning it will 
 ![img_14.png](img/img_14.png)
 
 ### Anatomy of a response header
+
+ommon Response Headers
+
+These are the headers that are returned to the client from the server after a request.
+
+Set-Cookie: Information to store which gets sent back to the web server on each request (see cookies task for more information).
+
+Cache-Control: How long to store the content of the response in the browser's cache before it requests it again.
+
+Content-Type: This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+
+Content-Encoding: What method has been used to compress the data to make it smaller when sending it over the internet.
+
 Example:
 
 This response header declares the status of the response 200 OK, the server type, the date and time of the response  
@@ -246,6 +294,13 @@ to see a t what file are pointing
 cat access.log | cut -f 7,9 -d " " | sort | uniq -c | sort -n | grep "404"
 ```
 ___
+## Cookies
+You've probably heard of cookies before, they're just a small piece of data that is stored on your computer. Cookies are saved when you receive a "Set-Cookie" header from a web server. Then every further request you make, you'll send the cookie data back to the web server. Because HTTP is stateless (doesn't keep track of your previous requests), cookies can be used to remind the web server who you are, some personal settings for the website or whether you've been to the website before. Let's take a look at this as an example HTTP request:
+
+![img_1.png](img/img_19.png)
+
+___
 ## Sources
 - M. Rand-Hendriksen, HTTP Essential Training, https://www.linkedin.com/learning/http-essential-training
 - B. DeVault, Network Protocols for Security: HTTP, https://app.pluralsight.com/
+- https://tryhackme.com/

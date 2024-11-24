@@ -13,6 +13,33 @@ Configuration needed for a host to operat on a network:
 - Getaway 
 - DNS server
 ___
+### Domain Hierarchy
+
+`Root domain`: is denoted by an empty string or a dot ("."), and it is at the very top of the DNS structure.
+It does not have any name itself (hence the dot) but serves as the starting point for resolving any domain name.
+
+`Root Servers`: There are 13 root DNS servers, managed by different organizations worldwide. These servers hold the root zone file, which contains pointers to the next level in the domain hierarchy, called Top-Level Domains (TLDs).
+The root servers know where to find the authoritative servers for top-level domains like .com, .org, .net, country-code domains like .us, .uk, and newer generic TLDs like .tech, .ai.
+
+`Top-Level Domains (TLDs)`: These are the first level beneath the root, such as .com, .org, .net, and country code domains like .uk.
+There are two types of TLD, gTLD (Generic Top Level) and ccTLD (Country Code Top Level Domain
+`Second-Level Domains`: These are directly below the TLD, for example, in example.com, "example" is the second-level domain.
+When registering a domain name, the second-level domain is limited to 63 characters + the TLD and can only use a-z 0-9 and hyphens (cannot start or end with hyphens or have consecutive hyphens).
+
+`Subdomains`: A subdomain sits on the left-hand side of the Second-Level Domain using a period to separate it; for example, in the name admin.tryhackme.com the admin part is the subdomain. A subdomain name has the same creation restrictions as a Second-Level Domain, being limited to 63 characters and can only use a-z 0-9 and hyphens (cannot start or end with hyphens or have consecutive hyphens). You can use multiple subdomains split with periods to create longer names, such as jupiter.servers.tryhackme.com. But the length must be kept to 253 characters or less. There is no limit to the number of subdomains you can create for your domain name.
+Further subdivisions of a domain. For example, mail.example.com is a subdomain of example.com.
+
+```
+        Second-Level Domain
+protocol       |        Subdirectory
+  |            |          |
+ http://www.example.com/blog/page-name 
+         |           |           |
+       Sub Domain    |         File name
+                     |
+               Top-Level Domain
+```
+___
 ### How DNS works
 Five types of DNS servers:
 1. `Caching name servers`: provided by ISP. Purpose is to store domain name lookups for a certain amount of time. Most caching name servers are also recursive name servers. 
@@ -137,7 +164,7 @@ and forward the users to example.com, even though is pointing to example.com but
 the request reaches the web server, the web will inspect the URL that the user has typed and direct
 it to FTP services.
 
-4. `MX record - Mail exchanger record`: used for mail exchanger record. MX record tells the world which server to send
+4. `MX record - Mail exchanger record`: used for email exchanger record. MX record tells the world which server to send
 email for a particular domain name.
 
 The generally have two entries `Primary email server` and  `Secondary email server`
