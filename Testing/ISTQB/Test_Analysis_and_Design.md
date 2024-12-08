@@ -324,7 +324,7 @@ Model opisujący aspekt behawioralny to `diagram przejść między stanami` i sk
 - `transitions (przejścia)`: reprezentują możliwe poprawne zmiany stanów.
 - `event, event [guard condition] (zdarzenia)`: reprezentują zjawiska, zazwyczaj zewnętrzne wobec systemu, których zajście  
 wyzwala odpowiadające im przejście. They may be additionally qualified by a guard condition.
-- `action (akcje)`: czynności, które system może podjąć podczas przejścia między stanami.
+- `action (akcje)`: czynności, które system może podjąć podczas przejścia między stanami. Is like the output.
 
 #### Implementacja
 Przykładowy diagram przejść między stanami:
@@ -520,7 +520,124 @@ Sum up:
 - Coverage is measured as the number of branches exercised by tests divided by total number of branches * 100
 - 100% branch coverage guarantees 100% statement coverage but not vice versa
 - Doesn't guarantee detection of all defects
+___
+## Experience-based Test Techniques 
+### Error Guessing (Zgadywanie błędów)
 
+Error guessing is a testing technique where testers anticipate potential errors, defects, or failures based on their experience and knowledge.  
+It involves insights into:
+
+- How the application has previously functioned.  
+- Common developer errors and resulting defects.  
+- Failures in similar applications.  
+
+Errors, defects, and failures often relate to issues in:  
+Input (e.g., incorrect input handling, missing parameters).  
+Output (e.g., incorrect format or result).  
+Logic (e.g., unhandled cases, incorrect operators).  
+Computation (e.g., wrong calculations).  
+Interfaces (e.g., parameter mismatches).  
+Data (e.g., incorrect initialization).  
+
+A structured approach called `fault attacks` supports error guessing by creating lists of  
+potential issues, derived from experience, defect data, or general knowledge of software failures.  
+Testers design tests to identify these defects, expose them, or trigger failures.
+
+### Exploratory Testing (Testowanie Eksploracyjne)
+Exploratory testing is a dynamic testing approach where tests are designed, executed, and evaluated 
+simultaneously as the tester learns about the test object. It involves:  
+- Gaining deeper insights into the test object.  
+- Designing tests for untested areas.  
+- Exploring the application through focused testing.  
+
+`Session-based` exploratory testing provides structure by:  
+- Using time-boxed sessions guided by test charters with specific objectives.  
+- Identifying and testing coverage items within sessions.  
+- Documenting steps and findings on session sheets.  
+- Debriefing with stakeholders to discuss results.  
+
+This method is particularly valuable when specifications are limited, time is constrained,  
+or as a complement to formal testing techniques.  
+Its effectiveness depends on the tester’s experience, domain knowledge, and skills such as  
+analytical thinking, creativity, and curiosity.
+
+### Checklist-Based Testing (Testowanie w oparciu o listę kontrolną)
+Checklist-based testing involves designing, implementing, and executing tests based on items in a checklist. These checklists are created using:
+- Tester experience.  
+- Knowledge of user priorities.  
+- Insights into common causes of software failures.  
+
+Key characteristics of checklist-based testing include:
+- Items are often phrased as questions and should be directly verifiable.  
+- They can address requirements, interface properties, quality characteristics, or other test conditions.  
+- Checklists are applicable to both functional and non-functional testing (e.g., usability heuristics).  
+
+To maintain effectiveness, checklists must be regularly updated based on defect analysis, adding new entries for recent issues and removing outdated ones.  
+However, overly lengthy checklists should be avoided.
+
+This approach is useful when detailed test cases are unavailable, offering guidelines and consistency.  
+High-level checklists may increase coverage but reduce repeatability.
+___
+## Collaboration-based Test Approaches 
+Collaboration-based approaches, focus not only on defect detection but also on defect avoidance by collaboration and communication.  
+
+### Collaborative User Story Writing 
+A user story describes a feature valuable to a user or purchaser of a system. It is structured around the "3 C’s" (Jeffries 2000):  
+
+- Card: The medium documenting the user story (e.g., index card or digital tool).
+- Conversation: Details how the software will be used, either verbally or in writing.
+- Confirmation: Defines the acceptance criteria for the story.  
+
+The typical format is:
+"As a [role], I want [goal], so that [business value]."
+
+User stories are collaboratively created using techniques like brainstorming and mind mapping to align business,  
+development, and testing perspectives.
+
+Good user stories adhere to the INVEST criteria:  
+Independent, Negotiable, Valuable, Estimable, Small, and Testable.  
+
+If a story lacks clarity, value, or testability, it may need further refinement or stakeholder guidance.
+
+### Acceptance Criteria
+Acceptance criteria define the conditions a user story must satisfy to be accepted by stakeholders.  
+They function as test conditions and result from the "Conversation" phase of the user story.  
+
+Uses of Acceptance Criteria:  
+- Define the scope of the user story.  
+- Facilitate consensus among stakeholders.  
+- Outline both positive and negative scenarios.  
+- Form the basis for user story acceptance testing.  
+- Support accurate planning and estimation.  
+
+Common Formats:  
+- Scenario-Oriented: Uses the "Given/When/Then" format from Behavior-Driven Development (BDD).  
+- Rule-Oriented: A bullet-point list or table mapping inputs to expected outputs.  
+- Teams can use custom formats if they ensure the criteria are clear, well-defined, and unambiguous  
+
+### Acceptance Test-driven Development (ATDD) 
+ATDD is a test-first methodology where test cases are created before implementing a user story,  
+involving perspectives from customers, developers, and testers.  
+Tests can be executed manually or automated.  
+
+Key Steps in ATDD:  
+1. Specification Workshop:  
+- Team analyzes and discusses the user story and its acceptance criteria.  
+- Ambiguities, incompleteness, or defects are resolved.  
+
+2. Test Case Creation:  
+- Based on acceptance criteria, designed as examples of correct software behavior.  
+- Includes positive tests first (expected behavior) and negative tests later (handling exceptions or errors).  
+- Addresses non-functional quality attributes like performance or usability.  
+
+3. Execution:  
+- Test cases are written in a clear, stakeholder-friendly format, detailing preconditions, inputs, and postconditions.  
+- They should comprehensively cover user story characteristics without redundancy or exceeding the story’s scope.  
+
+Automation:  
+- When test cases align with an automation framework, developers can automate them during feature implementation, turning the tests into executable requirements.  
+
+ATDD ensures precise communication, reduces ambiguities, and guides correct implementation of user stories.
 ___
 ## Sources
 - A. Roman, L. Stapp, Certifikowany tester ISTQB Poziom Podstawowy, Helion SA 2020
