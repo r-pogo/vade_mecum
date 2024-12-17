@@ -46,19 +46,19 @@ URL: Human readable address describing where on the web a particular resources i
 ![img_1.png](img/img_1.png)
 
 
-Scheme: This instructs on what protocol to use for accessing the resource such as HTTP, HTTPS, FTP (File Transfer Protocol).
+`Scheme`: This instructs on what protocol to use for accessing the resource such as HTTP, HTTPS, FTP (File Transfer Protocol).
 
-User: Some services require authentication to log in, you can put a username and password into the URL to log in.
+`User`: Some services require authentication to log in, you can put a username and password into the URL to log in.
 
-Host: The domain name or IP address of the server you wish to access.
+`Host`: The domain name or IP address of the server you wish to access.
 
-Port: The Port that you are going to connect to, usually 80 for HTTP and 443 for HTTPS, but this can be hosted on any port between 1 - 65535.
+`Port`: The Port that you are going to connect to, usually 80 for HTTP and 443 for HTTPS, but this can be hosted on any port between 1 - 65535.
 
-Path: The file name or location of the resource you are trying to access.
+`Path`: The file name or location of the resource you are trying to access.
 
-Query String: Extra bits of information that can be sent to the requested path. For example, /blog?id=1 would tell the blog path that you wish to receive the blog article with the id of 1.
+`Query String`: Extra bits of information that can be sent to the requested path. For example, /blog?id=1 would tell the blog path that you wish to receive the blog article with the id of 1.
 
-Fragment: This is a reference to a location on the actual page requested. This is commonly used for pages with long content and can have a certain part of the page directly linked to it, so it is viewable to the user as soon as they access the page
+`Fragment`: This is a reference to a location on the actual page requested. This is commonly used for pages with long content and can have a certain part of the page directly linked to it, so it is viewable to the user as soon as they access the page
 
 
 `Host`: this is the domain which is registered at a domain name service - DNS. And this domain points to a dedicated server IP address, somewhere on the web.  
@@ -79,6 +79,7 @@ PATCH
 HEAD
 OPTIONS
 TRACE
+CONNECT
 
 `GET`: Get the specified resources, if available.
 A GET request for a public resource only needs the method and the URL to work.
@@ -130,13 +131,7 @@ It deletes a specified resource. A DELETE request must contain the ID for the re
 
 ![img_9.png](img/img_9.png)
 
-## HTTP status messages
-
-1xx - Information: These are sent to tell the client the first part of their request has been accepted and they should continue sending the rest of their request
-2xx - Success: This range of status codes is used to tell the client their request was successful.
-3xx - Redirection: These are used to redirect the client's request to another resource. This can be either to a different webpage or a different website altogether.
-4xx - Client error: Used to inform the client that there was an error with their request.
-5xx - Server error: This is reserved for errors happening on the server-side and usually indicate quite a major problem with the server handling the request.
+`CONNECT`: Used to create a secure connection, like for HTTPS
 ___
 ## HTTP headers
 An HTTP header is a human readable name value pair separated by a colon, added to the HTTP request or response,  
@@ -170,19 +165,21 @@ and much more.
 With HTTP2 and other modern technologies, we're also seeing new headers come online including Link,
 which allows us to use server Push, to push files to the client before they are requested.
 
-### Anatomy of a request header
+### Anatomy of a Request
 
 Common Request Headers
 
-﻿These are headers that are sent from the client (usually your browser) to the server.
+These are headers that are sent from the client (usually your browser) to the server.
 
-Host: Some web servers host multiple websites so by providing the host headers you can tell it which one you require, otherwise you'll just receive the default website for the server.
-
-User-Agent: This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
-
-Content-Length: When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
-
-Accept-Encoding: Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
+| Request Header | Example | Description |
+|----------------|---------|-------------|
+| Host | Host: tryhackme.com | Some web servers host multiple websites so by providing the host headers you can tell it which one you require.
+| User-Agent | User-Agent: Mozilla/5.0 |  This is your browser software and version number, telling the web server your browser software helps it format the website properly for your browser and also some elements of HTML, JavaScript and CSS are only available in certain browsers.
+| Referer | Referer: https://www.google.com | Indicates the URL from which the request come
+| Cookie | Cookie: user_type=student; room=introtowebapplications; room_status=in_progress | Information the web server previously asked the web browser to store is held in cookies
+| Content-Type | Content-Type: application/json | Describes what type or format of data is in the request.
+| Content-Length | | When sending data to a web server such as in a form, the content length tells the web server how much data to expect in the web request. This way the server can ensure it isn't missing any data.
+| Accept-Encoding| | Tells the web server what types of compression methods the browser supports so the data can be made smaller for transmitting over the internet.
 
 Example:
 
@@ -206,19 +203,112 @@ and sets the cache-control of the current file to zero seconds, meaning it will 
 
 ![img_14.png](img/img_14.png)
 
-### Anatomy of a response header
+Another example:
 
-ommon Response Headers
+![img.png](img/img_20.png)
 
-These are the headers that are returned to the client from the server after a request.
+`Request Line`: 
+HTTP method (GET), 
+URL path (tells the server where to find the resources) 
+HTTP version (shows the protocol version used to communicate between the client and server)
 
-Set-Cookie: Information to store which gets sent back to the web server on each request (see cookies task for more information).
+#### Request Body
+In HTTP requests such as POST and PUT, where data is sent to the web server as opposed to requested from the web server, the data is located inside the HTTP Request Body.  
 
-Cache-Control: How long to store the content of the response in the browser's cache before it requests it again.
+The formatting of the data can take many forms, but some common ones are:
+`URL Encoded`: 
+```
+POST /profile HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33
 
-Content-Type: This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+data is structured in pairs of key and value where (key=value). Multiple pairs are separated by an (&) symbol, such as key1=value1&key2=value2
+name=Aleksandra&age=27&country=US
+```
 
-Content-Encoding: What method has been used to compress the data to make it smaller when sending it over the internet.
+`Form Data`: Allows multiple data blocks to be sent where each block is separated by a boundary string. The boundary string is the defined header of the request itself. This type of formatting can be used to send binary data, such as when uploading files or images to a web server.
+```
+POST /upload HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="username"
+
+aleksandra
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="profile_pic"; filename="aleksandra.jpg"
+Content-Type: image/jpeg
+
+[Binary Data Here representing the image]
+----WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+```
+`JSON`:Data is formatted in pairs of name : value. Multiple pairs are separated by commas, all contained within curly braces { }.
+```
+POST /api/user HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0
+Content-Type: application/json
+Content-Length: 62
+
+{
+    "name": "Aleksandra",
+    "age": 27,
+    "country": "US"
+}
+```
+`XML`:  data is structured inside labels called tags, which have an opening and closing. These labels can be nested within each other.
+```
+POST /api/user HTTP/1.1
+Host: tryhackme.com
+User-Agent: Mozilla/5.0
+Content-Type: application/xml
+Content-Length: 124
+
+<user>
+    <name>Aleksandra</name>
+    <age>27</age>
+    <country>US</country>
+</user>
+```
+
+
+### Anatomy of a Response
+When you interact with a web application, the server sends back an HTTP response to let you know whether your request was successful or something went wrong. These responses include a status code and a short explanation (called the Reason Phrase) that gives insight into how the server handled your request.
+
+The first line in every HTTP response is called the Status Line. It gives you three key pieces of info:
+
+HTTP Version: This tells you which version of HTTP is being used.
+Status Code: A three-digit number showing the outcome of your request.
+Reason Phrase: A short message explaining the status code in human-readable terms.
+
+`Http Responses`:
+1xx - Information: These are sent to tell the client the first part of their request has been accepted and they should continue sending the rest of their request
+2xx - Success: This range of status codes is used to tell the client their request was successful.
+3xx - Redirection: These are used to redirect the client's request to another resource. This can be either to a different webpage or a different website altogether.
+4xx - Client error: Used to inform the client that there was an error with their request.
+5xx - Server error: This is reserved for errors happening on the server-side and usually indicate quite a major problem with the server handling the request.
+
+#### Response Headers
+
+![alt text](img/img_21.png)
+
+`Required Response Headers`:
+- Date.
+- Content-Type: This tells the client what type of data is being returned, i.e., HTML, CSS, JavaScript, Images, PDF, Video, etc. Using the content-type header the browser then knows how to process the data.
+- Server: Ex Server: nginx. This header shows what kind of server software is handling the request.
+
+`Other common Response Headers`:
+- Set-Cookie: This one sends cookies from the server to the client, which the client then stores and sends back with future requests.
+- Cache-Control: This header tells the client how long it can cache the response before checking with the server again.
+- Location: This one’s used in redirection (3xx) responses. It tells the client where to go next if the resource has moved.
+- Content-Encoding: What method has been used to compress the data to make it smaller when sending it over the internet.
+
+`Response Body`: The HTTP response body is where the actual data lives—things like HTML, JSON, images, etc., that the server sends back to the client.
 
 Example:
 
@@ -238,6 +328,74 @@ In this example that is to render the content of the return of the html document
 
 ![img_17.png](img/img_17.png)
 ___
+## Security Headers
+### Content-Security-Policy (CSP)
+ A CSP provides a way for administrators to say what domains or sources are considered safe and provides a layer of mitigation to for example XSS attacks.
+ Within the header itself, you may see properties such as default-src or script-src defined and many more. Each of these give an option to an administrator to define at various levels of granularity, what domains are allowed for what type of content. The use of self is a special keyword that reflects the same domain on which the website is hosted.
+ example: 
+ `Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.tryhackme.com; style-src 'self'`
+
+We see the use of:
+
+default-src
+- which specifies the default policy of self, which means only the current website.
+
+script-src
+- which specifics the policy for where scripts can be loaded from, which is self along with scripts hosted on https://cdn.tryhackme.com
+
+style-src
+- which specifies the policy for where style CSS style sheets can be loaded from the current website (self)
+
+### Strict-Transport-Security (HSTS)
+The HSTS header ensures that web browsers will always connect over HTTPS
+Example:
+`Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+Here’s a breakdown of the example HSTS header by directive:
+
+max-age
+- This is the expiry time in seconds for this setting
+
+includeSubDomains
+- An optional setting that instructs the browser to also apply this setting to all subdomains.
+
+preload
+- This optional setting allows the website to be included in preload lists. Browsers can use preload lists to enforce HSTS before even having their first visit to a website.
+
+### X-Content-Type-Options
+The X-Content-Type-Options header can be used to instruct browsers not to guess the MIME time of a resource but only use the Content-Type header.
+Example:
+`X-Content-Type-Options: nosniff`
+
+Here’s a breakdown of the X-Content-Type-Options header by directives:
+
+nosniff
+- This directive instructs the browser not to sniff or guess the MIME type.
+
+### Referrer-Policy
+This header controls the amount of information sent to the destination web server when a user is redirected from the source web server, such as when they click a hyperlink. The header is available to allow a web administrator to control what information is shared. 
+Example:
+```
+Referrer-Policy: no-referrer
+Referrer-Policy: same-origin
+Referrer-Policy: strict-origin
+Referrer-Policy: strict-origin-when-cross-origin
+```
+
+Here’s a breakdown of the Referrer-Policy header by directives:
+
+no-referrer
+- This completely disables any information being sent about the referrer
+
+same-origin
+- This policy will only send referrer information when the destination is part of the same origin. This is helpful when you want referrer information passed when hyperlinks are within the same website but not outside to external websites.
+
+strict-origin
+- This policy only sends the referrer as the origin when the protocol stays the same. So, a referrer is sent when an HTTPS connection goes to another HTTPS connection.
+
+strict-origin-when-cross-origin
+- This is similar to strict-origin except for same-origin requests, where it sends the full URL path in the origin header.
+
+
 ## Analyzing traffic logs example
 Example of log file (access.log):
 
@@ -303,4 +461,5 @@ ___
 ## Sources
 - M. Rand-Hendriksen, HTTP Essential Training, https://www.linkedin.com/learning/http-essential-training
 - B. DeVault, Network Protocols for Security: HTTP, https://app.pluralsight.com/
-- https://tryhackme.com/
+- Web Application Basics, https://tryhackme.com/
+- HTTP in Detail, https://tryhackme.com/
