@@ -2,24 +2,23 @@
 ISO/ICE/IEE 29119-1: info about software testing concepts  
 ISO/ICE/IEE 29119-2: info about test processes
 ## What is testing
-Software testing is a set of activities to discover defects and evaluate the quality of software artifacts.
-These artifacts, when being tested, are known as `test objects`.  
-No, just executing test but includes also other activities aligned with SDLC.
+Software testing is a comprehensive set of activities aimed at identifying defects and assessing the quality of software artifacts. These artifacts, during the testing process, are referred to as 'test objects'.  
+Testing is not limited to the execution of test cases; it also encompasses other activities aligned with the Software Development Life Cycle (SDLC).  
 
-`verification`, checking whether the system meets specified requirements (Czy produkt tworzony jest prawidłowo?)  
-`validation`, which means checking whether the system meets users’ and other stakeholders’ needs in its operational environment. (Czy tworzony jest prawidłowy produkt?)
+There are two main aspects of testing:
 
-Testing is not only a technical activity. It also needs to be properly planned, managed, estimated,
-monitored and controlled.
+`Verification`: This process checks whether the system has been built correctly and adheres to specified requirements. In other words, it answers the question: Is the product being developed as expected?  
+`Validation`: This step ensures that the system meets the actual needs of users and other stakeholders in its intended operational environment. It addresses the question: Is the right product being built?  
 
-Testing is largely an intellectual activity, requiring the testers to have specialized knowledge, use analytical skills and apply critical
-thinking and systems thinking.
+Testing is not solely a technical endeavor; it also requires proper planning, management, estimation, monitoring, and control to be effective.  
+Furthermore, testing is predominantly an intellectual activity, requiring testers to possess specialized knowledge, apply analytical skills, and engage in critical and systems thinking.  
 
-Testowanie to technologiczne badanie pozwalające otrzymać informacje o jakości  
-testowanego produktu.
+In essence, software testing provides valuable insights into the quality of the product being tested.
 
-Testowanie może mieć zarówno formę `dynamiczną` (uruchamiamy testowany moduł/system),  
-jak i `statyczną` (bez uruchomiania, dokumentacja itp).
+Testing can take two forms:  
+
+`Dynamic testing`, where the system or module is executed to assess its behavior.  
+`Static testing`, which involves reviewing documentation and code without execution.
 
 ### Cele testowania K1 (Identify typical test objectives)
 The typical test objectives are:  
@@ -109,148 +108,91 @@ Dlatego kluczowa jest analiza podstawowej przyczyny defektu.
 ![img_3.png](img/img_3.png)
 ___
 ### Test Activities, Testware and Test Roles
-Testing is context dependent many things influence your testing decisions.
+Testing is highly context-dependent, influenced by various factors that shape testing decisions.  
 
-External factors: e.g: stakeholder interest, general laws, the domain you're working in, 
-and standards applicable to your domain. 
+`External factors` include stakeholder interests, relevant laws, the domain you're working in, and the standards that apply to that domain.
 
-Internal factors: e.g: multiple software development lifecycle models that hugely influence your workflow, budgets, resources, time, and overall complexity of the system
+`Internal factors` involve aspects like the software development lifecycle model in use, available budgets, resources, time constraints, and the system's overall complexity, all of which impact your testing process.
 
-`Testware/Test work products`:  is created as output work products from the test activities.
+`Testware` refers to the output produced from test activities, such as test plans, scripts, and data.
 
-`Testing activites` can be broadly grouped as test planning, test monitoring and control, test analysis, test design, test implementation, test execution, and test completion. 
-Each of these groups can be broken down further. One note, although these activities seem logically sequential, they don't have to be carried out in sequence. 
-So instead of doing all of the planning, then all test analysis, then all test design and execution, and then reporting, and finally, test completion without ever 
-taking a step back, you might, and most likely will, have an agile or agile‑like approach. 
-This means you will do a bit of planning and analysis, create and execute basic tests, report the results, and then repeat in small chunks, plan, analyze, test, report, plan, 
-analyze, test, report. 
-The dynamic of your workflow will largely depend on how the entire team works, and you'll have to adapt to that.
+Testing activities can be broadly categorized into test planning, monitoring and control, analysis, design, implementation, execution, and completion. While these activities may seem to follow a logical sequence, they don't have to be strictly linear. In practice, especially in agile or agile-like environments, you might perform test planning, analysis, design, and execution in smaller, iterative cycles. This approach allows you to plan, analyze, test, and report in short, repeated steps, adjusting based on ongoing results. The overall workflow dynamics depend on how the team works together, requiring flexibility and adaptation.
 
-`Test planning`: consists of defining the test objectives and then selecting an approach that best achieves 
-the objectives within the constraints imposed by the overall context. A test plan is not something set in stone.  
-`Test planning work products include`: test plan, test schedule, risk register, and entry and exit 
-criteria. Risk register is a list of risks together with risk likelihood, risk impact and 
-information about risk mitigation. 
+`Test Planning` involves defining clear test objectives and selecting an approach that effectively meets those objectives, considering the constraints and context surrounding the project. It’s important to note that a test plan is not rigid—it can evolve as the project progresses.
 
-`Test monitoring and control`: Test monitoring involves the ongoing checking of all test activities and the 
-comparison of actual progress against the plan. Are we doing what we planned to do, if no, why not? Are we on track to meet the deadline?
-If the answer is no, why not, and what can we do about it? Test control involves taking the actions necessary to 
-meet the objectives of testing.  
+`Test planning work products` include the test plan, test schedule, risk register, and entry/exit criteria. The **risk register** is a document that outlines potential risks, their likelihood and impact, and strategies for mitigating each risk.
 
-In order to implement effective test monitoring and control, it is important to establish and maintain 
-traceability throughout the test process between the test basis elements, testware associated with these 
-elements (e.g., test conditions, risks, test cases), test results, and detected defects. 
-Accurate traceability supports coverage evaluation, so it is very useful if measurable coverage criteria are 
-defined in the test basis. The coverage criteria can function as key performance indicators to drive the 
-activities that show to what extent the test objectives have been achieved. For 
-example:  
-• Traceability of test cases to requirements can verify that the requirements are covered by test 
-cases.  
-• Traceability of test results to risks can be used to evaluate the level of residual risk in a test 
-object.  
-In addition to evaluating coverage, good traceability makes it possible to determine the impact of 
-changes, facilitates test audits, and helps meet IT governance criteria. Good traceability also makes test 
-progress and completion reports more easily understandable by including the status of test basis 
-elements. This can also assist in communicating the technical aspects of testing to stakeholders in an 
-understandable manner. Traceability provides information to assess product quality, process capability, 
-and project progress against business goals. 
+`Test Monitoring and Control` involves continuously tracking all test activities and comparing actual progress against the plan. The key questions are: Are we doing what we planned to do? If not, why? Are we on track to meet deadlines, and if not, what can be done to get back on track? Test control focuses on taking the necessary actions to ensure the testing objectives are met.
 
-`Test monitoring and control work products include`: test progress reports, 
-documentation of control directives and risk information. All kinds of reports such as test 
-progress reports and test summaries - In other words, who is working on what report? 
+To effectively monitor and control testing, it is essential to maintain traceability throughout the process, linking test basis elements (such as requirements or design documents) with testware (like test cases, conditions, and risks), test results, and detected defects. This traceability ensures that testing is aligned with the project’s goals and supports the evaluation of coverage.
 
-`Test analysis (what to test?)`: includes analyzing the test basis to identify testable features and to define and prioritize 
-associated test conditions, together with the related risks and risk levels. The test basis 
-and the test objects are also evaluated to identify defects they may contain and to assess their testability. 
-Test analysis is often supported by the use of test techniques. Test analysis answers the 
-question “what to test?” in terms of measurable coverage criteria.  
-The better you understand the system, the better your tests will be, and pretty much the rest of your work. 
-What exactly do you analyze? Well, anything you can get your hands on. Business requirements, functional requirements, non‑functional requirements 
-are a great start. Architectural diagrams, UML diagrams, graphs, and anything else created by technical people who designed the system. Actual code, metadata, 
-developer documentation, documentation of the system interfaces, all that can be useful, too. Finally, risk analysis reports if your project happens to have them. 
-All of this is material for your test basis, the foundation upon which you will design and create your tests. This all sounds great, but what do we really mean by analyzing? 
-Reading and then what? Yes, reading and trying to identify all possible defects such as ambiguities, omissions, inconsistencies, inaccuracies, contradictions, superfluous 
-statements. Any of these defects on paper has the potential to be converted to defects in software and eventually to failures. This might ring a bell. 
-This is directly related to one of the seven testing principles, early testing saves time and money.
+**Coverage evaluation** is more effective when measurable coverage criteria are defined in the test basis. These criteria can serve as key performance indicators, helping track progress towards test objectives. For example:
+- **Traceability of test cases to requirements** ensures that all requirements are covered by test cases.
+- **Traceability of test results to risks** allows assessment of residual risks in the test object.
 
-`Test analysis work products include`: (prioritized) test conditions (e.g., acceptance criteria), 
-and defect reports regarding defects in the test basis (if not fixed directly). 
-What are the test conditions again? It means a testable aspect of a component 
-or a system identified as a basis for testing. In plain English, you can break down requirements into logical chunks, 
-map those to test conditions, each with a limited scope, and then based on those, create individual test cases.
+In addition to evaluating coverage, good traceability helps determine the impact of changes, facilitates audits, and ensures compliance with IT governance standards. It also makes test progress and completion reports clearer by including the status of test basis elements, which aids in communicating technical aspects to stakeholders in an understandable way. Traceability provides valuable insights into product quality, process efficiency, and progress toward business objectives.
 
-`Test Design and Implementation`:  
-Okay, we analyzed everything we possibly could, and so we know what to test. Now we have to answer how to test it. Test design includes 
-the following major activities, designing and prioritizing test cases and sets of test cases, identifying necessary test data to support 
-test conditions and test cases, designing, evaluating or preparing the test environment, and identifying any required infrastructure and tools, 
-capturing bi‑directional traceability between the test basis, test conditions, and test cases.
+**Test monitoring and control work products** include test progress reports, control directives, and risk documentation. These reports provide visibility into the status of testing activities—such as who is working on what tasks—and help in making informed decisions throughout the testing process.
 
-You create multiple test cases, you write down the steps, expected results, and the necessary input data in each. 
-You then typically group them into a test set, test suite or test pack. These terms are largely interchangeable. 
-You also write down everything you need to test, the testing tools, test conditions, and environment that you'll be using such as the browser 
-version, operating system version, and special software, and so forth. And finally, you map all of this to the relevant part of the requirements. 
-Requirements are large, so you will have hundreds of tests backed into dozens of test sets, mapped to many subsections of the global requirements 
-if we're talking about the same big piece of software. And in that case, you may create these so‑called test conditions in between that map to a 
-subsection of requirements.  
-Regardless of how you do it, you should create requirements to test mapping, also known as traceability, between the requirements, your test basis, and the test work products, in this case, the test cases. 
-This is important to do and to remember for the exam. So test design answers how to test. 
+`Test Analysis (What to Test?)`: Test analysis involves examining the test basis to identify which features are testable and defining the associated test conditions. It also includes prioritizing these conditions, evaluating related risks, and determining their risk levels. During this process, the test basis and test objects are assessed for defects and testability. Test analysis is often supported by various test techniques and aims to answer the question **“What to test?”** through measurable coverage criteria.
 
-`Test design (how to test)`: includes elaborating the test conditions into test cases and other testware (e.g., test 
-charters). This activity often involves the identification of coverage items, which serve as a guide to 
-specify test case inputs.  
-Test design also includes defining the test data requirements, designing the test environment and identifying any 
-other required infrastructure and tools.
-Test design includes 
-the following major activities, designing and prioritizing test cases and sets of test cases, identifying necessary test data to support 
-test conditions and test cases, designing, evaluating or preparing the test environment, and identifying any required infrastructure and tools, 
-capturing bi‑directional traceability between the test basis, test conditions, and test cases.
+The better you understand the system, the more effective your tests—and overall work—will be. But what exactly should you analyze? Start with key documents like business requirements, functional and non-functional requirements. Architectural diagrams, UML diagrams, and any technical documentation created by the system’s designers are essential as well. Additional resources such as the actual code, metadata, and system interface documentation can provide valuable insights. If available, include risk analysis reports in your test basis too.
+
+Essentially, anything that can inform your understanding of the system is fair game for analysis. But what does "analyzing" really mean? It’s more than just reading through documents. You need to critically examine them to identify potential defects—such as ambiguities, omissions, inconsistencies, inaccuracies, contradictions, or unnecessary statements. These defects in the documentation can easily translate into software defects and, ultimately, system failures. This is why early testing is emphasized in the testing principles—it helps save both time and money.
+
+`Test Analysis Work Products Include`: Prioritized test conditions (e.g., acceptance criteria) and defect reports related to issues found in the test basis (if not directly fixed).
+
+**So, what exactly are test conditions?** In simple terms, they are the testable aspects of a component or system, identified during analysis. You can break down requirements into logical components, map those components to test conditions with clear, limited scope, and use these conditions to design individual test cases.
+
+
+Here’s a refined version of your text that is more concise, clearer, and flows better:
+
+`Test Design and Implementation`: After thoroughly analyzing what to test, the next step is to determine **how to test it**. Test design involves several key activities: designing and prioritizing test cases and test sets, identifying the required test data to support test conditions and cases, preparing or evaluating the test environment, determining necessary infrastructure and tools, and establishing bi-directional traceability between the test basis, test conditions, and test cases.
+
+In the design process, you create multiple test cases, documenting the steps, expected results, and required input data for each. These test cases are then typically grouped into test sets, test suites, or test packs—terms that are often used interchangeably. Additionally, you document all the resources needed for testing, including testing tools, test conditions, and the test environment (such as browser versions, operating systems, and specific software).
+
+Next, all of this information is mapped to the corresponding requirements. Since requirements can be large and complex, this often results in hundreds of test cases grouped into multiple test sets, each mapping to different subsections of the overall requirements. In this case, you might create intermediate test conditions that correspond to specific sections of the requirements.
+
+Regardless of the approach, it's crucial to establish requirements-to-test mapping, also known as traceability. This ensures that there’s a clear link between the requirements, the test basis, and the test work products, such as the test cases. In summary, test design answers the question, **how to test.**
+
+`Test Design (How to Test)`: involves transforming test conditions into detailed test cases and other testware, such as test charters. This process often includes identifying coverage items, which help specify the necessary test case inputs.
+
+Test design also encompasses defining the required test data, designing the test environment, and identifying any other necessary infrastructure and tools to support the testing process.
+
+The main activities in test design include:
+
+- Designing and prioritizing test cases and test case sets.  
+- Identifying the test data needed to support test conditions and cases.  
+- Designing, preparing, and evaluating the test environment.  
+- Identifying any required infrastructure or tools.  
+
+Additionally, test design involves ensuring bi-directional traceability between the test basis, test conditions, and test cases.  
+`Test design work products` include prioritized test cases, test charters, coverage items, test data requirements, and test environment requirements.
 
 ![img.png](img/img_4.png)
 
-`Test design work products include`: (prioritized) test cases, test charters, coverage items, test 
-data requirements and test environment requirements. 
+`Test Implementation (Do we have everything in place to run the tests?)`: involves creating or acquiring the necessary testware to execute the tests, such as test data. Test cases are organized into test procedures and often grouped into test suites. Both manual and automated test scripts are developed. Test procedures are prioritized and arranged within a test execution schedule to ensure efficient execution. The test environment is set up and verified to be properly configured.
 
-`Test implementation (do we now have everything in place to run the tests?)`: includes creating or acquiring the testware necessary for test execution (e.g., test 
-data). Test cases can be organized into test procedures and are often assembled into test suites. Manual 
-and automated test scripts are created. Test procedures are prioritized and arranged within a test 
-execution schedule for efficient test execution (see section 5.1.5). The test environment is built and 
-verified to be set up correctly.  
-Test implementation includes the following major activities, developing test procedures and 
-potentially creating automated test scripts. Setting up the test environment, including potentially test harnesses, service virtualization, 
-simulators, and any other kind of infrastructure, preparing test data and ensuring it is properly loaded into the test environment. 
-In the previous step, you identified which data you need. Now you're getting it or creating it. Finally, verifying and updating 
-bi‑directional traceability between the test basis, test conditions, test cases, and so forth.
+Key activities in test implementation include:
 
-`Test implementation work products include`: test procedures, automated test scripts, test 
-suites, test data, test execution schedule, and test environment elements. Examples of test 
-environment elements include: stubs, drivers, simulators, and service virtualizations. 
+- Developing test procedures and, if needed, creating automated test scripts.  
+- Setting up the test environment, which may involve tools like test harnesses, service virtualization, simulators, and other infrastructure.  
+- Preparing the required test data and ensuring it is correctly loaded into the test environment (as identified in the earlier design phase).  
+- Verifying and maintaining bi-directional traceability between the test basis, test conditions, test cases, and other related elements.  
 
-`Test execution`: includes running the tests in accordance with the test execution schedule (test runs). 
-Test execution may be manual or automated. Test execution can take many forms, including continuous 
-testing or pair testing sessions. Actual test results are compared with the expected results. The test 
-results are logged. Anomalies are analyzed to identify their likely causes. This analysis allows us to report 
-the anomalies based on the failures observed.
+`Test implementation work products`: include test procedures, automated test scripts, test suites, test data, test execution schedules, and test environment components. Examples of test environment components include stubs, drivers, simulators, and service virtualizations.
 
-`Test execution work products include`: test logs, and defect reports. 
+`Test Execution`: involves running tests according to the test execution schedule (test runs). Test execution can be performed manually or through automation and may take various forms, such as continuous testing or pair testing sessions. During execution, actual test results are compared to expected outcomes. Test results are logged, and any anomalies are analyzed to determine their likely causes. This analysis helps in reporting the anomalies based on the observed failures.
 
-`Test completion`: activities usually occur at project milestones (e.g., release, end of iteration, test level 
-completion) for any unresolved defects, change requests or product backlog items created. Any testware 
-that may be useful in the future is identified and archived or handed over to the appropriate teams. The 
-test environment is shut down to an agreed state. The test activities are analyzed to identify lessons 
-learned and improvements for future iterations, releases, or projects. A test completion 
-report is created and communicated to the stakeholders.  
-You typically do this when a big software version is released, a test project is completed or an agile 
-iteration is finished. In short, it is a kind of retrospective that you do at the end of some milestone. Test completion includes 
-ensuring that all defect reports are closed, it's important to do this to ensure you didn't miss anything, creating a test 
-summary report to be communicated to stakeholders, finalizing, archiving, and/or sharing testware, meaning test cases, 
-test data, and other things, perhaps for later reuse. Depending on where you work, you might be required by law to store 
-test evidence for a year or even more in case some external audit comes in and demands to see it. Analyzing lessons learned 
-from the completed test activities to determine changes needed for future iterations, releases, and projects, basically, 
-learn from mistakes and do things better in the future.
+`Test execution work products`: include test logs and defect reports.
 
-`Test completion work products include`: test completion report, action items 
-for improvement of subsequent projects or iterations, documented lessons learned, and change 
-requests (e.g., as product backlog items).
+`Test Completion` activities typically occur at project milestones (e.g., release, end of iteration, or test level completion) and focus on addressing unresolved defects, change requests, or product backlog items. Testware that may be useful in the future is identified, archived, or handed over to the appropriate teams. The test environment is returned to an agreed state, and test activities are reviewed to identify lessons learned and areas for improvement in future iterations, releases, or projects. A test completion report is then created and communicated to stakeholders.
+
+This phase usually occurs when a major software version is released, a test project is completed, or an agile iteration concludes. In essence, it serves as a retrospective at the end of a milestone. Test completion includes ensuring that all defect reports are closed—this is crucial to verify that no issues were overlooked—creating a test summary report for stakeholders, finalizing and archiving testware (such as test cases, test data, and other resources), and ensuring the necessary storage of test evidence for regulatory compliance, which may be required for audits.
+
+Additionally, the completion phase involves analyzing lessons learned from the completed testing activities to identify improvements for future work, helping to refine processes and avoid past mistakes.
+
+`Test completion work products` include the test completion report, action items for improvement in subsequent projects or iterations, documented lessons learned, and change requests (such as product backlog items).
 
 
 ![img_1.png](img/img_5.png)
