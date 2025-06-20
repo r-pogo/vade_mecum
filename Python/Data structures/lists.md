@@ -8,8 +8,10 @@ Table of content:
     4.[Reverting a list](#reverting-a-list)  
     5.[Finding index](#finding-index)  
     6.[The in and not in operators](#the-in-and-not-in-operators)  
-    7.[Multiple assignment trick](#multiple-assignment-trick)
+    7.[Multiple assignment trick](#multiple-assignment-trick)  
+    8.[random.choice() and random.shuffle()](#random.choice()-and-random.shuffle())  
 - [List concatenation](#list-concatenation)  
+- [Sorting](#sorting)  
 - [Tips and Tricks](#tips-and-tricks)  
     1.[Enumerate](#enumerate)  
     2.[Difference between two lists](#difference-between-two-lists)  
@@ -151,6 +153,13 @@ l = [1,2,3]
 print(l[::-1])
 [3, 2, 1]
 ````
+```python
+# reverse() like sort()dosen't create a new list, this is why you call it directly instead of generating a new varibale
+spam = ['cat', 'dog', 'turtle']
+spam.reverse()
+spam
+['turtle', 'dog', 'cat']
+```
 ___
 ### Finding index <div id='finding-index'/>
 ```python
@@ -182,6 +191,23 @@ print(a)
 c++
 print(b)
 python
+```
+
+### random.choice() and random.shuffle() <div id ='#random.choice()-and-random.shuffle()'/>
+```python
+import random
+
+pets = ['dog', 'cat', 'turtle']
+random.choice(pets)
+dog
+```
+```python
+import random
+
+people = ['Alice', 'Celina', 'Elski']
+random.shuffle(people)
+people
+['Celina', 'Elski', 'Alice']
 ```
 ___
 ## List concatenation <div id='list-concatenation'/>
@@ -255,9 +281,9 @@ print(['a', 'b', 'c'] * 4)
 ['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c']
 ```
 ___
-## Sorting
+## Sorting <div id='sorting'/>
 ```python
-# sort()
+# sort() dosne't creat a new list this is why you call it directly instead of creating a new varibale.
 numbers = [2, 5, 3.14, 1, -7]
 numbers.sort()
 print(numbers)
