@@ -1,4 +1,9 @@
-# lambda
+# Lambda
+A small anonymous function for a once time use (throw away function).  
+They take any number of arguments, but have only 1 expression.  
+Helps keep the namespace clean and is useful with higher order functions like:  
+`sorted()`, `map()`, `filter()`, `reduce()`
+
 ```python
 def add(x, y):
     return x + y
@@ -35,4 +40,22 @@ numbers = [3,4,5,6,8]
 cubed = map(lambda x: x**3, numbers)
 print(cubed)
 [27, 64, 125, 216, 512]
+```
+Another example:
+```python
+double = lambda x: x * 2
+print(double(2))
+4
+
+max_value = lambda x, y: x if x > y else y
+print(max_value(4, 5))
+5
+
+is_even = lambda x: x % 2 == 0
+print(is_even(2))
+True
+
+print(is_even(5))
+False
+
 ```
