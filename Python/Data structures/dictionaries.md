@@ -3,7 +3,7 @@ Table of content: TODO
 Are python's implementation of associative arrays. Stores collection of key-pairs.  
 Sum Up:
  - mutable
- - unordered
+ - unordered before Python 3.6 as of Python 3.7, dictionaries are ordered, but this dosen't make them sequences like lists or tuples.
  - key-pairs
 ## Dictionary Methods
 | Functions | Explanation |

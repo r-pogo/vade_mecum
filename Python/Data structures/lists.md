@@ -37,11 +37,50 @@ or with a loop.
 
 Sum up:
 - Lists are ordered.
-- Lists can contain any arbitrary objects.
+- Zero based
+- Heterogeneous: Lists can contain any arbitrary objects.
 - List elements can be accessed by index.
-- Lists can be nested to arbitrary depth.
+- Nestable: Lists can be nested to arbitrary depth.
 - Lists are mutable.
 - Lists are dynamic.
+- Iterable
+- Slicable
+- Combinable
+
+```python
+# List literals:
+my_list = [itme_0, itme_1, ..., item_n]
+
+# The list() constructor:
+my_list = list([iterable])
+# Strings are iterable so the constructor will break them down
+list("Pythonista")
+['P', 'y', 't', 'h', 'o', 'n', 'i', 's', 't', 'a']
+
+list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# List comprehensions
+my_list = [expression for element in iterable]
+
+[number ** 2 for number in range(1,10)]
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Empty list
+empty = []
+empty
+[]
+list()
+[]
+list(0,1,2) #argument must be iterable
+Traceback (most recent call last):
+  File "<python-input-7>", line 1, in <module>
+    list(0,1,2)
+    ~~~~^^^^^^^
+TypeError: list expected at most 1 argument, got 3
+list((0,1,2,3)) # here passing a tuple
+[0, 1, 2, 3]
+```
 ___
 ## List methods <div id='list-methods'/>
 | Functions | Explanation |
@@ -65,6 +104,7 @@ Python sequence slice addresses can be written as `list[start:end:step]` and any
 Reverting `list[::-1]`.
 
 ````python
+my_list[start:stop:step]
 list = list[slice]    # Or: list[from_inclusive : to_exclusive : ±step]
 new_list = old_list[:]   # Another way to copy a list
 ````
@@ -306,6 +346,80 @@ numbers = [2, 5, 3.14, 1, -7]
 sorted_numbers = sorted(numbers)
 print(sorted_numbers)
 [-7, 1, 2, 3.14, 5]
+```
+## Copying
+```python
+# Aliasing, binding a new name to the same underlying object
+# By modifying an alias will result in modifying the original list and vice versa
+new_variable = original_variable
+countries = ["US", "Canada", "Polad"]
+nations = countries
+id(countries)
+2180282582592
+id(nations)
+2180282582592
+id(countries) == id(nations)
+True
+
+countries[0]="Italy"
+countries
+['Italy', 'Canada', 'Polad']
+nations
+['Italy', 'Canada', 'Polad']
+
+# Shallow vs Deep Copies
+
+# Shallow copy ia a new list containing references to the objects in the original list.
+# To create shallow copies:
+# slicing [:]
+nations = countries[:]
+nations
+['Italy', 'Canada', 'Polad']
+id(countries) == id(nations)
+False
+id(nations[0]) == id(countries[0])
+True
+
+countries[0] = "Japan"
+countries
+['Japan', 'Canada', 'Polad']
+nations
+['Italy', 'Canada', 'Polad']
+
+# The .copy() method
+
+# copy() from the copy module
+
+# A deep copy of a list contains references to copies of the objects in the original list
+# To create deepcopy:
+# deepcopy() from the copy module
+
+>>> from copy import copy, deepcopy
+>>> matrix = [[1,2,3], [4,5,6], [7,5,9]]
+>>> shallow = copy(matrix)
+>>> deep= deepcopy(matrix)
+>>> id(matrix)
+2180282522944
+>>> id(shallow)
+2180282585216
+>>> id(deep)
+2180282583424
+>>> id(matrix[0])
+2180282588416
+>>> id(shallow[0])
+2180282588416
+>>> id(deep[0])
+2180282517120
+
+>>> matrix[0][0] = 100
+>>> matrix[0][1] = 200
+>>> matrix[0][2] = 300
+>>> matrix
+[[100, 200, 300], [4, 5, 6], [7, 5, 9]
+>>> shallow
+[[100, 200, 300], [4, 5, 6], [7, 5, 9]]
+>>> deep
+[[1, 2, 3], [4, 5, 6], [7, 5, 9]]
 ```
 ## Tips and Tricks <div id='tips-and-tricks'/>
 ### Enumerate <div id='enumerate'/>
