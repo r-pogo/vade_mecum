@@ -73,6 +73,43 @@ with open("test.txt",'w',encoding = 'utf-8') as f:
 ````
 This program will create a new file named test.txt in the current directory if it does not exist. If it does exist, it is overwritten.
 !!! include the newline characters to distinguish the different lines.
+
+```python
+txt_data = "I like pizza!"
+
+file_path = "output.txt"
+
+with open(file_path, "w") as file:
+    file.write(txt_data)
+```
+```python
+import json
+
+employee = { "name": "Spong",
+            "age": 30,
+            "job": "cook"}   
+
+file_path = "output.txt"
+
+with open(file_path, "w") as file:
+    json.dump(employee, file, indent=4)
+```
+
+```python
+import csv
+
+employee = [["Name", "age", "job"],
+            ["Spong", 30, "Cook"],
+            ["Pat", 37, "Unemployed"],
+            ["Sandy", 27, "Scientist"]] 
+
+file_path = "output.txt"
+
+with open(file_path, "w", newline="") as file:
+    writer = csv.writer(file)
+for row in employee:
+    writer.writerow(row)
+```
 ___
 ## Reading a file
 To read a file in Python use r mode.
@@ -101,6 +138,49 @@ Alternatively, the readline() method creates a list of items == individual lines
 ````python
 ['This morning I ate 4 cookies.\n', 'God i love cookies!\n', 'I need more cookies!\n']
 ````
+```python
+file_path = "C/path/to/file.txt"
+
+try:
+    with open(file_path, "r") as file:
+        content = file.read()
+        print(content)
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError:
+    print("You do not have the permission!")
+```
+
+```python
+import json
+
+file_path = "C/path/to/file.json"
+
+try:
+    with open(file_path, "r") as file:
+        content = json.load(file)
+        print(content) or print(content["age"])
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError:
+    print("You do not have the permission!")
+```
+
+```python
+import csv
+
+file_path = "C/path/to/file.csv"
+
+try:
+    with open(file_path, "r") as file:
+        content = csv.reader(file)
+        for line in content:
+            print(line)
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError:
+    print("You do not have the permission!")
+```
 ___
 ## Reading Multiple Files
 Python supports reading data from multiple input streams or from a list of files through the fileinput module.
